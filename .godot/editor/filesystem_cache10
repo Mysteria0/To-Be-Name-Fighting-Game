@@ -1,0 +1,31 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1774979333
+icon.svg::CompressedTexture2D::820574304562032232::1774961003::1774961003::1::::<><><>0<>0<>cb895d7529d4292e9d8b77898c8dbe12<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+Input Reader.tscn::PackedScene::7396441553425071389::1774961003::0::1::::<><><>0<>0<><>::
+Levels.tscn::PackedScene::6287589681342614715::1774961003::0::1::::<><><>0<>0<><>::
+main.tscn::PackedScene::5484995758197957571::1774977726::0::1::::<><><>0<>0<><>::uid://crutl3ed34eni::::res://Player.tscn<>uid://ddm5kuncpnusr::::res://Input Reader.tscn<>uid://cvt0xibjikmr0::::res://Levels.tscn
+Player.gd::GDScript::2752969119462153884::1774961003::0::1::::<>CharacterBody2D<><>0<>0<><>::
+Player.tscn::PackedScene::6008514007917355098::1774979333::0::1::::<><><>0<>0<><>::uid://bfhs88b6f7pou::::res://Player.gd<>uid://bnvv4xgrwdqp1::::res://state_machine.gd<>res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0001.png<>res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0002.png<>res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0003.png<>res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0004.png<>uid://d25agmcvyqowe::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png<>uid://d3psvcgbfbg3s::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png<>uid://crkstaoanaknr::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png<>uid://bn4c813rdlmjs::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0004.png<>uid://qgrlk7bqbj2w::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0001.png<>uid://dlhl70uhxwyat::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0002.png<>uid://c8jq2hc3t4mut::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0003.png
+state_machine.gd::GDScript::3343555646801933424::1774961003::0::1::::<>Node2D<><>0<>0<><>::
+::res://Sprites/::1774961006
+::res://Sprites/Characters/::1774976576
+::res://Sprites/Characters/Tsurugi/::1774980082
+Tsurigi_Idle.jpeg::CompressedTexture2D::3130838917270179865::1774979872::1774979265::0::::<><><>0<>0<>e3e4f4b4345370759fa31699521ff408<>::
+::res://Sprites/Characters/Tsurugi/Idle/::1774978310
+Tsurigi_Idle_0001.png::CompressedTexture2D::7063191948197375718::1774977955::1774978310::1::::<><><>0<>0<>ac46093211ad87c5101713a817fe1872<>res://.godot/imported/Tsurigi_Idle_0001.png-22c6bce79a16ebfabcf623ebcee98399.ctex::
+Tsurigi_Idle_0002.png::CompressedTexture2D::8980727433917771451::1774977955::1774978310::1::::<><><>0<>0<>766dd0457301031f45e06408dc2bd9b3<>res://.godot/imported/Tsurigi_Idle_0002.png-6aa30548b180aa633aa5c84cb59cbf95.ctex::
+Tsurigi_Idle_0003.png::CompressedTexture2D::5859031382710227855::1774977955::1774978310::1::::<><><>0<>0<>fe95b1d360002462d08a026f86b2eb26<>res://.godot/imported/Tsurigi_Idle_0003.png-ffc56d8cc19919ee547931f86fc06bfd.ctex::
+Tsurigi_Idle_0004.png::CompressedTexture2D::4163758802707508674::1774977955::1774978310::1::::<><><>0<>0<>ec8029ca40b76d7dda148a2a7fe35b03<>res://.godot/imported/Tsurigi_Idle_0004.png-a5b0427777deacebef59b9d6f0f06f3f.ctex::
+::res://Sprites/Characters/Tsurugi/Jumping/::1774979098
+Tsurigi_jumping_0001.png::CompressedTexture2D::9116303511048072520::1774979095::1774979098::1::::<><><>0<>0<>f5e11e387fc7bb0da078814d4ef0285e<>res://.godot/imported/Tsurigi_jumping_0001.png-cba4ec1d4733ec8b9217c21c3b8f2ad1.ctex::
+Tsurigi_jumping_0002.png::CompressedTexture2D::9156645861164596826::1774979095::1774979098::1::::<><><>0<>0<>28ea68d105721a421abc5227da40798b<>res://.godot/imported/Tsurigi_jumping_0002.png-bcd3c9ea5fdfe3c53b110894911145da.ctex::
+Tsurigi_jumping_0003.png::CompressedTexture2D::5987822344371985987::1774979095::1774979098::1::::<><><>0<>0<>aed03edc8e74f46aaa601e0411913e15<>res://.godot/imported/Tsurigi_jumping_0003.png-aeed6ca7595bed28102f4060819dcdb2.ctex::
+Tsurigi_jumping_0004.png::CompressedTexture2D::3358924380678135196::1774979095::1774979098::1::::<><><>0<>0<>6c1ca89852950c316341206f490f314f<>res://.godot/imported/Tsurigi_jumping_0004.png-741016bd15c32f65ee6a1135a859a6e4.ctex::
+::res://Sprites/Characters/Tsurugi/Landing/::1774980103
+Tsurigi_landing_0001.png::CompressedTexture2D::3454007651126430755::1774980103::1774980106::1::::<><><>0<>0<>cb9280fb0f6b4fd664ab23a60c991f1a<>res://.godot/imported/Tsurigi_landing_0001.png-05aec6d8f39687fcf5f7ecefaa022681.ctex::
+Tsurigi_landing_0002.png::CompressedTexture2D::1605488513176144427::1774980103::1774980106::1::::<><><>0<>0<>386a45fb025b2df0184a2e2de36ebc7b<>res://.godot/imported/Tsurigi_landing_0002.png-9193f2b5a538c93d7b147d4f893324dd.ctex::
+Tsurigi_landing_0003.png::CompressedTexture2D::5394768373440328865::1774980103::1774980106::1::::<><><>0<>0<>7323efb8b68a5f13d0c88760ba999d1e<>res://.godot/imported/Tsurigi_landing_0003.png-e8983ee9d616cc74691c778cf3edc0cb.ctex::
+::res://Sprites/Characters/Tsurugi/Walking/::1774979303
+Tsurigi_walking_0001.png::CompressedTexture2D::1136460172076970744::1774979301::1774979303::1::::<><><>0<>0<>8d7a01452149ff2a4043302849b22ea1<>res://.godot/imported/Tsurigi_walking_0001.png-f53d63b3b0aec61adf8cc1659f8e3b35.ctex::
+Tsurigi_walking_0002.png::CompressedTexture2D::7946516352030983667::1774979301::1774979303::1::::<><><>0<>0<>0f6fe596983b1910c989ebc27dd6871f<>res://.godot/imported/Tsurigi_walking_0002.png-7de616990b77ca27e7dd2696c6a2d92d.ctex::
+Tsurigi_walking_0003.png::CompressedTexture2D::7108672667599300867::1774979301::1774979303::1::::<><><>0<>0<>7cc3ec93b7bbd997e22ad8e31c224a8f<>res://.godot/imported/Tsurigi_walking_0003.png-733c45beb7bbf5dfd9d9c758126adae3.ctex::

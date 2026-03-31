@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://crutl3ed34eni"]
+
+[ext_resource type="Script" uid="uid://bfhs88b6f7pou" path="res://Player.gd" id="1_kpjcp"]
+[ext_resource type="Script" uid="uid://bnvv4xgrwdqp1" path="res://state_machine.gd" id="2_kne1u"]
+[ext_resource type="Texture2D" path="res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0001.png" id="2_tdg3f"]
+[ext_resource type="Texture2D" path="res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0002.png" id="3_dtqjt"]
+[ext_resource type="Texture2D" path="res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0003.png" id="4_5ncpa"]
+[ext_resource type="Texture2D" path="res://Sprites/Characters/Tsurugi/Tsurigi_Idle_0004.png" id="5_wi0c6"]
+[ext_resource type="Texture2D" uid="uid://d25agmcvyqowe" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png" id="6_oudfo"]
+[ext_resource type="Texture2D" uid="uid://d3psvcgbfbg3s" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png" id="7_d6rpx"]
+[ext_resource type="Texture2D" uid="uid://crkstaoanaknr" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png" id="8_r3kul"]
+[ext_resource type="Texture2D" uid="uid://bn4c813rdlmjs" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0004.png" id="9_jatw7"]
+[ext_resource type="Texture2D" uid="uid://bphfabueor6jn" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0001.png" id="10_jatw7"]
+[ext_resource type="Texture2D" uid="uid://qgrlk7bqbj2w" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0001.png" id="10_rv870"]
+[ext_resource type="Texture2D" uid="uid://dlhl70uhxwyat" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0002.png" id="11_efikj"]
+[ext_resource type="Texture2D" uid="uid://w4yfqnwpcn8v" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0002.png" id="11_rv870"]
+[ext_resource type="Texture2D" uid="uid://ci4jbuilvba0x" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0003.png" id="12_efikj"]
+[ext_resource type="Texture2D" uid="uid://c8jq2hc3t4mut" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0003.png" id="12_itxgx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tdg3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dtqjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5ncpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wi0c6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_oudfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d6rpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r3kul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jatw7")
+}],
+"loop": true,
+"name": &"Jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_jatw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rv870")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_efikj")
+}],
+"loop": true,
+"name": &"Landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rv870")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_efikj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_itxgx")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rwas"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhfnw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjcp"]
+size = Vector2(13, 15)
+
+[node name="Player" type="CharacterBody2D" unique_id=560191563]
+script = ExtResource("1_kpjcp")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
+sprite_frames = SubResource("SpriteFrames_0rwas")
+animation = &"Landing"
+frame = 2
+frame_progress = 0.75236225
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1687764401]
+
+[node name="State Machine" type="Node2D" parent="." unique_id=1002547580]
+visible = false
+script = ExtResource("2_kne1u")
+
+[node name="5P" type="Node2D" parent="." unique_id=483030703]
+visible = false
+
+[node name="HurtBox" type="Area2D" parent="5P" unique_id=1206930498]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5P/HurtBox" unique_id=98585785]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_0rwas")
+
+[node name="HitBox" type="Area2D" parent="5P" unique_id=757258101]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5P/HitBox" unique_id=733230288]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_xhfnw")
+debug_color = Color(0.9628367, 1.0588765e-06, 0.5050639, 0.41960785)
+
+[node name="CollisionBox" type="Area2D" parent="5P" unique_id=1002934483]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5P/CollisionBox" unique_id=706291739]
+shape = SubResource("RectangleShape2D_kpjcp")
+debug_color = Color(0.769235, 0.4460563, 3.85046e-07, 0.41960785)
