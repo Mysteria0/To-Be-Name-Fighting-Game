@@ -10,8 +10,8 @@ func enter() -> void:
 
 
 func process_frame(_delta: float) -> State:
-	if timer < 60:
+	if timer < 40:
 		timer += 1
-	if timer >= 60:
+	if timer >= 40:
 		return idle_state
 	return null

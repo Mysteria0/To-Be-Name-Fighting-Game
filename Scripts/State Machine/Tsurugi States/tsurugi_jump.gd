@@ -18,7 +18,3 @@ func process_physics(delta: float) -> State:
 
 func _on_timer_timeout() -> void:
 	parent.velocity.y -= 400
-	if Input.is_action_just_pressed("ui_left"):
-		parent.velocity.x = -35
-	elif Input.is_action_just_pressed("ui_right"):
-		parent.velocity.x = 35
