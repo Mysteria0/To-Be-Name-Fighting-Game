@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkuupviace8kb"
-valid=false
+uid="uid://dypa2tifinna1"
+path="res://.godot/imported/tile.png-484556c5e80e89276f13d51f43be63d4.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Sprites/Characters/Tsurugi/Tsurigi_Idle.jpeg"
+source_file="res://Sprites/tile.png"
+dest_files=["res://.godot/imported/tile.png-484556c5e80e89276f13d51f43be63d4.ctex"]
 
 [params]
 

@@ -1,8 +1,14 @@
+TileMap
+CollisionShape2D
+TileMapLayer
+Node
+AnimationPlayer
+AnimationTree
+Sprite2D
+Marker2D
+Label
 Node2D
 Area2D
-CollisionShape2D
-AnimationPlayer
 AnimatedSprite2D
 CharacterBody2D
-TileMap
 Camera2D

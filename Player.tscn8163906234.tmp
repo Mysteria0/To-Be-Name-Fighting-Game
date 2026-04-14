@@ -15,21 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://w4yfqnwpcn8v" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0002.png" id="11_rv870"]
 [ext_resource type="Texture2D" uid="uid://ci4jbuilvba0x" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0003.png" id="12_efikj"]
 [ext_resource type="Texture2D" uid="uid://c8jq2hc3t4mut" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0003.png" id="12_itxgx"]
-[ext_resource type="Script" uid="uid://da0euwvphv5eq" path="res://state_machine.gd" id="16_jatw7"]
-[ext_resource type="Script" uid="uid://vdxc7o8122xe" path="res://Scripts/State Machine/Tsurugi States/tsurugi_idle.gd" id="17_rv870"]
-[ext_resource type="Script" uid="uid://c3yx6feg4cf1j" path="res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd" id="18_efikj"]
-[ext_resource type="Script" uid="uid://qfnn70ya0g85" path="res://Scripts/State Machine/tsurugi_moving.gd" id="19_itxgx"]
+[ext_resource type="Script" uid="uid://fc4s1gjrodp3" path="res://Scripts/State Machine/state_machine.gd" id="16_jatw7"]
+[ext_resource type="Script" uid="uid://dydmurh5hp7y1" path="res://Scripts/State Machine/Tsurugi States/Tsurugi_Idle.gd" id="17_rv870"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_jatw7")
-}],
-"loop": true,
-"name": &"Falling",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_jatw7")
@@ -45,7 +35,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 30.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -93,47 +83,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_efikj"]
-resource_name = "Idle"
-length = 0.26666668
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.06666667, 0.13333334, 0.2, 0.26666668),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 0, 0, 0, 0]
-}
-
-[sub_resource type="Animation" id="Animation_itxgx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgsek"]
-_data = {
-&"Idle": SubResource("Animation_efikj"),
-&"RESET": SubResource("Animation_itxgx")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
-size = Vector2(19, 42)
-
 [node name="Player" type="CharacterBody2D" unique_id=560191563]
 script = ExtResource("1_kpjcp")
 
@@ -141,30 +90,15 @@ script = ExtResource("1_kpjcp")
 sprite_frames = SubResource("SpriteFrames_0rwas")
 animation = &"Idle"
 
-[node name="state_machine" type="Node" parent="." unique_id=1273564144 node_paths=PackedStringArray("starting_state")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1687764401]
+
+[node name="State Machine" type="Node" parent="." unique_id=1968715022 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("16_jatw7")
-starting_state = NodePath("Tsurugi Idle")
+initial_state = NodePath("Tsurugi_Idle")
 
-[node name="Tsurugi Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("jump_state", "move_state")]
+[node name="Tsurugi_Idle" type="Node" parent="State Machine" unique_id=56239241]
 script = ExtResource("17_rv870")
-jump_state = NodePath("../Tsurugi Jump")
-move_state = NodePath("../Tsurugi Moving")
-animation_name = "Idle"
+metadata/_custom_type_script = "uid://dydmurh5hp7y1"
 
-[node name="Tsurugi Jump" type="Node" parent="state_machine" unique_id=2063101655 node_paths=PackedStringArray("idle_state")]
-script = ExtResource("18_efikj")
-idle_state = NodePath("../Tsurugi Idle")
-animation_name = "Jumping"
-
-[node name="Tsurugi Moving" type="Node" parent="state_machine" unique_id=363548264 node_paths=PackedStringArray("jump_state", "idle_state")]
-script = ExtResource("19_itxgx")
-jump_state = NodePath("../Tsurugi Jump")
-idle_state = NodePath("../Tsurugi Idle")
-animation_name = "Walking"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1969142580]
-libraries/ = SubResource("AnimationLibrary_cgsek")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=603263447]
-position = Vector2(-0.5, 11)
-shape = SubResource("RectangleShape2D_itxgx")
+[node name="StartPosition" type="Marker2D" parent="." unique_id=342843995]
+position = Vector2(320, 180)

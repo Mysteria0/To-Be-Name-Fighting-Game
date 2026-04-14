@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://ddm5kuncpnusr"]
 
+[ext_resource type="Script" uid="uid://dpld5hrpxgsk3" path="res://Scripts/Input Reader/input_reader.gd" id="1_36y2t"]
+
 [node name="InputReader" type="Node2D" unique_id=1356831098]
+script = ExtResource("1_36y2t")
