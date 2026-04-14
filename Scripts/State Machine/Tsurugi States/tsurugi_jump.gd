@@ -2,20 +2,23 @@ extends State
 
 @export var fall_state : State
 @export var idle_state : State
-@export var landing_state : State
-
 
 func enter() -> void:
 	super()
-	parent.velocity.y = -9000
-		
+	$Timer.start()
+	
 func process_physics(delta: float) -> State:
-	parent.velocity.y += 980 * delta
-
+	parent.velocity.y += 980*delta
 	if parent.velocity.y > 0:
 		return fall_state
-		
+	parent.move_and_slide()
 	
-	if parent.is_on_floor():
-		return landing_state
 	return null
+
+
+func _on_timer_timeout() -> void:
+	parent.velocity.y -= 400
+	if Input.is_action_just_pressed("ui_left"):
+		parent.velocity.x = -35
+	elif Input.is_action_just_pressed("ui_right"):
+		parent.velocity.x = 35

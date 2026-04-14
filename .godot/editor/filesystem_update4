@@ -1,0 +1,5 @@
+res://Player.tscn
+res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd
+res://Scripts/State Machine/tsurugi_moving.gd
+res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd
+res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd

@@ -1,7 +1,8 @@
+Timer
+Node
 TileMap
 CollisionShape2D
 TileMapLayer
-Node
 AnimationPlayer
 AnimationTree
 Sprite2D
