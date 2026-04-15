@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://crutl3ed34eni"]
 
 [ext_resource type="Script" uid="uid://bfhs88b6f7pou" path="res://Player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://c4131p3eh4inc" path="res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0001.png" id="2_2n1s8"]
 [ext_resource type="Texture2D" uid="uid://c7vp0e2ampo6y" path="res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0001.png" id="2_jatw7"]
+[ext_resource type="Texture2D" uid="uid://bdi44eaq4x6qr" path="res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0002.png" id="3_3vjad"]
 [ext_resource type="Texture2D" uid="uid://d07ljewnq1h6r" path="res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0002.png" id="3_rv870"]
 [ext_resource type="Texture2D" uid="uid://cpqfnj3jw0kip" path="res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0003.png" id="4_efikj"]
+[ext_resource type="Texture2D" uid="uid://c5jn3e5o63s5e" path="res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0003.png" id="4_yt0h1"]
 [ext_resource type="Texture2D" uid="uid://b0k7q8arg07o5" path="res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0004.png" id="5_itxgx"]
+[ext_resource type="Texture2D" uid="uid://vmkp45m3vmpj" path="res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0004.png" id="5_vd78s"]
 [ext_resource type="Texture2D" uid="uid://d25agmcvyqowe" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png" id="6_oudfo"]
 [ext_resource type="Texture2D" uid="uid://d3psvcgbfbg3s" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png" id="7_d6rpx"]
 [ext_resource type="Texture2D" uid="uid://crkstaoanaknr" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png" id="8_r3kul"]
@@ -21,9 +25,27 @@
 [ext_resource type="Script" uid="uid://qfnn70ya0g85" path="res://Scripts/State Machine/tsurugi_moving.gd" id="19_itxgx"]
 [ext_resource type="Script" uid="uid://ddpj7vm1g0de0" path="res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd" id="20_cgsek"]
 [ext_resource type="Script" uid="uid://b814hhp5atx10" path="res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd" id="21_0pi4m"]
+[ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2n1s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3vjad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yt0h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vd78s")
+}],
+"loop": true,
+"name": &"Crouching",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_jatw7")
@@ -50,10 +72,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("6_oudfo")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("7_d6rpx")
 }, {
 "duration": 1.0,
@@ -147,11 +169,12 @@ animation = &"Jumping"
 script = ExtResource("16_jatw7")
 starting_state = NodePath("Tsurugi Idle")
 
-[node name="Tsurugi Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+[node name="Tsurugi Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "crouching_state")]
 script = ExtResource("17_rv870")
 fall_state = NodePath("../Tsurugi Falling")
 jump_state = NodePath("../Tsurugi Jump")
 move_state = NodePath("../Tsurugi Moving")
+crouching_state = NodePath("../Tsurugi Crouching")
 animation_name = "Idle"
 
 [node name="Tsurugi Jump" type="Node" parent="state_machine" unique_id=2063101655 node_paths=PackedStringArray("fall_state", "idle_state")]
@@ -164,23 +187,31 @@ animation_name = "Jumping"
 wait_time = 0.15
 one_shot = true
 
-[node name="Tsurugi Moving" type="Node" parent="state_machine" unique_id=363548264 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state")]
+[node name="Tsurugi Moving" type="Node" parent="state_machine" unique_id=363548264 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "crouching_state")]
 script = ExtResource("19_itxgx")
 fall_state = NodePath("../Tsurugi Falling")
 jump_state = NodePath("../Tsurugi Jump")
 idle_state = NodePath("../Tsurugi Idle")
+crouching_state = NodePath("../Tsurugi Crouching")
 animation_name = "Walking"
 
-[node name="Tsurugi Falling" type="Node" parent="state_machine" unique_id=1412343906 node_paths=PackedStringArray("landing_state", "jump_state")]
+[node name="Tsurugi Falling" type="Node" parent="state_machine" unique_id=1412343906 node_paths=PackedStringArray("landing_state")]
 script = ExtResource("20_cgsek")
 landing_state = NodePath("../Tsurugi Landing")
-jump_state = NodePath("../Tsurugi Jump")
 animation_name = "Falling"
 
-[node name="Tsurugi Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state")]
+[node name="Tsurugi Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("21_0pi4m")
 idle_state = NodePath("../Tsurugi Idle")
+move_state = NodePath("../Tsurugi Moving")
 animation_name = "Landing"
+
+[node name="Tsurugi Crouching" type="Node" parent="state_machine" unique_id=545381249 node_paths=PackedStringArray("idle_state", "jump_state", "move_state")]
+script = ExtResource("26_3vjad")
+idle_state = NodePath("../Tsurugi Idle")
+jump_state = NodePath("../Tsurugi Jump")
+move_state = NodePath("../Tsurugi Moving")
+animation_name = "Crouching"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1969142580]
 libraries/ = SubResource("AnimationLibrary_cgsek")

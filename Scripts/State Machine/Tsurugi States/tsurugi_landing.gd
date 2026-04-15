@@ -1,6 +1,7 @@
 extends State
 
 @export var idle_state : State
+@export var move_state : State
 var timer : int
 
 func enter() -> void:
@@ -13,5 +14,8 @@ func process_frame(_delta: float) -> State:
 	if timer < 40:
 		timer += 1
 	if timer >= 40:
-		return idle_state
+		if Input.is_action_pressed('ui_left') or Input.is_action_pressed('ui_right') and parent.is_on_floor():
+			return move_state
+		else:
+			return idle_state
 	return null

@@ -1,5 +1,5 @@
-Timer
 Node
+Timer
 TileMap
 CollisionShape2D
 TileMapLayer
@@ -12,4 +12,3 @@ Node2D
 Area2D
 AnimatedSprite2D
 CharacterBody2D
-Camera2D
