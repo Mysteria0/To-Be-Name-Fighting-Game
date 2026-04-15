@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://c3yx6feg4cf1j" path="res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd" id="18_efikj"]
 [ext_resource type="Script" uid="uid://qfnn70ya0g85" path="res://Scripts/State Machine/tsurugi_moving.gd" id="19_itxgx"]
 [ext_resource type="Script" uid="uid://ddpj7vm1g0de0" path="res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd" id="20_cgsek"]
+[ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="20_yt0h1"]
 [ext_resource type="Script" uid="uid://b814hhp5atx10" path="res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd" id="21_0pi4m"]
 [ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
 
@@ -161,10 +162,6 @@ size = Vector2(19, 42)
 [node name="Player" type="CharacterBody2D" unique_id=560191563]
 script = ExtResource("1_kpjcp")
 
-[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
-sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Jumping"
-
 [node name="state_machine" type="Node" parent="." unique_id=1273564144 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("16_jatw7")
 starting_state = NodePath("Tsurugi Idle")
@@ -213,11 +210,17 @@ jump_state = NodePath("../Tsurugi Jump")
 move_state = NodePath("../Tsurugi Moving")
 animation_name = "Crouching"
 
+[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
+sprite_frames = SubResource("SpriteFrames_0rwas")
+animation = &"Jumping"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1969142580]
 libraries/ = SubResource("AnimationLibrary_cgsek")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=603263447]
 position = Vector2(-0.5, 11)
 shape = SubResource("RectangleShape2D_itxgx")
+
+[node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("20_yt0h1")]
 
 [connection signal="timeout" from="state_machine/Tsurugi Jump/Timer" to="state_machine/Tsurugi Jump" method="_on_timer_timeout"]

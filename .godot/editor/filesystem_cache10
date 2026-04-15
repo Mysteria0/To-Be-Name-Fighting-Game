@@ -1,28 +1,66 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1776232798
+::res://::1776251580
 icon.svg::CompressedTexture2D::820574304562032232::1775031906::1775031987::1::::<><><>0<>0<>cb895d7529d4292e9d8b77898c8dbe12<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 Input Reader.tscn::PackedScene::7396441553425071389::1775630176::0::1::::<><><>0<>0<><>::uid://dpld5hrpxgsk3::::res://Scripts/Input Reader/input_reader.gd
 Levels.tscn::PackedScene::6287589681342614715::1776080882::0::1::::<><><>0<>0<><>::uid://dypa2tifinna1::::res://Sprites/tile.png
-main.tscn::PackedScene::5484995758197957571::1776079958::0::1::::<><><>0<>0<><>::uid://crutl3ed34eni::::res://Player.tscn<>uid://ddm5kuncpnusr::::res://Input Reader.tscn<>uid://cvt0xibjikmr0::::res://Levels.tscn
+main.tscn::PackedScene::5484995758197957571::1776245686::0::1::::<><><>0<>0<><>::uid://crutl3ed34eni::::res://Player.tscn<>uid://ddm5kuncpnusr::::res://Input Reader.tscn<>uid://cvt0xibjikmr0::::res://Levels.tscn
 Player.gd::GDScript::2752969119462153884::1776079861::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
-Player.tscn::PackedScene::6008514007917355098::1776167635::0::1::::<><><>0<>0<><>::uid://bfhs88b6f7pou::::res://Player.gd<>uid://c7vp0e2ampo6y::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0001.png<>uid://d07ljewnq1h6r::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0002.png<>uid://cpqfnj3jw0kip::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0003.png<>uid://b0k7q8arg07o5::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0004.png<>uid://d25agmcvyqowe::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png<>uid://d3psvcgbfbg3s::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png<>uid://crkstaoanaknr::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png<>uid://bn4c813rdlmjs::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0004.png<>uid://bphfabueor6jn::::res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0001.png<>uid://qgrlk7bqbj2w::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0001.png<>uid://dlhl70uhxwyat::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0002.png<>uid://w4yfqnwpcn8v::::res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0002.png<>uid://ci4jbuilvba0x::::res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0003.png<>uid://c8jq2hc3t4mut::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0003.png<>uid://da0euwvphv5eq::::res://state_machine.gd<>uid://vdxc7o8122xe::::res://Scripts/State Machine/Tsurugi States/tsurugi_idle.gd<>uid://c3yx6feg4cf1j::::res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd<>uid://qfnn70ya0g85::::res://Scripts/State Machine/tsurugi_moving.gd<>uid://ddpj7vm1g0de0::::res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd<>uid://b814hhp5atx10::::res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd
+Player.tscn::PackedScene::6008514007917355098::1776244998::0::1::::<><><>0<>0<><>::uid://bfhs88b6f7pou::::res://Player.gd<>uid://c4131p3eh4inc::::res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0001.png<>uid://c7vp0e2ampo6y::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0001.png<>uid://bdi44eaq4x6qr::::res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0002.png<>uid://d07ljewnq1h6r::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0002.png<>uid://cpqfnj3jw0kip::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0003.png<>uid://c5jn3e5o63s5e::::res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0003.png<>uid://b0k7q8arg07o5::::res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0004.png<>uid://vmkp45m3vmpj::::res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0004.png<>uid://d25agmcvyqowe::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png<>uid://d3psvcgbfbg3s::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png<>uid://crkstaoanaknr::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png<>uid://bn4c813rdlmjs::::res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0004.png<>uid://bphfabueor6jn::::res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0001.png<>uid://qgrlk7bqbj2w::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0001.png<>uid://dlhl70uhxwyat::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0002.png<>uid://w4yfqnwpcn8v::::res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0002.png<>uid://ci4jbuilvba0x::::res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0003.png<>uid://c8jq2hc3t4mut::::res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0003.png<>uid://da0euwvphv5eq::::res://state_machine.gd<>uid://vdxc7o8122xe::::res://Scripts/State Machine/Tsurugi States/tsurugi_idle.gd<>uid://c3yx6feg4cf1j::::res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd<>uid://qfnn70ya0g85::::res://Scripts/State Machine/tsurugi_moving.gd<>uid://ddpj7vm1g0de0::::res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd<>uid://ddm5kuncpnusr::::res://Input Reader.tscn<>uid://b814hhp5atx10::::res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd<>uid://6mknd76gtx3l::::res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd
+README.md::TextFile::-1::1776251579::0::1::::<><><>0<>0<><>::
 state_machine.gd::GDScript::7211151267426303176::1776072146::0::1::::<>Node<><>0<>0<><>::
+::res://addons/::1776251579
+::res://addons/508_command_input/::1776251580
+508_command_input.gd::GDScript::7070434062272705811::1776251579::0::1::::<>EditorPlugin<><>0<>1<><>::
+config.ini::TextFile::-1::1776251579::0::1::::<><><>0<>0<><>::
+icon.webp::CompressedTexture2D::8819796083544737099::1776251579::1776251581::1::::<><><>0<>0<>1ac3b74bf7c92c0d8dcf9526dd5ace3b<>res://.godot/imported/icon.webp-afc57f853742c99e4aaa207244b9b13c.ctex::
+plugin.cfg::TextFile::-1::1776251580::0::1::::<><><>0<>0<><>::
+README.md::TextFile::-1::1776251579::0::1::::<><><>0<>0<><>::
+::res://addons/508_command_input/icon/::1776251579
+command_parser.png::CompressedTexture2D::561824050403637293::1776251579::1776251581::1::::<><><>0<>0<>aec544c692d6be193ba2804dfa3beb20<>res://.godot/imported/command_parser.png-011c2e0c53f25e315ef17472180206bd.ctex::
+input_watcher.png::CompressedTexture2D::3915851077353533685::1776251579::1776251581::1::::<><><>0<>0<>d52a19191c0800de588d766f0355d343<>res://.godot/imported/input_watcher.png-b3fc7a93fc8995662f3ffcfc7f283547.ctex::
+::res://addons/508_command_input/inspector/::1776251579
+command_parser_interface.gd::GDScript::5981531091805354213::1776251579::0::1::::<>EditorInspectorPlugin<><>0<>1<><>::
+input_watcher_interface.gd::GDScript::2687420170457645813::1776251579::0::1::::<>EditorInspectorPlugin<><>0<>1<><>::
+::res://addons/508_command_input/inspector/property/::1776251580
+auto_record_size.gd::GDScript::1066451455954864481::1776251580::0::1::::<>EditorProperty<><>0<>1<><>::
+command_action_map.gd::GDScript::5087775154176560894::1776251580::0::1::::<>EditorProperty<><>0<>1<><>::
+command_action_setting.gd::GDScript::8208180544576840616::1776251580::0::1::::<>EditorProperty<><>0<>1<><>::
+setup_add_btn.gd::GDScript::8318907733542585751::1776251580::0::1::::<>EditorProperty<><>0<>1<><>::
+setup_display.gd::GDScript::7551151529383575964::1776251580::0::1::::<>EditorProperty<><>0<>1<><>::
+setup_input.gd::GDScript::2088987995126482761::1776251580::0::1::::<>EditorProperty<><>0<>1<><>::
+::res://addons/508_command_input/module/::1776251580
+tool_configfile.gd::GDScript::5323982573019350781::1776251580::0::1::::<>RefCounted<><>0<>0<><>::
+tool_godot_editor.gd::GDScript::8820240466108145438::1776251580::0::1::::<>RefCounted<><>0<>0<><>::
+tool_godot_packedbyte.gd::GDScript::486112072790206520::1776251580::0::1::::<>RefCounted<><>0<>0<><>::
+tool_test.gd::GDScript::7592843062455353243::1776251580::0::1::::<>RefCounted<><>0<>0<><>::
+::res://addons/508_command_input/node/::1776251580
+command_parser.gd::GDScript::8732982620129333862::1776251580::0::1::::<>Node<><>0<>0<><>::
+input_watcher.gd::GDScript::6732887126981623524::1776251580::0::1::::<>Node<><>0<>0<><>::
+::res://example/::1776251580
+example.tscn::PackedScene::8020497788467098741::1776251580::0::1::::<><><>0<>0<><>::res://addons/508_command_input/node/command_parser.gd<>res://addons/508_command_input/node/input_watcher.gd<>res://example/simple_kb_display.gd<>res://example/simple_cmd_record_display.gd
+simple_cmd_record_display.gd::GDScript::4994976765879166230::1776251580::0::1::::<>Label<><>0<>0<><>::
+simple_kb_display.gd::GDScript::6682751357794645471::1776251580::0::1::::<>GridContainer<><>0<>0<><>::
+::res://publish_res/::1776251580
+icon.png::CompressedTexture2D::8720914065015716141::1776251580::1776251581::1::::<><><>0<>0<>08d039e6497cc06502c7120d78cace34<>res://.godot/imported/icon.png-1822d8bf3b955d7084f5a93188cec6c8.ctex::
+ss0.png::CompressedTexture2D::7147373225431228057::1776251580::1776251581::1::::<><><>0<>0<>110887bc763ff34f539a49a110eedb4f<>res://.godot/imported/ss0.png-bcde5271e86cf4a5990cf5bf86deda5c.ctex::
+ss1.png::CompressedTexture2D::1359467694831171774::1776251580::1776251581::1::::<><><>0<>0<>1eb7c4ad430eb71e4769f9b74a92e15c<>res://.godot/imported/ss1.png-d235fef140bcb7e634876357dd865799.ctex::
 ::res://Scripts/::1775633169
-::res://Scripts/Input Reader/::1775629788
-input_reader.gd::GDScript::8235038980377542904::1775629788::0::1::::<>Node2D<><>0<>0<><>::
-::res://Scripts/State Machine/::1776161338
+::res://Scripts/Input Reader/::1776245415
+input_reader.gd::GDScript::8235038980377542904::1776245415::0::1::::<>Node2D<><>0<>0<><>::
+::res://Scripts/State Machine/::1776241306
 State.gd::GDScript::8858804486410085939::1776072077::0::1::::State<>Node<><>0<>0<><>::
-tsurugi_moving.gd::GDScript::1134157643664300576::1776161338::0::1::::<>State<><>0<>0<><>::
-::res://Scripts/State Machine/Tsurugi States/::1776167635
-tsurugi_falling.gd::GDScript::7401398969362483093::1776166132::0::1::::<>State<><>0<>0<><>::
-tsurugi_idle.gd::GDScript::1481560615991971222::1776167635::0::1::::<>State<><>0<>0<><>::
+tsurugi_moving.gd::GDScript::1134157643664300576::1776241306::0::1::::<>State<><>0<>0<><>::
+::res://Scripts/State Machine/Tsurugi States/::1776238510
+tsurugi_crouching.gd::GDScript::2201257279497231735::1776238307::0::1::::<>State<><>0<>0<><>::
+tsurugi_falling.gd::GDScript::7401398969362483093::1776237871::0::1::::<>State<><>0<>0<><>::
+tsurugi_idle.gd::GDScript::1481560615991971222::1776238200::0::1::::<>State<><>0<>0<><>::
 tsurugi_jump.gd::GDScript::6789126174900643889::1776166420::0::1::::<>State<><>0<>0<><>::
-tsurugi_landing.gd::GDScript::4758100030900639873::1776166458::0::1::::<>State<><>0<>0<><>::
+tsurugi_landing.gd::GDScript::4758100030900639873::1776238510::0::1::::<>State<><>0<>0<><>::
 ::res://Sprites/::1776079619
 tile.png::CompressedTexture2D::8874809191678891094::1776073620::1776079619::1::::<><><>0<>0<>e88da4140e0390bea8c9d6e2a0a1802f<>res://.godot/imported/tile.png-484556c5e80e89276f13d51f43be63d4.ctex::
 ::res://Sprites/Characters/::1775031906
 ::res://Sprites/Characters/Tsurugi/::1776235056
-::res://Sprites/Characters/Tsurugi/Crouching/::1776235448
+::res://Sprites/Characters/Tsurugi/Crouching/::1776235450
 Tsurigi_Crouching_0001.png::CompressedTexture2D::6863738992230705076::1776235448::1776235450::1::::<><><>0<>0<>e9804fb62cd03da6b2041a6917a337d7<>res://.godot/imported/Tsurigi_Crouching_0001.png-575522a094a31c15a60e8c86a5cee75c.ctex::
 Tsurigi_Crouching_0002.png::CompressedTexture2D::2615315028313207349::1776235448::1776235450::1::::<><><>0<>0<>3af7f9244ff7ec3ff2db3f4282e55a41<>res://.godot/imported/Tsurigi_Crouching_0002.png-d6dda5310a6153d0680eca29057a5f39.ctex::
 Tsurigi_Crouching_0003.png::CompressedTexture2D::6897925656565190488::1776235448::1776235450::1::::<><><>0<>0<>038640c6757f45e05958d51bdd0ebb13<>res://.godot/imported/Tsurigi_Crouching_0003.png-ad8cb3ab34d1b5cd5efbf2ab3b47bad7.ctex::

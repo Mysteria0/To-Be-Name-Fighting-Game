@@ -8,7 +8,7 @@ extends State
 func enter() -> void:
 	super()
 	
-func process_input(event: InputEvent) -> State:
+func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed('ui_up') and parent.is_on_floor():
 		return jump_state
 	if Input.is_action_pressed('ui_down') and parent.is_on_floor():

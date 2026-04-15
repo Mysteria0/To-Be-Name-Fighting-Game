@@ -7,8 +7,11 @@
 [node name="Main" type="Node2D" unique_id=646643995]
 
 [node name="Player" parent="." unique_id=560191563 instance=ExtResource("1_0xm2m")]
-position = Vector2(141, 255)
+visible = false
+position = Vector2(154, 272)
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("2_h2yge")]
+visible = false
 
 [node name="Levels" parent="." unique_id=1548540644 instance=ExtResource("3_h2yge")]
+visible = false

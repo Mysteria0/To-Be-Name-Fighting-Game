@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmjgorlvwgsuv"]
+
+[ext_resource type="Script" path="res://addons/508_command_input/node/command_parser.gd" id="1_e7ybr"]
+[ext_resource type="Script" path="res://addons/508_command_input/node/input_watcher.gd" id="2_d8142"]
+[ext_resource type="Script" path="res://example/simple_kb_display.gd" id="3_14bfh"]
+[ext_resource type="Script" path="res://example/simple_cmd_record_display.gd" id="4_adt43"]
+
+[node name="Example" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CommandParser" type="Node" parent="."]
+script = ExtResource("1_e7ybr")
+command_action = Array[StringName]([&"move_left", &"move_right", &"move_up", &"move_down", &"action_a", &"action_b"])
+command_priority = Array[int]([0, 0, 0, 0, 1, 1, 0])
+command_pair = Array[int]([1, 0, 3, 2, -1, -1, -1])
+quick_action = Array[StringName]([&"quick_ab"])
+quick_command_map = Array[int]([48])
+command_symbol = Array[StringName]([&"5", &"1", &"2", &"3", &"4", &"6", &"7", &"8", &"9", &"a", &"b", &"T"])
+command_symbol_map = Array[int]([0, 9, 8, 10, 1, 2, 5, 4, 6, 16, 32, 48])
+command_list = Array[StringName]([&"236a", &"896a", &"236b", &"46b", &"656", &"236236a", &"454", &"41236T"])
+
+[node name="InputWatcher" type="Node" parent="."]
+script = ExtResource("2_d8142")
+watch_action = Array[StringName]([&"action_a", &"action_b", &"action_c"])
+intercept_action_map = Array[int]([2, 1, 0])
+watch_joy = Array[int]([0])
+multi_active_mode = true
+
+[node name="action_btn_display" type="GridContainer" parent="." node_paths=PackedStringArray("cmd_parser")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("3_14bfh")
+cmd_parser = NodePath("../CommandParser")
+
+[node name="output_label" type="Label" parent="." node_paths=PackedStringArray("cmd_parser", "key_watcher")]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("4_adt43")
+cmd_parser = NodePath("../CommandParser")
+key_watcher = NodePath("../InputWatcher")
+
+[node name="note_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -589.0
+offset_bottom = 413.0
+grow_horizontal = 0
+text = "NOTE: if command not active well, check below first.
+
+- is command have two continous symbol ?
+  add neutural between them, like 66 to 656 (double tap) 
+
+- 26 and 236 is different input, if you want this input become easier to active
+  than add both to list and use them in same move
+
+- check priority and pair setting,
+  input overlap without any symbol trigger may cause the lost of responbility
+  e.g.
+  when directional input and action input have same priority
+  and I want to use cmd 236a, than input:
+  2 > 2+6=3 > 6 > 6+a=? > a
+  this make record become 236(no symbol)a and will NOT active 236a
+  make sure \"a\" have higher priority if you want to avoid this situation"
