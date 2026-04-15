@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmjgorlvwgsuv"]
+[gd_scene format=3 uid="uid://dmjgorlvwgsuv"]
 
-[ext_resource type="Script" path="res://addons/508_command_input/node/command_parser.gd" id="1_e7ybr"]
-[ext_resource type="Script" path="res://addons/508_command_input/node/input_watcher.gd" id="2_d8142"]
-[ext_resource type="Script" path="res://example/simple_kb_display.gd" id="3_14bfh"]
-[ext_resource type="Script" path="res://example/simple_cmd_record_display.gd" id="4_adt43"]
+[ext_resource type="Script" uid="uid://dwok7hyiqgcfe" path="res://addons/508_command_input/node/command_parser.gd" id="1_e7ybr"]
+[ext_resource type="Script" uid="uid://c26pwxnll72iy" path="res://addons/508_command_input/node/input_watcher.gd" id="2_d8142"]
+[ext_resource type="Script" uid="uid://c2hf6553itajv" path="res://example/simple_kb_display.gd" id="3_14bfh"]
+[ext_resource type="Script" uid="uid://cdfusjohfus5c" path="res://example/simple_cmd_record_display.gd" id="4_adt43"]
 
-[node name="Example" type="Control"]
+[node name="Example" type="Control" unique_id=697967082]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CommandParser" type="Node" parent="."]
+[node name="CommandParser" type="Node" parent="." unique_id=1578804388]
 script = ExtResource("1_e7ybr")
 command_action = Array[StringName]([&"move_left", &"move_right", &"move_up", &"move_down", &"action_a", &"action_b"])
 command_priority = Array[int]([0, 0, 0, 0, 1, 1, 0])
@@ -24,14 +24,14 @@ command_symbol = Array[StringName]([&"5", &"1", &"2", &"3", &"4", &"6", &"7", &"
 command_symbol_map = Array[int]([0, 9, 8, 10, 1, 2, 5, 4, 6, 16, 32, 48])
 command_list = Array[StringName]([&"236a", &"896a", &"236b", &"46b", &"656", &"236236a", &"454", &"41236T"])
 
-[node name="InputWatcher" type="Node" parent="."]
+[node name="InputWatcher" type="Node" parent="." unique_id=2102278739]
 script = ExtResource("2_d8142")
 watch_action = Array[StringName]([&"action_a", &"action_b", &"action_c"])
 intercept_action_map = Array[int]([2, 1, 0])
 watch_joy = Array[int]([0])
 multi_active_mode = true
 
-[node name="action_btn_display" type="GridContainer" parent="." node_paths=PackedStringArray("cmd_parser")]
+[node name="action_btn_display" type="GridContainer" parent="." unique_id=1153172938 node_paths=PackedStringArray("cmd_parser")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -42,7 +42,7 @@ grow_vertical = 0
 script = ExtResource("3_14bfh")
 cmd_parser = NodePath("../CommandParser")
 
-[node name="output_label" type="Label" parent="." node_paths=PackedStringArray("cmd_parser", "key_watcher")]
+[node name="output_label" type="Label" parent="." unique_id=1951468497 node_paths=PackedStringArray("cmd_parser", "key_watcher")]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -50,7 +50,7 @@ script = ExtResource("4_adt43")
 cmd_parser = NodePath("../CommandParser")
 key_watcher = NodePath("../InputWatcher")
 
-[node name="note_label" type="Label" parent="."]
+[node name="note_label" type="Label" parent="." unique_id=456101887]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

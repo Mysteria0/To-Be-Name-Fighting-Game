@@ -17,4 +17,3 @@
 
 - see description inside editor (scirpt)
 - and Note inside example.tscn
-

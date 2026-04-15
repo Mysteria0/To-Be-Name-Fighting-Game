@@ -6,3 +6,6 @@ res://Scripts/State Machine/tsurugi_moving.gd
 res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd
 res://main.tscn
 res://Scripts/Input Reader/input_reader.gd
+res://addons/508_command_input/README.md
+res://example/example.tscn
+res://Levels.tscn
