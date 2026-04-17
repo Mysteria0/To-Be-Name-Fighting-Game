@@ -190,11 +190,12 @@ script = ExtResource("20_cgsek")
 landing_state = NodePath("../Tsurugi Landing")
 animation_name = "Falling"
 
-[node name="Tsurugi Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state", "move_state", "jump_state")]
+[node name="Tsurugi Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state", "move_state", "jump_state", "crouching_state")]
 script = ExtResource("21_0pi4m")
 idle_state = NodePath("../Tsurugi Idle")
 move_state = NodePath("../Tsurugi Moving")
 jump_state = NodePath("../Tsurugi Jump")
+crouching_state = NodePath("../Tsurugi Crouching")
 animation_name = "Landing"
 
 [node name="Tsurugi Crouching" type="Node" parent="state_machine" unique_id=545381249 node_paths=PackedStringArray("idle_state", "jump_state", "move_state")]

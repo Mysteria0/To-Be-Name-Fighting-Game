@@ -3,6 +3,7 @@ extends State
 @export var idle_state : State
 @export var move_state : State
 @export var jump_state : State
+@export var crouching_state : State
 var hopethisworks : bool
 
 func enter() -> void:
@@ -18,6 +19,8 @@ func process_physics(delta: float) -> State:
 			return move_state
 		elif Input.is_action_pressed("ui_up"):
 			return jump_state
+		elif Input.is_action_pressed("ui_down"):
+			return crouching_state
 		else:
 			return idle_state
 	return null

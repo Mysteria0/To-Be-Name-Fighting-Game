@@ -1,4 +1,4 @@
-res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd
 res://Player.tscn
-res://main.tscn
+res://example/example.tscn
+res://Input Reader.tscn
 res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd
