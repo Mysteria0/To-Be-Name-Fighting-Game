@@ -2,19 +2,20 @@ extends State
 
 @export var fall_state : State
 @export var idle_state : State
+var whydoihavetouseaboolean : bool
 
 func enter() -> void:
 	super()
-	$Timer.start()
+	whydoihavetouseaboolean = false
 	
 func process_physics(delta: float) -> State:
-	parent.velocity.y += 980*delta
-	if parent.velocity.y > 0:
-		return fall_state
 	parent.move_and_slide()
-	
+	if whydoihavetouseaboolean:
+		parent.velocity.y = -400
+		parent.move_and_slide()
+		return fall_state
 	return null
 
 
-func _on_timer_timeout() -> void:
-	parent.velocity.y -= 400
+func _on_sprites_animation_finished() -> void:
+	whydoihavetouseaboolean = true
