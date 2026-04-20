@@ -28,6 +28,9 @@
 [ext_resource type="Script" uid="uid://b814hhp5atx10" path="res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd" id="21_0pi4m"]
 [ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
+size = Vector2(23, 43.75)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
 animations = [{
 "frames": [{
@@ -115,47 +118,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_efikj"]
-resource_name = "Idle"
-length = 0.26666668
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.06666667, 0.13333334, 0.2, 0.26666668),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 0, 0, 0, 0]
-}
-
-[sub_resource type="Animation" id="Animation_itxgx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgsek"]
-_data = {
-&"Idle": SubResource("Animation_efikj"),
-&"RESET": SubResource("Animation_itxgx")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
-size = Vector2(19, 42)
-
 [node name="Player" type="CharacterBody2D" unique_id=560191563]
 script = ExtResource("1_kpjcp")
 
@@ -205,18 +167,16 @@ jump_state = NodePath("../Tsurugi Jump")
 move_state = NodePath("../Tsurugi Moving")
 animation_name = "Crouching"
 
-[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
-sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Jumping"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1969142580]
-libraries/ = SubResource("AnimationLibrary_cgsek")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=603263447]
-position = Vector2(-0.5, 11)
+z_index = 1
+position = Vector2(-0.5, 10.125)
 shape = SubResource("RectangleShape2D_itxgx")
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("20_yt0h1")]
+
+[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
+sprite_frames = SubResource("SpriteFrames_0rwas")
+animation = &"Idle"
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Landing" method="_on_sprites_animation_finished"]

@@ -1,4 +1,7 @@
-res://Player.tscn
 res://example/example.tscn
-res://Input Reader.tscn
-res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd
+res://addons/508_command_input/node/input_watcher.gd
+res://Player.tscn
+res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd
+res://main.tscn
+res://Levels.tscn
+res://Scripts/State Machine/tsurugi_moving.gd

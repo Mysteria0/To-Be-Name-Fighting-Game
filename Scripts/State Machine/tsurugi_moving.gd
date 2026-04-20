@@ -17,9 +17,9 @@ func process_input(_event: InputEvent) -> State:
 	
 func process_physics(delta: float) -> State:
 	if Input.is_action_pressed("ui_left"):
-		parent.velocity.x = -35
+		parent.velocity.x = -50
 	elif Input.is_action_pressed("ui_right"):
-		parent.velocity.x = 35
+		parent.velocity.x = 65
 	elif parent.velocity.x != 0:
 		parent.velocity.x -= parent.velocity.x
 	parent.velocity.y += 980*delta

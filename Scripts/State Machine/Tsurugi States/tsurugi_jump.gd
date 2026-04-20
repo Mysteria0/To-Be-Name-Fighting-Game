@@ -8,7 +8,7 @@ func enter() -> void:
 	super()
 	whydoihavetouseaboolean = false
 	
-func process_physics(delta: float) -> State:
+func process_physics(_delta: float) -> State:
 	parent.move_and_slide()
 	if whydoihavetouseaboolean:
 		parent.velocity.y = -400
