@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
-size = Vector2(23, 43.75)
+size = Vector2(23, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
 animations = [{
@@ -169,7 +169,7 @@ animation_name = "Crouching"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=603263447]
 z_index = 1
-position = Vector2(-0.5, 10.125)
+position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_itxgx")
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("20_yt0h1")]

@@ -11,7 +11,7 @@ func enter() -> void:
 func process_physics(_delta: float) -> State:
 	parent.move_and_slide()
 	if whydoihavetouseaboolean:
-		parent.velocity.y = -400
+		parent.velocity.y = -600
 		parent.move_and_slide()
 		return fall_state
 	return null

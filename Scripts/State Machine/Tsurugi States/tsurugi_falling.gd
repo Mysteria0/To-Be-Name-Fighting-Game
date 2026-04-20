@@ -5,9 +5,9 @@ extends State
 func enter() -> void:
 	super()
 	if Input.is_action_pressed("ui_left"):
-		parent.velocity.x = -35
+		parent.velocity.x = -80
 	elif Input.is_action_pressed("ui_right"):
-		parent.velocity.x = 35
+		parent.velocity.x = 80
 	
 	
 func process_physics(delta: float) -> State:
