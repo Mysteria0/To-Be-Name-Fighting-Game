@@ -1,9 +1,12 @@
-res://example/example.tscn
-res://addons/508_command_input/node/input_watcher.gd
-res://Player.tscn
-res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd
 res://main.tscn
-res://Levels.tscn
+res://Scripts/Main Menu/menu.gd
+res://menu.tscn
+res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd
 res://Scripts/State Machine/tsurugi_moving.gd
 res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd
-res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd
+res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd
+res://Player.tscn
+res://Scripts/State Machine/Tsurugi States/tsurugi_idle.gd
+res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd
+res://Player.gd
+res://Scripts/Universal Code/main.gd

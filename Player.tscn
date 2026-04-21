@@ -120,6 +120,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=560191563]
 script = ExtResource("1_kpjcp")
+Max_health = 1000
 
 [node name="state_machine" type="Node" parent="." unique_id=1273564144 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("16_jatw7")
