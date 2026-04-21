@@ -10,3 +10,5 @@ res://Scripts/State Machine/Tsurugi States/tsurugi_idle.gd
 res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd
 res://Player.gd
 res://Scripts/Universal Code/main.gd
+res://Input Reader.tscn
+res://Scripts/Input Reader/input_reader.gd

@@ -4,7 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Healthbar.max_value = $Player.Max_health
-	$Healthbar.value = $Player.health
+	$Healthbar.value = $Player.Max_health
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
