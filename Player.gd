@@ -4,8 +4,11 @@ extends CharacterBody2D
 @onready var animations = $Sprites
 
 @onready var state_machine = $state_machine
-
+@export_group('Character Variables')
 @export var Max_health : int
+
+@export_group('Character command list')
+@export var Characterinputs : Array[StringName];
 
 var health = Max_health
 
