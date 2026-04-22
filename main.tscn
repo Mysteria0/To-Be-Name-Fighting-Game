@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crutl3ed34eni" path="res://Player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cvu4p5ur5en7u" path="res://Scripts/Universal Code/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cvt0xibjikmr0" path="res://Levels.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=646643995]
 script = ExtResource("1_h2yge")
@@ -25,3 +26,5 @@ position = Vector2(812.00006, 930.00006)
 scale = Vector2(3, 3)
 
 [node name="Levels" parent="." unique_id=1548540644 instance=ExtResource("3_h2yge")]
+
+[node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("4_1bvp3")]

@@ -24,9 +24,10 @@
 [ext_resource type="Script" uid="uid://c3yx6feg4cf1j" path="res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd" id="18_efikj"]
 [ext_resource type="Script" uid="uid://qfnn70ya0g85" path="res://Scripts/State Machine/tsurugi_moving.gd" id="19_itxgx"]
 [ext_resource type="Script" uid="uid://ddpj7vm1g0de0" path="res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd" id="20_cgsek"]
-[ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="20_yt0h1"]
 [ext_resource type="Script" uid="uid://b814hhp5atx10" path="res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd" id="21_0pi4m"]
 [ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
+[ext_resource type="Script" uid="uid://c26pwxnll72iy" path="res://addons/508_command_input/node/input_watcher.gd" id="27_yt0h1"]
+[ext_resource type="Script" uid="uid://dwok7hyiqgcfe" path="res://addons/508_command_input/node/command_parser.gd" id="28_vd78s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
 size = Vector2(23, 54)
@@ -173,11 +174,19 @@ z_index = 1
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_itxgx")
 
-[node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("20_yt0h1")]
-
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
 animation = &"Idle"
+
+[node name="InputWatcher" type="Node" parent="." unique_id=1060698678]
+script = ExtResource("27_yt0h1")
+watch_action = Array[StringName]([&"action_a", &"action_b", &"actoin_c"])
+intercept_action_map = Array[int]([4, 1, 2])
+metadata/_custom_type_script = "uid://c26pwxnll72iy"
+
+[node name="CommandParser" type="Node" parent="." unique_id=983934561]
+script = ExtResource("28_vd78s")
+metadata/_custom_type_script = "uid://dwok7hyiqgcfe"
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Landing" method="_on_sprites_animation_finished"]

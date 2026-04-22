@@ -11,5 +11,3 @@ offset_top = 143.0
 offset_right = 206.0
 offset_bottom = 166.0
 text = "test test test"
-
-[connection signal="gui_input" from="Recent_input" to="." method="_on_recent_input_gui_input"]

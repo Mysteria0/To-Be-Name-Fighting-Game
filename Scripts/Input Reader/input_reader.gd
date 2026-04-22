@@ -1,19 +1,32 @@
 extends Node2D
 
-var Recentinputs = {}
-var currentinput : InputEvent
-var holdtime : int
+var validactions = ["move_left","move_right","move_down","move_up","move_leftdown"]
+var Recentinputs = []
+var currentinput : StringName
+var holdtime : float
+var memorybuffer : int
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if currentinput:
-		if Input.is_action_pressed(currentinput.to_string()):
+		if Input.is_action_pressed(currentinput):
 			holdtime += 1
-			Recentinputs.set(currentinput,holdtime)
 		else:
-			currentinput = null
-		
+			currentinput = ""
+			holdtime = 0
+	else:
+		holdtime += 1
+	if currentinput == "":
+		$Recent_input.text = "Neutral " + str(holdtime)
+	else:
+		$Recent_input.text = str(currentinput) + " " + str(holdtime)
 
-func process_input(event: InputEvent) -> void:
-	currentinput = event
-	Recentinputs.append(currentinput)
-	holdtime = 0
+		
+		
+func _input(event: InputEvent) -> void:
+	for i in validactions:
+		if event.is_action(i,true):
+			currentinput = i
+			Recentinputs.append(currentinput)
+			if str(event) != currentinput:
+				holdtime = 0
+			break
