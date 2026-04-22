@@ -19,7 +19,11 @@ func _process(_delta: float) -> void:
 		$Recent_input.text = "Neutral " + str(holdtime)
 	else:
 		$Recent_input.text = str(currentinput) + " " + str(holdtime)
-
+	if Recentinputs.size() > 1 and memorybuffer == 30:
+		Recentinputs.pop_front()
+		memorybuffer = 0
+	else:
+		memorybuffer += 1
 		
 		
 func _input(event: InputEvent) -> void:

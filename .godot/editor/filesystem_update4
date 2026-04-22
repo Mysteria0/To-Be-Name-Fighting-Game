@@ -1,6 +1,0 @@
-res://Input Reader.tscn
-res://Scripts/Input Reader/input_reader.gd
-res://Player.tscn
-res://main.tscn
-res://Scripts/State Machine/tsurugi_moving.gd
-res://Scripts/Universal Code/main.gd
