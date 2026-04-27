@@ -76,6 +76,10 @@ move_leftdown={
 "deadzone": 0.2,
 "events": []
 }
+Neutral={
+"deadzone": 0.2,
+"events": []
+}
 
 [layer_names]
 

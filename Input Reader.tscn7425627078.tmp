@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ddm5kuncpnusr"]
+
+[ext_resource type="Script" uid="uid://dpld5hrpxgsk3" path="res://Scripts/Input Reader/input_reader.gd" id="1_36y2t"]
+
+[node name="InputReader" type="Node2D" unique_id=1356831098]
+script = ExtResource("1_36y2t")
+
+[node name="Recent_input" type="Label" parent="." unique_id=1609476489]
+offset_left = 166.0
+offset_top = 143.0
+offset_right = 206.0
+offset_bottom = 166.0
+text = "test test test"
