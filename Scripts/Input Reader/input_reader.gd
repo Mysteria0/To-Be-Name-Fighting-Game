@@ -1,7 +1,7 @@
 extends Node2D
 
 var validMotionInputs = ["move_left","move_right","move_down","move_up","move_leftdown"]
-var validAttackInputs = ["action_a","action_b","action_c"]
+var validAttackInputs = ["action_a","action_b","action_c","action_d"]
 var RecentMotionInputs = []
 var currentMotionInput = "Neutral"
 var currentAttackInput = "Nothing"
@@ -11,10 +11,13 @@ var memorybuffer : int
 
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
+	handle_AttackInputs()
 	if currentMotionInput == "Neutral":
-		$Recent_input.text = str(RecentMotionInputs) ##"Neutral " + str(holdtime)
+		$Control/Recent_input.text = "Neutral " + str(holdtime)
 	else:
-		$Recent_input.text = str(currentMotionInput) + " " + str(holdtime)
+		$Control/Recent_input.text = str(currentMotionInput) + " " + str(holdtime)
+	if currentAttackInput != "Nothing":
+		$Control/Recent_input.text += " " + str(currentAttackInput)
 		
 	remove_OldMotionInputs()
 	
@@ -29,6 +32,10 @@ func handle_MotionInputs() -> void:
 	else:
 		holdtime += 1
 	holdtime = clamp(holdtime,1,999)
+	
+func handle_AttackInputs() -> void:
+	if Input.is_action_just_released(currentAttackInput):
+		currentAttackInput = "Nothing"
 	
 func remove_OldMotionInputs() -> void:
 	if !RecentMotionInputs.is_empty() and !Input.is_action_pressed(currentMotionInput):

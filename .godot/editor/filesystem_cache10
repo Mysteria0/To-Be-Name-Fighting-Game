@@ -1,7 +1,7 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1777269955
+::res://::1777286155
 icon.svg::CompressedTexture2D::820574304562032232::1775031906::1775031987::1::::<><><>0<>0<>cb895d7529d4292e9d8b77898c8dbe12<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-Input Reader.tscn::PackedScene::7396441553425071389::1776859008::0::1::::<><><>0<>0<><>::uid://dpld5hrpxgsk3::::res://Scripts/Input Reader/input_reader.gd
+Input Reader.tscn::PackedScene::7396441553425071389::1777283433::0::1::::<><><>0<>0<><>::uid://dpld5hrpxgsk3::::res://Scripts/Input Reader/input_reader.gd
 Levels.tscn::PackedScene::6287589681342614715::1776670819::0::1::::<><><>0<>0<><>::uid://dypa2tifinna1::::res://Sprites/tile.png
 main.tscn::PackedScene::5484995758197957571::1776838079::0::1::::<><><>0<>0<><>::uid://crutl3ed34eni::::res://Player.tscn<>uid://cvu4p5ur5en7u::::res://Scripts/Universal Code/main.gd<>uid://cvt0xibjikmr0::::res://Levels.tscn<>uid://ddm5kuncpnusr::::res://Input Reader.tscn
 menu.tscn::PackedScene::784404794130467610::1776753452::0::1::::<><><>0<>0<><>::uid://bx7je7x5ibr7q::::res://Scripts/Main Menu/menu.gd
@@ -46,8 +46,8 @@ icon.png::CompressedTexture2D::8720914065015716141::1776251580::1776251581::1:::
 ss0.png::CompressedTexture2D::7147373225431228057::1776251580::1776251581::1::::<><><>0<>0<>110887bc763ff34f539a49a110eedb4f<>res://.godot/imported/ss0.png-bcde5271e86cf4a5990cf5bf86deda5c.ctex::
 ss1.png::CompressedTexture2D::1359467694831171774::1776251580::1776251581::1::::<><><>0<>0<>1eb7c4ad430eb71e4769f9b74a92e15c<>res://.godot/imported/ss1.png-d235fef140bcb7e634876357dd865799.ctex::
 ::res://Scripts/::1776756938
-::res://Scripts/Input Reader/::1776858549
-input_reader.gd::GDScript::8235038980377542904::1776858549::0::1::::<>Node2D<><>0<>0<><>::
+::res://Scripts/Input Reader/::1777283433
+input_reader.gd::GDScript::8235038980377542904::1777283433::0::1::::<>Node2D<><>0<>0<><>::
 ::res://Scripts/Main Menu/::1776753279
 menu.gd::GDScript::4067379489259796124::1776753279::0::1::::<>Control<><>0<>0<><>::
 ::res://Scripts/State Machine/::1776850094

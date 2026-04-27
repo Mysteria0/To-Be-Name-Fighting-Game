@@ -27,29 +27,30 @@ window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/508_command_input/plugin.cfg")
-
 [global]
 
 frames=false
 
 [input]
 
-action_c={
+action_a={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":85,"key_label":0,"unicode":117,"location":0,"echo":false,"script":null)
 ]
 }
-action_a={
+action_b={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)
 ]
 }
-action_b={
+action_c={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":74,"key_label":0,"unicode":106,"location":0,"echo":false,"script":null)
+]
+}
+action_d={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":75,"key_label":0,"unicode":107,"location":0,"echo":false,"script":null)
 ]
 }
 move_left={
@@ -77,6 +78,10 @@ move_leftdown={
 "events": []
 }
 Neutral={
+"deadzone": 0.2,
+"events": []
+}
+Nothing={
 "deadzone": 0.2,
 "events": []
 }

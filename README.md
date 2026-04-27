@@ -1,20 +1,13 @@
-# Godot Addons - 508 Command Input
+# To Be Named Fighting game
 
-### Current Version?
+this is the github repository for my in-development fighting game, this is my first ever project of this size so i am fully prepared for this to take a while,
 
-- 0.3.0
-- still have some function planed haven't add into Input Watcher and Inspector Plugin
+## Currently implemented
+- Player character
+- Stage
+- Main menu
+- Input reader
 
-### What dose this addons done?
+## Currently being implemented
 
-- Add two Custom Node with Inspector Plugin for input data ( can disable )
-- Command Parser, emit active signal while record match any command on list
-- Input Watcher, call start with watching input than emit release ( or cancel ) signal
-    while watching input released or other valid input intercept them
-- Write in GDScript, support web export
-
-### Any Document for Detail?
-
-- see description inside editor (scirpt)
-- and Note inside example.tscn
-
+- Input interperter
