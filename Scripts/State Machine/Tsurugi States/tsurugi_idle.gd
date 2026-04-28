@@ -5,10 +5,16 @@ extends State
 @export var move_state : State
 @export var crouching_state : State
 
+
+
+func _ready() -> void:
+	pass
+	
+
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
- 
+
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed('move_up') and parent.is_on_floor():
 		return jump_state
@@ -17,6 +23,7 @@ func process_input(_event: InputEvent) -> State:
 	if Input.is_action_pressed('move_left') or Input.is_action_pressed('move_right') and parent.is_on_floor():
 		return move_state
 	return null
+
 	
 func process_physics(delta: float) -> State:
 	parent.velocity.y += 980*delta

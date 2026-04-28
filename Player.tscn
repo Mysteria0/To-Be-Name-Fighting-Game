@@ -178,6 +178,8 @@ sprite_frames = SubResource("SpriteFrames_0rwas")
 animation = &"Idle"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
+visible = false
+position = Vector2(-43, -61)
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Landing" method="_on_sprites_animation_finished"]

@@ -3,11 +3,12 @@ extends Node
 @export var starting_state : State
 
 var current_state : State
+var Current_Motion : String
+var Current_Attack : String
 
 func init(parent: CharacterBody2D) -> void:
 	for child in get_children():
 		child.parent = parent
-		
 		change_state(starting_state)
 		
 func change_state(new_state: State) -> void:

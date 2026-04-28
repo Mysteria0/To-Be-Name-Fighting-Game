@@ -1,19 +1,39 @@
 extends Node2D
 
+
+@export_category("Specials And Normals")
+@export var NormalsList : Array
+@export var SpecialsList : Array
+
+
 var validMotionInputs = ["move_left","move_right","move_down","move_up","move_leftdown"]
 var validAttackInputs = ["action_a","action_b","action_c","action_d"]
 var RecentMotionInputs = []
+
 var currentMotionInput = "Neutral"
 var currentAttackInput = "Nothing"
+
 var holdtime : int
 var memorybuffer : int
 
+var specials : Array
+var normals : Array
 
+var parent
+
+func _init() -> void:
+	for i in SpecialsList:
+		specials.append(i)
+	for i in NormalsList:
+		normals.append(i)
+	if get_parent():
+		parent = get_parent()
+		
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
 	if currentMotionInput == "Neutral":
-		$Control/Recent_input.text = "Neutral " + str(holdtime)
+		$Control/Recent_input.text = str(RecentMotionInputs)##"Neutral " + str(holdtime)
 	else:
 		$Control/Recent_input.text = str(currentMotionInput) + " " + str(holdtime)
 	if currentAttackInput != "Nothing":
@@ -34,6 +54,8 @@ func handle_MotionInputs() -> void:
 	holdtime = clamp(holdtime,1,999)
 	
 func handle_AttackInputs() -> void:
+	if Input.is_action_just_pressed(currentAttackInput):
+		Check_Motioninputs(currentMotionInput,currentAttackInput)
 	if Input.is_action_just_released(currentAttackInput):
 		currentAttackInput = "Nothing"
 	
@@ -45,6 +67,22 @@ func remove_OldMotionInputs() -> void:
 		else:
 			memorybuffer += 1
 
+func Check_Motioninputs(MotionInput : String, AttackInput : String) -> void:
+	# First check if specials is empty or not, this is done first to avoid any funny business
+	if !specials.is_empty():
+		# Then we go through the specials array to see if the last n indexes in RecentMotionInputs matches with anything
+		for i in specials:
+			if i == ["move_down","move_left"]:
+				if RecentMotionInputs[-1] == "move_left":
+					if RecentMotionInputs[-2] == "move_down":
+						if RecentMotionInputs[-1][1] <= 15:
+							break
+			if i == ["move_down","move_right"]:
+				break
+			if i == ["move_right","move_down","move_right"]:
+				break
+			
+	
 
 func _input(event: InputEvent) -> void:
 	if event and !event.is_action(currentMotionInput,true):
