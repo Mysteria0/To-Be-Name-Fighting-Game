@@ -28,7 +28,7 @@ func _init() -> void:
 		normals.append(i)
 	if get_parent():
 		parent = get_parent()
-		
+
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 		$Control/Recent_input.text = str(currentMotionInput) + " " + str(holdtime)
 	if currentAttackInput != "Nothing":
 		$Control/Recent_input.text += " " + str(currentAttackInput)
-		
+
 	remove_OldMotionInputs()
 	
 func handle_MotionInputs() -> void:
@@ -52,13 +52,13 @@ func handle_MotionInputs() -> void:
 	else:
 		holdtime += 1
 	holdtime = clamp(holdtime,1,999)
-	
+
 func handle_AttackInputs() -> void:
 	if Input.is_action_just_pressed(currentAttackInput):
 		Check_Motioninputs(currentMotionInput,currentAttackInput)
 	if Input.is_action_just_released(currentAttackInput):
 		currentAttackInput = "Nothing"
-	
+
 func remove_OldMotionInputs() -> void:
 	if !RecentMotionInputs.is_empty() and !Input.is_action_pressed(currentMotionInput):
 		if memorybuffer >= 30:
@@ -73,16 +73,15 @@ func Check_Motioninputs(MotionInput : String, AttackInput : String) -> void:
 		# Then we go through the specials array to see if the last n indexes in RecentMotionInputs matches with anything
 		for i in specials:
 			if i == ["move_down","move_left"]:
-				if RecentMotionInputs[-1] == "move_left":
-					if RecentMotionInputs[-2] == "move_down":
+				if RecentMotionInputs[-1][0] == "move_left":
+					if RecentMotionInputs[-2][0] == "move_down":
 						if RecentMotionInputs[-1][1] <= 15:
 							break
 			if i == ["move_down","move_right"]:
 				break
 			if i == ["move_right","move_down","move_right"]:
 				break
-			
-	
+
 
 func _input(event: InputEvent) -> void:
 	if event and !event.is_action(currentMotionInput,true):

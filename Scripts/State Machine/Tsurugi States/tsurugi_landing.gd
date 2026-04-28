@@ -11,7 +11,7 @@ func enter() -> void:
 	super()
 	parent.velocity.x = 0
 	hopethisworks = false
-	
+
 func process_physics(delta: float) -> State:
 	parent.velocity.y += 980*delta
 	parent.move_and_slide()

@@ -24,11 +24,10 @@ func process_input(_event: InputEvent) -> State:
 		return move_state
 	return null
 
-	
+
 func process_physics(delta: float) -> State:
 	parent.velocity.y += 980*delta
 	parent.move_and_slide()
-	
 	if !parent.is_on_floor():
 		return fall_state
 	return null
