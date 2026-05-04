@@ -1,9 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
+
+@onready var movement_code: MovementCode = %MovementCode
+
 @onready var animations = $Sprites
 
 @onready var state_machine = $state_machine
+
 @export_group('Character Variables')
 @export var Max_health : int
 

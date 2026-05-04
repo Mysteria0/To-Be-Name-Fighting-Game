@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://b814hhp5atx10" path="res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd" id="21_0pi4m"]
 [ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="27_yt0h1"]
+[ext_resource type="Script" uid="uid://c344dhuvt3awv" path="res://Scripts/State Machine/Movement.gd" id="28_vd78s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
 size = Vector2(23, 54)
@@ -121,6 +122,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=560191563]
 script = ExtResource("1_kpjcp")
 Max_health = 1000
+Characterinputs = Array[StringName]([&"1"])
 
 [node name="state_machine" type="Node" parent="." unique_id=1273564144 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("16_jatw7")
@@ -178,8 +180,13 @@ sprite_frames = SubResource("SpriteFrames_0rwas")
 animation = &"Idle"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
-visible = false
 position = Vector2(-43, -61)
+SpecialsList = Array[Array]([["move_down", "move_left"]])
+
+[node name="MovementCode" type="Node" parent="." unique_id=423301028]
+unique_name_in_owner = true
+script = ExtResource("28_vd78s")
+metadata/_custom_type_script = "uid://c344dhuvt3awv"
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Landing" method="_on_sprites_animation_finished"]

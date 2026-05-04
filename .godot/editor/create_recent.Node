@@ -1,3 +1,5 @@
+res://Scripts/State Machine/Movement.gd
+Node
 Button
 OptionButton
 HSlider
@@ -7,7 +9,6 @@ Control
 Label
 ProgressBar
 Sprite2D
-Node
 Timer
 TileMap
 CollisionShape2D

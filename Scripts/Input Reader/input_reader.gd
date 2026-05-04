@@ -2,8 +2,8 @@ extends Node2D
 
 
 @export_category("Specials And Normals")
-@export var NormalsList : Array
-@export var SpecialsList : Array
+@export var NormalsList : Array[Array]
+@export var SpecialsList : Array[Array]
 
 
 var validMotionInputs = ["move_left","move_right","move_down","move_up","move_leftdown"]
@@ -21,7 +21,7 @@ var normals : Array
 
 var parent
 
-func _init() -> void:
+func _ready() -> void:
 	for i in SpecialsList:
 		specials.append(i)
 	for i in NormalsList:
@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 		$Control/Recent_input.text += " " + str(currentAttackInput)
 
 	remove_OldMotionInputs()
-	
+
 func handle_MotionInputs() -> void:
 	if currentMotionInput != "Neutral":
 		if Input.is_action_pressed(currentMotionInput):
@@ -54,8 +54,6 @@ func handle_MotionInputs() -> void:
 	holdtime = clamp(holdtime,1,999)
 
 func handle_AttackInputs() -> void:
-	if Input.is_action_just_pressed(currentAttackInput):
-		Check_Motioninputs(currentMotionInput,currentAttackInput)
 	if Input.is_action_just_released(currentAttackInput):
 		currentAttackInput = "Nothing"
 
@@ -66,22 +64,6 @@ func remove_OldMotionInputs() -> void:
 			memorybuffer = 0
 		else:
 			memorybuffer += 1
-
-func Check_Motioninputs(MotionInput : String, AttackInput : String) -> void:
-	# First check if specials is empty or not, this is done first to avoid any funny business
-	if !specials.is_empty():
-		# Then we go through the specials array to see if the last n indexes in RecentMotionInputs matches with anything
-		for i in specials:
-			if i == ["move_down","move_left"]:
-				if RecentMotionInputs[-1][0] == "move_left":
-					if RecentMotionInputs[-2][0] == "move_down":
-						if RecentMotionInputs[-1][1] <= 15:
-							break
-			if i == ["move_down","move_right"]:
-				break
-			if i == ["move_right","move_down","move_right"]:
-				break
-
 
 func _input(event: InputEvent) -> void:
 	if event and !event.is_action(currentMotionInput,true):
