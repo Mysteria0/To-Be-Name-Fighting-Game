@@ -10,10 +10,8 @@ func enter() -> void:
 	parent.velocity.x = 0
 
 func process_physics(delta: float) -> State:
-	parent.move_and_slide()
 	if whydoihavetouseaboolean:
-		%MovementCode.Move_Character(StateMachine.Current_Motion,delta)
-		%MovementCode.Move_Character('move_up',delta)
+		%MovementCode.Move_Character(StateMachine.Old_input,delta)
 		return fall_state
 	return null
 

@@ -7,7 +7,7 @@ func enter() -> void:
 	
 	
 func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character("Null",delta,0)
+	%MovementCode.Move_Character("null",delta,0)
 	if parent.is_on_floor():
 		return landing_state
 	return null

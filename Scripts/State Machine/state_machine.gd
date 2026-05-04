@@ -6,6 +6,7 @@ extends Node
 var current_state : State
 var Current_Motion : String
 var Current_Attack : String
+var Old_input : String
 
 func init(parent: CharacterBody2D) -> void:
 	for child in get_children():
