@@ -4,8 +4,7 @@ extends Node
 @export var animation_name : String
 
 var parent : CharacterBody2D
-var Current_Motion : String
-var Current_Attack : String
+var StateMachine : Node
 
 func enter() -> void:
 	parent.animations.play(animation_name)

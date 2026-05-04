@@ -22,7 +22,7 @@ func process_input(_event: InputEvent) -> State:
 
 
 func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character("Null",0)
+	%MovementCode.Move_Character("Null",delta)
 	if !parent.is_on_floor():
 		return fall_state
 	return null

@@ -13,8 +13,7 @@ func enter() -> void:
 	hopethisworks = false
 
 func process_physics(delta: float) -> State:
-	parent.velocity.y += 980*delta
-	parent.move_and_slide()
+	%MovementCode.Move_Character("Null",delta)
 	if hopethisworks:
 		if !Input.is_action_pressed('move_up') and !Input.is_action_pressed('move_down'):
 			if Input.is_action_pressed('move_left') or Input.is_action_pressed('move_right'):

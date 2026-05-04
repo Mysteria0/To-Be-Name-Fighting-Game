@@ -9,15 +9,11 @@ func enter() -> void:
 	whydoihavetouseaboolean = false
 	parent.velocity.x = 0
 
-func process_physics(_delta: float) -> State:
+func process_physics(delta: float) -> State:
 	parent.move_and_slide()
 	if whydoihavetouseaboolean:
-		if Input.is_action_pressed('move_left'):
-			parent.velocity.x = -100
-		elif Input.is_action_pressed('move_right'):
-			parent.velocity.x = 100
-		parent.velocity.y = -700
-		parent.move_and_slide()
+		%MovementCode.Move_Character(StateMachine.Current_Motion,delta)
+		%MovementCode.Move_Character('move_up',delta)
 		return fall_state
 	return null
 

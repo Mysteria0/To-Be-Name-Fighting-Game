@@ -10,6 +10,7 @@ var Current_Attack : String
 func init(parent: CharacterBody2D) -> void:
 	for child in get_children():
 		child.parent = parent
+		child.StateMachine = self
 		change_state(starting_state)
 
 func change_state(new_state: State) -> void:
@@ -35,6 +36,8 @@ func process_frame(delta: float) -> void:
 		change_state(new_state)
 
 
+	
+
+
 func _on_input_reader_movement_input(Input_key: String) -> void:
 	Current_Motion = Input_key
-	print(Current_Motion)
