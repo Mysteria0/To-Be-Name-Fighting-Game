@@ -2,6 +2,7 @@ extends Node
 
 @export var starting_state : State
 
+
 var current_state : State
 var Current_Motion : String
 var Current_Attack : String

@@ -7,8 +7,7 @@ func enter() -> void:
 	
 	
 func process_physics(delta: float) -> State:
-	parent.velocity.y += 1000*delta
-	parent.move_and_slide()
+	MoveController.Move_Character("Null",0)
 	if parent.is_on_floor():
 		return landing_state
 	return null

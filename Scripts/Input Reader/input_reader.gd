@@ -1,17 +1,17 @@
 extends Node2D
 
 
-@export_category("Specials And Normals")
+@export_category('Specials And Normals')
 @export var NormalsList : Array[Array]
 @export var SpecialsList : Array[Array]
 
 
-var validMotionInputs = ["move_left","move_right","move_down","move_up","move_leftdown"]
-var validAttackInputs = ["action_a","action_b","action_c","action_d"]
+var validMotionInputs = ['move_left','move_right','move_down','move_up','move_leftdown']
+var validAttackInputs = ['action_a','action_b','action_c','action_d']
 var RecentMotionInputs = []
 
-var currentMotionInput = "Neutral"
-var currentAttackInput = "Nothing"
+var currentMotionInput = 'Neutral'
+var currentAttackInput = 'Nothing'
 
 var holdtime : int
 var memorybuffer : int
@@ -32,22 +32,22 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
-	if currentMotionInput == "Neutral":
-		$Control/Recent_input.text = str(RecentMotionInputs)##"Neutral " + str(holdtime)
+	if currentMotionInput == 'Neutral':
+		$Control/Recent_input.text = str(RecentMotionInputs)##'Neutral ' + str(holdtime)
 	else:
-		$Control/Recent_input.text = str(currentMotionInput) + " " + str(holdtime)
-	if currentAttackInput != "Nothing":
-		$Control/Recent_input.text += " " + str(currentAttackInput)
+		$Control/Recent_input.text = str(currentMotionInput) + ' ' + str(holdtime)
+	if currentAttackInput != 'Nothing':
+		$Control/Recent_input.text += ' ' + str(currentAttackInput)
 
 	remove_OldMotionInputs()
 
 func handle_MotionInputs() -> void:
-	if currentMotionInput != "Neutral":
+	if currentMotionInput != 'Neutral':
 		if Input.is_action_pressed(currentMotionInput):
 			holdtime += 1
 			RecentMotionInputs[-1][1] = clamp(holdtime,1,999)
 		if Input.is_action_just_released(currentMotionInput):
-			currentMotionInput = "Neutral"
+			currentMotionInput = 'Neutral'
 			holdtime = 1
 	else:
 		holdtime += 1
@@ -55,7 +55,7 @@ func handle_MotionInputs() -> void:
 
 func handle_AttackInputs() -> void:
 	if Input.is_action_just_released(currentAttackInput):
-		currentAttackInput = "Nothing"
+		currentAttackInput = 'Nothing'
 
 func remove_OldMotionInputs() -> void:
 	if !RecentMotionInputs.is_empty() and !Input.is_action_pressed(currentMotionInput):

@@ -180,12 +180,17 @@ sprite_frames = SubResource("SpriteFrames_0rwas")
 animation = &"Idle"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
+visible = false
 position = Vector2(-43, -61)
 SpecialsList = Array[Array]([["move_down", "move_left"]])
 
-[node name="MovementCode" type="Node" parent="." unique_id=423301028]
+[node name="MovementCode" type="Node" parent="." unique_id=423301028 node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("28_vd78s")
+PerPXGravity = 980
+PerPXForwardSpeed = 65
+PerPXBackwardSpeed = 50
+parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
