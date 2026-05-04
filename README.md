@@ -7,7 +7,8 @@ this is the github repository for my in-development fighting game, this is my fi
 - Stage
 - Main menu
 - Input reader
+- Basic Settings
 
 ## Currently being implemented
 
-- Input interperter
+- Compartmalized Movement code
