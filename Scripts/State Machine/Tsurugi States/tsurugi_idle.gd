@@ -7,10 +7,6 @@ extends State
 
 
 
-func _ready() -> void:
-	pass
-	
-
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
@@ -26,8 +22,7 @@ func process_input(_event: InputEvent) -> State:
 
 
 func process_physics(delta: float) -> State:
-	parent.velocity.y += 980*delta
-	parent.move_and_slide()
+	%MovementCode.Move_Character("Null",0)
 	if !parent.is_on_floor():
 		return fall_state
 	return null

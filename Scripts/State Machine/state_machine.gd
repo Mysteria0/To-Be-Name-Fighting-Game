@@ -33,3 +33,8 @@ func process_frame(delta: float) -> void:
 	var new_state = current_state.process_frame(delta)
 	if new_state:
 		change_state(new_state)
+
+
+func _on_input_reader_movement_input(Input_key: String) -> void:
+	Current_Motion = Input_key
+	print(Current_Motion)

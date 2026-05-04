@@ -5,6 +5,7 @@ extends Node2D
 @export var NormalsList : Array[Array]
 @export var SpecialsList : Array[Array]
 
+signal MovementInput(Input_key : String)
 
 var validMotionInputs = ['move_left','move_right','move_down','move_up','move_leftdown']
 var validAttackInputs = ['action_a','action_b','action_c','action_d']
@@ -46,9 +47,11 @@ func handle_MotionInputs() -> void:
 		if Input.is_action_pressed(currentMotionInput):
 			holdtime += 1
 			RecentMotionInputs[-1][1] = clamp(holdtime,1,999)
+			MovementInput.emit(str(currentMotionInput))
 		if Input.is_action_just_released(currentMotionInput):
 			currentMotionInput = 'Neutral'
 			holdtime = 1
+			MovementInput.emit("Nothing")
 	else:
 		holdtime += 1
 	holdtime = clamp(holdtime,1,999)
