@@ -7,11 +7,11 @@ extends Node2D
 
 signal MovementInput(Input_key : String)
 
-var validMotionInputs = {'Neutral' : '5','move_left' : '4','move_right' : '6','move_down' : '2','move_up' : '8','move_leftdown' : '1','move_leftup' : '7','move_rightdown' : '3','move_rightup' : '9'}
+var validMotionInputs = {'Neutral' : 5,'move_left' : 4,'move_right' : 6,'move_down' : 2,'move_up' : 8,'move_leftdown' : 1,'move_leftup' : 7,'move_rightdown' : 3,'move_rightup' : 9}
 var validAttackInputs = {'action_a' : 'a','action_b' : 'b','action_c' : 'c','action_d' : 'd'}
 var RecentMotionInputs = []
 
-var currentMotionInput = 'Neutral'
+var currentMotionInput = 5
 var currentAttackInput = 'Nothing'
 
 var holdtime : int
@@ -43,17 +43,10 @@ func _process(_delta: float) -> void:
 	remove_OldMotionInputs()
 
 func handle_MotionInputs() -> void:
-	if currentMotionInput != 'Neutral':
-		if Input.is_action_pressed(currentMotionInput):
-			holdtime += 1
-			RecentMotionInputs[-1][1] = clamp(holdtime,1,999)
-			MovementInput.emit(str(currentMotionInput))
-		if Input.is_action_just_released(currentMotionInput):
-			currentMotionInput = 'Neutral'
-			holdtime = 1
-			MovementInput.emit('Nothing')
-	else:
+	if currentMotionInput != 5:
 		holdtime += 1
+		RecentMotionInputs[-1][1] = clamp(holdtime,1,999)
+		MovementInput.emit(str(currentMotionInput))
 	holdtime = clamp(holdtime,1,999)
 
 func handle_AttackInputs() -> void:
@@ -72,8 +65,8 @@ func _input(event: InputEvent) -> void:
 	if event and !event.is_action(currentMotionInput,true):
 		for i in validMotionInputs:
 			if event.is_action(i,true):
-				currentMotionInput = i
-				RecentMotionInputs.append([validMotionInputs[i],1])
+				currentMotionInput = validMotionInputs[i]
+				RecentMotionInputs.append([currentMotionInput,1])
 				if str(event) != currentMotionInput:
 					holdtime = 1
 				break
