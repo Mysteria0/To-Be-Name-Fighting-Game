@@ -9,10 +9,15 @@ func enter() -> void:
 	super()
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_just_pressed('move_up') or Input.is_action_just_pressed("move_leftup") or Input.is_action_just_pressed("move_rightup"):
-		if parent.is_on_floor():
-			StateMachine.Old_input = StateMachine.Current_Motion
+	if Input.is_action_pressed('move_up'):
+			StateMachine.Old_input = 'move_up'
 			return jump_state
+	elif Input.is_action_pressed('move_leftup'):
+			StateMachine.Old_input = 'move_leftup'
+			return jump_state
+	elif Input.is_action_pressed('move_rightup'):
+		StateMachine.Old_input = 'move_rightup'
+		return jump_state
 	if Input.is_action_pressed('move_down') and parent.is_on_floor():
 		return crouching_state
 	if !Input.is_action_pressed('move_left') and !Input.is_action_pressed('move_right'):

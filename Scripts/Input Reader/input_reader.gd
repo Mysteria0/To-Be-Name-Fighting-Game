@@ -7,8 +7,8 @@ extends Node2D
 
 signal MovementInput(Input_key : String)
 
-var validMotionInputs = ['Neutral','move_left','move_right','move_down','move_up','move_leftdown','move_leftup','move_rightdown','move_rightup']
-var validAttackInputs = ['action_a','action_b','action_c','action_d']
+var validMotionInputs = {'Neutral' : '5','move_left' : '4','move_right' : '6','move_down' : '2','move_up' : '8','move_leftdown' : '1','move_leftup' : '7','move_rightdown' : '3','move_rightup' : '9'}
+var validAttackInputs = {'action_a' : 'a','action_b' : 'b','action_c' : 'c','action_d' : 'd'}
 var RecentMotionInputs = []
 
 var currentMotionInput = 'Neutral'
@@ -73,12 +73,12 @@ func _input(event: InputEvent) -> void:
 		for i in validMotionInputs:
 			if event.is_action(i,true):
 				currentMotionInput = i
-				RecentMotionInputs.append([i,1])
+				RecentMotionInputs.append([validMotionInputs[i],1])
 				if str(event) != currentMotionInput:
 					holdtime = 1
 				break
 
 		for b in validAttackInputs:
 			if event.is_action(b,true):
-				currentAttackInput = b
+				currentAttackInput = validAttackInputs[b]
 				break
