@@ -21,15 +21,15 @@ func process_input(_event: InputEvent) -> State:
 	elif Input.is_action_pressed('move_rightup'):
 		StateMachine.Old_input = 'move_rightup'
 		return jump_state
-	if Input.is_action_pressed('move_down') and parent.is_on_floor():
+	if StateMachine.Current_Motion == 2:
 		return crouching_state
-	if Input.is_action_pressed('move_left') or Input.is_action_pressed('move_right') and parent.is_on_floor():
+	if StateMachine.Current_Motion == 4 or  StateMachine.Current_Motion == 6:
 		return move_state
 	return null
 
 
 func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character("null",delta)
+	%MovementCode.Move_Character(5,delta)
 	if !parent.is_on_floor():
 		return fall_state
 	return null

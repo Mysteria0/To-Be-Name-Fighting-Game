@@ -13,7 +13,7 @@ func enter() -> void:
 	hopethisworks = false
 
 func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character("Null",delta)
+	%MovementCode.Move_Character(5,delta)
 	if hopethisworks:
 		return idle_state
 	return null

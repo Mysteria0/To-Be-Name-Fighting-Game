@@ -4,9 +4,9 @@ extends Node
 
 
 var current_state : State
-var Current_Motion : String
+var Current_Motion : int
 var Current_Attack : String
-var Old_input : String
+var Old_input : int
 
 func init(parent: CharacterBody2D) -> void:
 	for child in get_children():
@@ -40,5 +40,5 @@ func process_frame(delta: float) -> void:
 	
 
 
-func _on_input_reader_movement_input(Input_key: String) -> void:
+func _on_input_reader_movement_input(Input_key: int) -> void:
 	Current_Motion = Input_key
