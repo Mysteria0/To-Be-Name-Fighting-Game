@@ -1,7 +1,6 @@
 extends State
 
 @export var fall_state : State
-@export var idle_state : State
 var whydoihavetouseaboolean : bool
 
 func enter() -> void:
@@ -12,6 +11,7 @@ func enter() -> void:
 func process_physics(delta: float) -> State:
 	if whydoihavetouseaboolean:
 		%MovementCode.Move_Character(StateMachine.Old_input,delta)
+		StateMachine.Old_input = 5
 		return fall_state
 	return null
 

@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
 	if currentMotionInput == 5:
-		$Control/Recent_input.text = 'Neutral ' + str(holdtime)
+		$Control/Recent_input.text = str(currentMotionInput) + ' ' + str(holdtime)
 	else:
 		$Control/Recent_input.text = str(currentMotionInput) + ' ' + str(holdtime)
 	if currentAttackInput != 'Nothing':
@@ -43,19 +43,17 @@ func _process(_delta: float) -> void:
 	remove_OldMotionInputs()
 
 func handle_MotionInputs() -> void:
+		if Input.is_action_just_released(ConvertNumToaction(currentMotionInput)):
+				holdtime = 1
+				currentMotionInput = 5
+				MovementInput.emit(5)
 		if currentMotionInput != 5:
 			if Input.is_action_pressed(ConvertNumToaction(currentMotionInput)):
 				holdtime += 1
 				holdtime = clamp(holdtime,1,999)
 				RecentMotionInputs[-1][1] = holdtime
-				MovementInput.emit(currentMotionInput)
-			else:
-				holdtime = 1
-				currentMotionInput = 5
-				MovementInput.emit(5)
 		else:
 			holdtime += 1
-			MovementInput.emit(5)
 
 func handle_AttackInputs() -> void:
 	if Input.is_action_just_released(currentAttackInput):
@@ -75,6 +73,7 @@ func _input(event: InputEvent) -> void:
 			if event.is_action(i,true):
 				currentMotionInput = validMotionInputs[i]
 				RecentMotionInputs.append([currentMotionInput,1])
+				MovementInput.emit(currentMotionInput)
 				if str(event) != ConvertNumToaction(currentMotionInput):
 					holdtime = 1
 				break

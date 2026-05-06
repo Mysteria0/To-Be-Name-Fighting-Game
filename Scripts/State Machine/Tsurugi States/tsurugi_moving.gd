@@ -9,14 +9,8 @@ func enter() -> void:
 	super()
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_pressed('move_up'):
-			StateMachine.Old_input = 'move_up'
-			return jump_state
-	elif Input.is_action_pressed('move_leftup'):
-			StateMachine.Old_input = 'move_leftup'
-			return jump_state
-	elif Input.is_action_pressed('move_rightup'):
-		StateMachine.Old_input = 'move_rightup'
+	if StateMachine.Current_Motion == 8 or StateMachine.Current_Motion == 7 or StateMachine.Current_Motion == 9:
+		StateMachine.Old_input = StateMachine.Current_Motion
 		return jump_state
 	if StateMachine.Current_Motion == 2:
 		return crouching_state
@@ -25,5 +19,6 @@ func process_input(_event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character(StateMachine.Current_Motion,delta)
+	if StateMachine.Current_Motion != 8 and StateMachine.Current_Motion != 9 and StateMachine.Current_Motion != 7:
+		%MovementCode.Move_Character(StateMachine.Current_Motion,delta)
 	return null

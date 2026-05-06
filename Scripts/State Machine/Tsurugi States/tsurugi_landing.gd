@@ -9,8 +9,8 @@ var hopethisworks : bool
 
 func enter() -> void:
 	super()
-	parent.velocity.x = 0
 	hopethisworks = false
+	parent.velocity.x = 0
 
 func process_physics(delta: float) -> State:
 	%MovementCode.Move_Character(5,delta)

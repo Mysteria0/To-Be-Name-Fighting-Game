@@ -12,14 +12,8 @@ func enter() -> void:
 	parent.velocity.x = 0
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_pressed('move_up'):
-		StateMachine.Old_input = 'move_up'
-		return jump_state
-	elif Input.is_action_pressed('move_leftup'):
-		StateMachine.Old_input = 'move_leftup'
-		return jump_state
-	elif Input.is_action_pressed('move_rightup'):
-		StateMachine.Old_input = 'move_rightup'
+	if StateMachine.Current_Motion == 8 or StateMachine.Current_Motion == 7 or StateMachine.Current_Motion == 9:
+		StateMachine.Old_input = StateMachine.Current_Motion
 		return jump_state
 	if StateMachine.Current_Motion == 2:
 		return crouching_state
