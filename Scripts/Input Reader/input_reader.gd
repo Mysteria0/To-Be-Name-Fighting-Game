@@ -5,7 +5,6 @@ extends Node2D
 @export var NormalsList : Array[Array]
 @export var SpecialsList : Array[Array]
 
-signal MovementInput(Input_key : int)
 
 var validMotionInputs = {'Neutral' : 5,'move_left' : 4,'move_right' : 6,'move_down' : 2,'move_up' : 8,'move_leftdown' : 1,'move_leftup' : 7,'move_rightdown' : 3,'move_rightup' : 9}
 var validAttackInputs = {'action_a' : 'a','action_b' : 'b','action_c' : 'c','action_d' : 'd'}
@@ -33,10 +32,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
-	if currentMotionInput == 5:
-		$Control/Recent_input.text = str(currentMotionInput) + ' ' + str(holdtime)
-	else:
-		$Control/Recent_input.text = str(currentMotionInput) + ' ' + str(holdtime)
+	$Control/Recent_input.text = str(currentMotionInput) + ' ' + str(holdtime)
 	if currentAttackInput != 'Nothing':
 		$Control/Recent_input.text += ' ' + str(currentAttackInput)
 
@@ -46,7 +42,6 @@ func handle_MotionInputs() -> void:
 		if Input.is_action_just_released(ConvertNumToaction(currentMotionInput)):
 				holdtime = 1
 				currentMotionInput = 5
-				MovementInput.emit(currentMotionInput)
 		if currentMotionInput != 5:
 			if Input.is_action_pressed(ConvertNumToaction(currentMotionInput)):
 				holdtime += 1
@@ -54,7 +49,6 @@ func handle_MotionInputs() -> void:
 				RecentMotionInputs[-1][1] = holdtime
 		else:
 			holdtime += 1
-			MovementInput.emit(currentMotionInput)
 
 func handle_AttackInputs() -> void:
 	if Input.is_action_just_released(currentAttackInput):
@@ -74,7 +68,6 @@ func _input(event: InputEvent) -> void:
 			if event.is_action(i,true):
 				currentMotionInput = validMotionInputs[i]
 				RecentMotionInputs.append([currentMotionInput,1])
-				MovementInput.emit(currentMotionInput)
 				if str(event) != ConvertNumToaction(currentMotionInput):
 					holdtime = 1
 				break

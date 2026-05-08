@@ -9,19 +9,19 @@ func enter() -> void:
 	super()
 
 func process_input(_event: InputEvent) -> State:
-	if StateMachine.Current_Motion == 8 or StateMachine.Current_Motion == 7 or StateMachine.Current_Motion == 9:
-		StateMachine.Old_input = StateMachine.Current_Motion
+	if %InputReader.currentMotionInput == 8 or %InputReader.currentMotionInput == 7 or %InputReader.currentMotionInput == 9:
+		StateMachine.Old_input = %InputReader.currentMotionInput
 		return jump_state
-	if StateMachine.Current_Motion == 2:
+	if %InputReader.currentMotionInput == 2:
 		return crouching_state
 	return null
 
 func process_physics(delta: float) -> State:
-	if StateMachine.Current_Motion != 8 and StateMachine.Current_Motion != 9 and StateMachine.Current_Motion != 7:
-		%MovementCode.Move_Character(StateMachine.Current_Motion,delta)
+	if %InputReader.currentMotionInput != 8 and %InputReader.currentMotionInput != 9 and %InputReader.currentMotionInput != 7:
+		%MovementCode.Move_Character(%InputReader.currentMotionInput,delta)
 	return null
 
-func process_frame(delta: float) -> State:
-	if StateMachine.Current_Motion == 5:
+func process_frame(_delta: float) -> State:
+	if %InputReader.currentMotionInput == 5:
 		return idle_state
 	return null

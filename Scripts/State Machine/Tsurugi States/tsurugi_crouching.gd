@@ -10,11 +10,11 @@ func enter() -> void:
 	parent.velocity.x = 0
 
 func process_physics(delta: float) -> State:
-	if StateMachine.Current_Motion != 8 and StateMachine.Current_Motion != 9 and StateMachine.Current_Motion != 7:
-		%MovementCode.Move_Character(StateMachine.Current_Motion,delta)
+	if %InputReader.currentMotionInput != 8 and %InputReader.currentMotionInput != 9 and %InputReader.currentMotionInput != 7:
+		%MovementCode.Move_Character(%InputReader.currentMotionInput,delta)
 	return null
 
-func process_frame(delta: float) -> State:
-	if StateMachine.Current_Motion == 5:
+func process_frame(_delta: float) -> State:
+	if %InputReader.currentMotionInput == 5:
 		return idle_state
 	return null

@@ -12,12 +12,12 @@ func enter() -> void:
 	parent.velocity.x = 0
 
 func process_input(_event: InputEvent) -> State:
-	if StateMachine.Current_Motion == 8 or StateMachine.Current_Motion == 7 or StateMachine.Current_Motion == 9:
-		StateMachine.Old_input = StateMachine.Current_Motion
+	if %InputReader.currentMotionInput == 8 or %InputReader.currentMotionInput == 7 or %InputReader.currentMotionInput == 9:
+		StateMachine.Old_input = %InputReader.currentMotionInput
 		return jump_state
-	if StateMachine.Current_Motion == 2:
+	if %InputReader.currentMotionInput == 2:
 		return crouching_state
-	if StateMachine.Current_Motion == 4 or  StateMachine.Current_Motion == 6:
+	if %InputReader.currentMotionInput == 4 or  %InputReader.currentMotionInput == 6:
 		return move_state
 	return null
 
