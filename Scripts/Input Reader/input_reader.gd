@@ -21,8 +21,8 @@ var specials : Array
 var normals : Array
 
 var parent
-
 func _ready() -> void:
+	Input.set_use_accumulated_input(false)
 	for i in SpecialsList:
 		specials.append(i)
 	for i in NormalsList:
@@ -46,7 +46,7 @@ func handle_MotionInputs() -> void:
 		if Input.is_action_just_released(ConvertNumToaction(currentMotionInput)):
 				holdtime = 1
 				currentMotionInput = 5
-				MovementInput.emit(5)
+				MovementInput.emit(currentMotionInput)
 		if currentMotionInput != 5:
 			if Input.is_action_pressed(ConvertNumToaction(currentMotionInput)):
 				holdtime += 1
@@ -54,6 +54,7 @@ func handle_MotionInputs() -> void:
 				RecentMotionInputs[-1][1] = holdtime
 		else:
 			holdtime += 1
+			MovementInput.emit(currentMotionInput)
 
 func handle_AttackInputs() -> void:
 	if Input.is_action_just_released(currentAttackInput):

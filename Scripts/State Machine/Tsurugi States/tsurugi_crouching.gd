@@ -9,9 +9,12 @@ func enter() -> void:
 	super()
 	parent.velocity.x = 0
 
-func process_input(_event: InputEvent) -> State:
-	if Input.is_action_just_pressed('move_up') and !Input.is_action_pressed('move_down') and parent.is_on_floor():
-		return jump_state
+func process_physics(delta: float) -> State:
+	if StateMachine.Current_Motion != 8 and StateMachine.Current_Motion != 9 and StateMachine.Current_Motion != 7:
+		%MovementCode.Move_Character(StateMachine.Current_Motion,delta)
+	return null
+
+func process_frame(delta: float) -> State:
 	if StateMachine.Current_Motion == 5:
 		return idle_state
 	return null
