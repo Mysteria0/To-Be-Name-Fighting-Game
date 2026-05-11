@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://b5hnh8utuu4uv" path="res://Sprites/Hud elements/HP_bar_under.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bw5klleyh53e7" path="res://Sprites/Hud elements/HP_bar_progress.png" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ckucovdu373to" path="res://Projectile.tscn" id="7_272bh"]
 
 [node name="Main" type="Node2D" unique_id=646643995]
 
@@ -30,5 +31,8 @@ nine_patch_stretch = true
 texture_under = ExtResource("4_lquwl")
 texture_progress = ExtResource("6_5vw27")
 script = ExtResource("1_1bvp3")
+
+[node name="Projectile" parent="." unique_id=1469835593 instance=ExtResource("7_272bh")]
+position = Vector2(497, 944)
 
 [connection signal="healthdebug" from="InputReader" to="Player" method="_on_input_reader_healthdebug"]

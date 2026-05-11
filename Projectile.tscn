@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ckucovdu373to"]
+
+[ext_resource type="Texture2D" uid="uid://b26x1jg1c3i7e" path="res://Sprites/Projectile/Projectile.png" id="1_t7eop"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7eop"]
+size = Vector2(32, 32)
+
+[node name="Projectile" type="Node2D" unique_id=1469835593]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1377943805]
+texture = ExtResource("1_t7eop")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=650615474]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=722320358]
+shape = SubResource("RectangleShape2D_t7eop")
+debug_color = Color(0.97395235, 0, 0.4337076, 0.41960785)
