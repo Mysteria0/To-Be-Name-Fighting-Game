@@ -5,6 +5,7 @@ extends Node2D
 @export var NormalsList : Array[Array]
 @export var SpecialsList : Array[Array]
 
+signal healthdebug(Healamount : int)
 
 var validMotionInputs = {'Neutral' : 5,'move_left' : 4,'move_right' : 6,'move_down' : 2,'move_up' : 8,'move_leftdown' : 1,'move_leftup' : 7,'move_rightdown' : 3,'move_rightup' : 9}
 var validAttackInputs = {'action_a' : 'a','action_b' : 'b','action_c' : 'c','action_d' : 'd'}
@@ -20,6 +21,7 @@ var specials : Array
 var normals : Array
 
 var parent
+
 func _ready() -> void:
 	for i in SpecialsList:
 		specials.append(i)
@@ -31,6 +33,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
+	HealthDebug()
 	$Control/Recent_input.text = str(RecentMotionInputs)## + ' ' + str(holdtime)
 	if currentAttackInput != 'Nothing':
 		$Control/Recent_input.text += ' ' + str(currentAttackInput)
@@ -105,3 +108,9 @@ func ConvertNumToaction(Num_to_convert : int) -> String:
 		9:
 			return 'move_rightup'
 	return 'Neutral'
+	
+func HealthDebug():
+	if Input.is_key_pressed(KEY_SPACE):
+		healthdebug.emit(-10)
+	if Input.is_key_pressed(KEY_SHIFT):
+		healthdebug.emit(10)
