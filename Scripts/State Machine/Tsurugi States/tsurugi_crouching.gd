@@ -10,8 +10,7 @@ func enter() -> void:
 	parent.velocity.x = 0
 
 func process_physics(delta: float) -> State:
-	if %InputReader.currentMotionInput != 8 and %InputReader.currentMotionInput != 9 and %InputReader.currentMotionInput != 7:
-		%MovementCode.Move_Character(%InputReader.currentMotionInput,delta)
+	%MovementCode.Move_Character(5,delta)
 	return null
 
 func process_frame(_delta: float) -> State:

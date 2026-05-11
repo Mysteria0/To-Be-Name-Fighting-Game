@@ -21,7 +21,6 @@ var normals : Array
 
 var parent
 func _ready() -> void:
-	Input.set_use_accumulated_input(false)
 	for i in SpecialsList:
 		specials.append(i)
 	for i in NormalsList:
@@ -32,7 +31,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
-	$Control/Recent_input.text = str(currentMotionInput) + ' ' + str(holdtime)
+	$Control/Recent_input.text = str(RecentMotionInputs)## + ' ' + str(holdtime)
 	if currentAttackInput != 'Nothing':
 		$Control/Recent_input.text += ' ' + str(currentAttackInput)
 
@@ -62,7 +61,15 @@ func remove_OldMotionInputs() -> void:
 		else:
 			memorybuffer += 1
 
+# V = vertical num (2 or 8)
+# H = horizontal num (4 ir 6)
+# V-1-(4-H)
+# this is used to calculate the diagonal when two inputs are pressed at the same time
+# now to figure out how to implement it....
+
 func _input(event: InputEvent) -> void:
+	# the _input function handles only 1 input at a time
+	# how do we make it understand 2 inputs at the same time?
 	if event and !event.is_action(ConvertNumToaction(currentMotionInput),true):
 		for i in validMotionInputs:
 			if event.is_action(i,true):

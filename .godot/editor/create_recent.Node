@@ -1,4 +1,4 @@
-res://Scripts/State Machine/Movement.gd
+TextureProgressBar
 Node
 Button
 OptionButton

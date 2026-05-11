@@ -14,11 +14,12 @@ extends CharacterBody2D
 @export_group('Character command list')
 @export var Characterinputs : Array[StringName];
 
-var health = Max_health
+var health : int
 
 
 func _ready() -> void:
 	state_machine.init(self)
+	health = Max_health
 
 
 func _unhandled_input(event: InputEvent) -> void:

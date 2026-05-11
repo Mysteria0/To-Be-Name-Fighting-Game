@@ -1,27 +1,17 @@
 [gd_scene format=3 uid="uid://cke8cxb7ww4pb"]
 
 [ext_resource type="PackedScene" uid="uid://crutl3ed34eni" path="res://Player.tscn" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://cvu4p5ur5en7u" path="res://Scripts/Universal Code/main.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://dpwohectajsnj" path="res://Scripts/Universal Code/healthbar.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cvt0xibjikmr0" path="res://Levels.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://b5hnh8utuu4uv" path="res://Sprites/Hud elements/HP_bar_under.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bw5klleyh53e7" path="res://Sprites/Hud elements/HP_bar_over.png" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://cltlm0jvtu8u6" path="res://Sprites/Hud elements/HP_bar_progress.png" id="6_5vw27"]
 
 [node name="Main" type="Node2D" unique_id=646643995]
-script = ExtResource("1_h2yge")
-
-[node name="Healthbar" type="ProgressBar" parent="." unique_id=1108440859]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 72.0
-offset_top = 10.0
-offset_right = 792.0
-offset_bottom = 50.0
-grow_horizontal = 2
-step = 1.0
-value = 100.0
-show_percentage = false
 
 [node name="Player" parent="." unique_id=560191563 instance=ExtResource("1_0xm2m")]
+unique_name_in_owner = true
 position = Vector2(812.00006, 930.00006)
 scale = Vector2(3, 3)
 
@@ -29,3 +19,16 @@ scale = Vector2(3, 3)
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("4_1bvp3")]
 position = Vector2(94, 70)
+
+[node name="Healthbar" type="TextureProgressBar" parent="." unique_id=1647948918]
+top_level = true
+offset_left = 68.0
+offset_top = 26.0
+offset_right = 727.0
+offset_bottom = 60.0
+rounded = true
+nine_patch_stretch = true
+texture_under = ExtResource("4_lquwl")
+texture_over = ExtResource("5_272bh")
+texture_progress = ExtResource("6_5vw27")
+script = ExtResource("1_1bvp3")
