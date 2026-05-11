@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://ckucovdu373to"]
 
+[ext_resource type="Script" uid="uid://dqwn1g1t6mcg3" path="res://Scripts/Projectile enemy/projectile.gd" id="1_e7peq"]
 [ext_resource type="Texture2D" uid="uid://b26x1jg1c3i7e" path="res://Sprites/Projectile/Projectile.png" id="1_t7eop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7eop"]
 size = Vector2(32, 32)
 
 [node name="Projectile" type="Node2D" unique_id=1469835593]
+script = ExtResource("1_e7peq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1377943805]
 texture = ExtResource("1_t7eop")
