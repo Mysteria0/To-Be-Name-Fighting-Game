@@ -33,6 +33,6 @@ texture_progress = ExtResource("6_5vw27")
 script = ExtResource("1_1bvp3")
 
 [node name="Projectile" parent="." unique_id=1469835593 instance=ExtResource("7_272bh")]
-position = Vector2(497, 944)
+position = Vector2(538, 932)
 
 [connection signal="healthdebug" from="InputReader" to="Player" method="_on_input_reader_healthdebug"]
