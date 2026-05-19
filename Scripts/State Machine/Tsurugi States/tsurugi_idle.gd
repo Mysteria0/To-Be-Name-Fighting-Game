@@ -4,6 +4,7 @@ extends State
 @export var jump_state : State
 @export var move_state : State
 @export var crouching_state : State
+@export var hurt_state : State
 
 
 

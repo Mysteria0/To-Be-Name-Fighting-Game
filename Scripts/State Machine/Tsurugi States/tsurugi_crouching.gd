@@ -3,6 +3,7 @@ extends State
 @export var idle_state : State
 @export var jump_state : State
 @export var move_state : State
+@export var hurt_state : State
 
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
@@ -25,4 +26,6 @@ func process_physics(delta: float) -> State:
 func process_frame(_delta: float) -> State:
 	if %InputReader.currentMotionInput == 5:
 		return idle_state
+	if parent.hurt:
+		return hurt_state
 	return null

@@ -4,6 +4,7 @@ extends State
 @export var jump_state : State
 @export var idle_state : State
 @export var crouching_state : State
+@export var hurt_state : State
 
 func enter() -> void:
 	super()
@@ -24,4 +25,7 @@ func process_physics(delta: float) -> State:
 func process_frame(_delta: float) -> State:
 	if %InputReader.currentMotionInput == 5:
 		return idle_state
+	if parent.hurt:
+		return hurt_state
 	return null
+	

@@ -1,6 +1,8 @@
 extends State
 
 @export var fall_state : State
+@export var hurt_state : State
+
 var whydoihavetouseaboolean : bool
 
 func enter() -> void:
@@ -18,3 +20,8 @@ func process_physics(delta: float) -> State:
 
 func _on_sprites_animation_finished() -> void:
 	whydoihavetouseaboolean = true
+
+func process_frame(_delta: float) -> State:
+	if parent.hurt:
+		return hurt_state
+	return null

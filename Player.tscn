@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d25agmcvyqowe" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png" id="6_oudfo"]
 [ext_resource type="Texture2D" uid="uid://d3psvcgbfbg3s" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png" id="7_d6rpx"]
 [ext_resource type="Texture2D" uid="uid://crkstaoanaknr" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png" id="8_r3kul"]
+[ext_resource type="Script" uid="uid://bw3qvegd2hf2y" path="res://Scripts/State Machine/Tsurugi States/tsurugi_hurt.gd" id="9_ictha"]
 [ext_resource type="Texture2D" uid="uid://bn4c813rdlmjs" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0004.png" id="9_jatw7"]
 [ext_resource type="Texture2D" uid="uid://bphfabueor6jn" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0001.png" id="10_jatw7"]
 [ext_resource type="Texture2D" uid="uid://qgrlk7bqbj2w" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0001.png" id="10_rv870"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://w4yfqnwpcn8v" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0002.png" id="11_rv870"]
 [ext_resource type="Texture2D" uid="uid://ci4jbuilvba0x" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0003.png" id="12_efikj"]
 [ext_resource type="Texture2D" uid="uid://c8jq2hc3t4mut" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0003.png" id="12_itxgx"]
+[ext_resource type="Texture2D" uid="uid://mn7pkgeuts1c" path="res://Sprites/Characters/Tsurugi/Hurt/Tsurigi_hurt_0001.png" id="15_1jgrc"]
 [ext_resource type="Script" uid="uid://da0euwvphv5eq" path="res://Scripts/State Machine/state_machine.gd" id="16_jatw7"]
 [ext_resource type="Script" uid="uid://vdxc7o8122xe" path="res://Scripts/State Machine/Tsurugi States/tsurugi_idle.gd" id="17_rv870"]
 [ext_resource type="Script" uid="uid://c3yx6feg4cf1j" path="res://Scripts/State Machine/Tsurugi States/tsurugi_jump.gd" id="18_efikj"]
@@ -57,6 +59,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_1jgrc")
+}],
+"loop": true,
+"name": &"Hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -130,46 +140,59 @@ Characterinputs = Array[StringName]([&"1"])
 script = ExtResource("16_jatw7")
 starting_state = NodePath("Tsurugi Idle")
 
-[node name="Tsurugi Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "crouching_state")]
+[node name="Tsurugi Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "crouching_state", "hurt_state")]
 script = ExtResource("17_rv870")
 fall_state = NodePath("../Tsurugi Falling")
 jump_state = NodePath("../Tsurugi Jump")
 move_state = NodePath("../Tsurugi Moving")
 crouching_state = NodePath("../Tsurugi Crouching")
+hurt_state = NodePath("../Tsurugi Hurt")
 animation_name = "Idle"
 
-[node name="Tsurugi Jump" type="Node" parent="state_machine" unique_id=2063101655 node_paths=PackedStringArray("fall_state")]
+[node name="Tsurugi Jump" type="Node" parent="state_machine" unique_id=2063101655 node_paths=PackedStringArray("fall_state", "hurt_state")]
 script = ExtResource("18_efikj")
 fall_state = NodePath("../Tsurugi Falling")
+hurt_state = NodePath("../Tsurugi Hurt")
 animation_name = "Jumping"
 
-[node name="Tsurugi Moving" type="Node" parent="state_machine" unique_id=363548264 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "crouching_state")]
+[node name="Tsurugi Moving" type="Node" parent="state_machine" unique_id=363548264 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "crouching_state", "hurt_state")]
 script = ExtResource("19_itxgx")
 fall_state = NodePath("../Tsurugi Falling")
 jump_state = NodePath("../Tsurugi Jump")
 idle_state = NodePath("../Tsurugi Idle")
 crouching_state = NodePath("../Tsurugi Crouching")
+hurt_state = NodePath("../Tsurugi Hurt")
 animation_name = "Walking"
 
-[node name="Tsurugi Falling" type="Node" parent="state_machine" unique_id=1412343906 node_paths=PackedStringArray("landing_state")]
+[node name="Tsurugi Falling" type="Node" parent="state_machine" unique_id=1412343906 node_paths=PackedStringArray("landing_state", "hurt_state")]
 script = ExtResource("20_cgsek")
 landing_state = NodePath("../Tsurugi Landing")
+hurt_state = NodePath("../Tsurugi Hurt")
 animation_name = "Falling"
 
-[node name="Tsurugi Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state", "move_state", "jump_state", "crouching_state")]
+[node name="Tsurugi Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state", "move_state", "jump_state", "crouching_state", "hurt_state")]
 script = ExtResource("21_0pi4m")
 idle_state = NodePath("../Tsurugi Idle")
 move_state = NodePath("../Tsurugi Moving")
 jump_state = NodePath("../Tsurugi Jump")
 crouching_state = NodePath("../Tsurugi Crouching")
+hurt_state = NodePath("../Tsurugi Hurt")
 animation_name = "Landing"
 
-[node name="Tsurugi Crouching" type="Node" parent="state_machine" unique_id=545381249 node_paths=PackedStringArray("idle_state", "jump_state", "move_state")]
+[node name="Tsurugi Crouching" type="Node" parent="state_machine" unique_id=545381249 node_paths=PackedStringArray("idle_state", "jump_state", "move_state", "hurt_state")]
 script = ExtResource("26_3vjad")
 idle_state = NodePath("../Tsurugi Idle")
 jump_state = NodePath("../Tsurugi Jump")
 move_state = NodePath("../Tsurugi Moving")
+hurt_state = NodePath("../Tsurugi Hurt")
 animation_name = "Crouching"
+
+[node name="Tsurugi Hurt" type="Node" parent="state_machine" unique_id=1812957764 node_paths=PackedStringArray("fall_state", "idle_state")]
+script = ExtResource("9_ictha")
+fall_state = NodePath("../Tsurugi Falling")
+idle_state = NodePath("../Tsurugi Idle")
+animation_name = "Hurt"
+metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=603263447]
 z_index = 1
@@ -178,7 +201,7 @@ shape = SubResource("RectangleShape2D_itxgx")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Idle"
+animation = &"Hurt"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
 unique_name_in_owner = true

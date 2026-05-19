@@ -1,10 +1,13 @@
 extends RigidBody2D
 
+@export var projectileDamage : int
+@export var projectilespeed : int
+
 signal hit_opponent
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -12,6 +15,13 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body == Player:
-		hit_opponent.emit()
-		
+	hit_opponent.emit()
+
+
+
+func _on_hit_opponent() -> void:
+	%Player.health -= projectileDamage
+	%Player.hurt = true
+	%Player.knockbackvector = Vector2(-1,-1)
+	%Player.hitstun = 10
+	queue_free()

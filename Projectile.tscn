@@ -4,12 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://b26x1jg1c3i7e" path="res://Sprites/Projectile/Projectile.png" id="1_t7eop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7peq"]
-size = Vector2(30, 30)
+size = Vector2(34, 34)
 
 [node name="Projectile" type="RigidBody2D" unique_id=1606644341]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 6
 gravity_scale = 0.0
+custom_integrator = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_e7peq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1377943805]
@@ -20,3 +23,4 @@ shape = SubResource("RectangleShape2D_e7peq")
 debug_color = Color(0.8927792, 0.20835721, 0.61766946, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="hit_opponent" from="." to="." method="_on_hit_opponent"]

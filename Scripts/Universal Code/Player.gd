@@ -15,7 +15,9 @@ extends CharacterBody2D
 @export var Characterinputs : Array[StringName];
 
 var health : int
-
+var hurt : bool
+var knockbackvector : Vector2
+var hitstun : int
 
 func _ready() -> void:
 	state_machine.init(self)

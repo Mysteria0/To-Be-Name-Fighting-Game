@@ -1,11 +1,16 @@
 extends State
 
 @export var landing_state : State
+@export var hurt_state : State
 
 func enter() -> void:
 	super()
 	
-	
+func process_frame(_delta: float) -> State:
+	if parent.hurt:
+		return hurt_state
+	return null
+
 func process_physics(delta: float) -> State:
 	%MovementCode.Move_Character(5,delta,0)
 	if parent.is_on_floor():

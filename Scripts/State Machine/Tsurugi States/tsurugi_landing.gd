@@ -4,6 +4,7 @@ extends State
 @export var move_state : State
 @export var jump_state : State
 @export var crouching_state : State
+@export var hurt_state : State
 
 var hopethisworks : bool
 
@@ -20,3 +21,8 @@ func process_physics(delta: float) -> State:
 
 func _on_sprites_animation_finished() -> void:
 	hopethisworks = true
+	
+func process_frame(_delta: float) -> State:
+	if parent.hurt:
+		return hurt_state
+	return null
