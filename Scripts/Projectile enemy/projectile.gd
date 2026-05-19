@@ -22,6 +22,6 @@ func _on_body_entered(body: Node) -> void:
 func _on_hit_opponent() -> void:
 	%Player.health -= projectileDamage
 	%Player.hurt = true
-	%Player.knockbackvector = Vector2(-1,-1)
+	%Player.knockbackvector = Vector2(-300,-200)
 	%Player.hitstun = 10
 	queue_free()

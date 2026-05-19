@@ -23,3 +23,10 @@ func process_frame(_delta: float) -> State:
 		else:
 			return fall_state
 	return null
+	
+
+func Knockback() -> void:
+	if saved_velocity.y != 0:
+		parent.velocity.y += parent.knockbackvector.y
+	parent.velocity.x += parent.knockbackvector.x*parent.direction
+	parent.move_and_slide()

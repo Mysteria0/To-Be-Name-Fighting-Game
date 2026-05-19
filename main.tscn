@@ -12,7 +12,7 @@
 
 [node name="Player" parent="." unique_id=560191563 instance=ExtResource("1_0xm2m")]
 unique_name_in_owner = true
-position = Vector2(812.00006, 930.00006)
+position = Vector2(586, 930)
 scale = Vector2(3, 3)
 
 [node name="Levels" parent="." unique_id=1548540644 instance=ExtResource("3_h2yge")]
@@ -33,7 +33,7 @@ texture_progress = ExtResource("6_5vw27")
 script = ExtResource("1_1bvp3")
 
 [node name="Projectile" parent="." unique_id=1469835593 instance=ExtResource("7_272bh")]
-position = Vector2(538, 932)
+position = Vector2(1258, 939)
 projectileDamage = 77
 
 [connection signal="healthdebug" from="InputReader" to="Player" method="_on_input_reader_healthdebug"]

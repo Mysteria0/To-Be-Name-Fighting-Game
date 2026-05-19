@@ -18,10 +18,13 @@ var health : int
 var hurt : bool
 var knockbackvector : Vector2
 var hitstun : int
+var direction : int # value 1 means facing right, value -1 means facing left
+
 
 func _ready() -> void:
 	state_machine.init(self)
 	health = Max_health
+	direction = 1
 
 
 func _unhandled_input(event: InputEvent) -> void:
