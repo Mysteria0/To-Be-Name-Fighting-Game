@@ -26,6 +26,4 @@ func process_physics(delta: float) -> State:
 func process_frame(_delta: float) -> State:
 	if %InputReader.currentMotionInput == 5:
 		return idle_state
-	if parent.hurt:
-		return hurt_state
 	return null

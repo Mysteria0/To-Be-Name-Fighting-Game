@@ -129,12 +129,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=560191563]
+[node name="Player" type="CharacterBody2D" unique_id=560191563 node_paths=PackedStringArray("Hurt_State")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_kpjcp")
 Max_health = 1000
-Characterinputs = Array[StringName]([&"1"])
+Hurt_State = NodePath("state_machine/Tsurugi Hurt")
 
 [node name="state_machine" type="Node" parent="." unique_id=1273564144 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("16_jatw7")

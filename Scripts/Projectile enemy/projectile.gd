@@ -1,8 +1,10 @@
 extends RigidBody2D
 
 @export var projectileDamage : int
-@export var projectilespeed : int
-
+@export var projectileHitstop : int
+@export var projectileSpeed : int
+@export var KnockbackOnGroundhit : Vector2
+@export var KnockbackOnAirhit : Vector2
 signal hit_opponent
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +22,5 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _on_hit_opponent() -> void:
-	%Player.health -= projectileDamage
-	%Player.hurt = true
-	%Player.knockbackvector = Vector2(-300,-200)
-	%Player.hitstun = 10
+	%Player.Player_hit(projectileDamage,projectileHitstop,KnockbackOnGroundhit,KnockbackOnAirhit)
 	queue_free()

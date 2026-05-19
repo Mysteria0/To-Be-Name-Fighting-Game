@@ -20,8 +20,3 @@ func process_physics(delta: float) -> State:
 
 func _on_sprites_animation_finished() -> void:
 	whydoihavetouseaboolean = true
-
-func process_frame(_delta: float) -> State:
-	if parent.hurt:
-		return hurt_state
-	return null

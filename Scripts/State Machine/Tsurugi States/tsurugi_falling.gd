@@ -6,10 +6,6 @@ extends State
 func enter() -> void:
 	super()
 	
-func process_frame(_delta: float) -> State:
-	if parent.hurt:
-		return hurt_state
-	return null
 
 func process_physics(delta: float) -> State:
 	%MovementCode.Move_Character(5,delta,0)

@@ -4,7 +4,8 @@ extends State
 @export var idle_state : State
 
 var saved_velocity : Vector2
-
+var knockbackvector : Vector2
+var Hitstun : int
 
 func enter() -> void:
 	super()
@@ -12,8 +13,8 @@ func enter() -> void:
 	parent.velocity *= 0
 
 func process_frame(_delta: float) -> State:
-	if parent.hitstun > 0:
-		parent.hitstun -= 1
+	if Hitstun > 0:
+		Hitstun -= 1
 	else:
 		parent.hurt = false
 		
@@ -27,6 +28,6 @@ func process_frame(_delta: float) -> State:
 
 func Knockback() -> void:
 	if saved_velocity.y != 0:
-		parent.velocity.y += parent.knockbackvector.y
-	parent.velocity.x += parent.knockbackvector.x*parent.direction
+		parent.velocity.y += knockbackvector.y
+	parent.velocity.x += knockbackvector.x*parent.direction
 	parent.move_and_slide()

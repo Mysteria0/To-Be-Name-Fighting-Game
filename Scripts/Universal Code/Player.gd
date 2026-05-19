@@ -11,13 +11,10 @@ extends CharacterBody2D
 @export_group('Character Variables')
 @export var Max_health : int
 
-@export_group('Character command list')
-@export var Characterinputs : Array[StringName];
+@export_group('Referals')
+@export var Hurt_State : State;
 
 var health : int
-var hurt : bool
-var knockbackvector : Vector2
-var hitstun : int
 var direction : int # value 1 means facing right, value -1 means facing left
 
 
@@ -37,5 +34,11 @@ func _process(delta : float) -> void:
 	state_machine.process_frame(delta)
 
 
-func _on_input_reader_healthdebug(Healamount: int) -> void:
-	health += Healamount
+func Player_hit(Damage : int, hitstun : int, On_groundedhit : Vector2, On_airhit) -> void:
+	health -= Damage
+	Hurt_State.Hitstun = hitstun
+	if !is_on_floor():
+		Hurt_State.knockbackvector = On_airhit
+	else:
+		Hurt_State.knockbackvector = On_groundedhit
+	state_machine.change_state(Hurt_State)
