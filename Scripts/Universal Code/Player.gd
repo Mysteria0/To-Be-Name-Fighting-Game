@@ -15,6 +15,7 @@ extends CharacterBody2D
 @export var Hurt_State : State;
 
 var health : int
+var hurt : bool
 var direction : int # value 1 means facing right, value -1 means facing left
 
 
@@ -34,11 +35,12 @@ func _process(delta : float) -> void:
 	state_machine.process_frame(delta)
 
 
-func Player_hit(Damage : int, hitstun : int, On_groundedhit : Vector2, On_airhit) -> void:
+func Player_hit(Damage : int, hitstun : int, On_groundedhit : Vector2, On_airhit : Vector2) -> void:
+	hurt = true
 	health -= Damage
 	Hurt_State.Hitstun = hitstun
 	if !is_on_floor():
-		Hurt_State.knockbackvector = On_airhit
+		Hurt_State.knockbackvector = Vector2(On_airhit.x*direction,On_airhit.y)
 	else:
-		Hurt_State.knockbackvector = On_groundedhit
+		Hurt_State.knockbackvector = Vector2(On_groundedhit.x*direction,On_groundedhit.y)
 	state_machine.change_state(Hurt_State)

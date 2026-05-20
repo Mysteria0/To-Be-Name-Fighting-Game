@@ -6,18 +6,24 @@ extends State
 var saved_velocity : Vector2
 var knockbackvector : Vector2
 var Hitstun : int
+var timer : int
 
 func enter() -> void:
 	super()
 	saved_velocity = parent.velocity
 	parent.velocity *= 0
+	timer = roundi(Hitstun/2)
 
 func process_frame(_delta: float) -> State:
 	if Hitstun > 0:
 		Hitstun -= 1
+		timer -= 1
 	else:
 		parent.hurt = false
-		
+	
+	if timer == 0:
+		Knockback()
+	
 	if !parent.hurt:
 		if parent.is_on_floor():
 			return idle_state

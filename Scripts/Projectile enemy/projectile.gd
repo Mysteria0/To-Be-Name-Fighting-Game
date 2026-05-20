@@ -3,6 +3,7 @@ extends RigidBody2D
 @export var projectileDamage : int
 @export var projectileHitstop : int
 @export var projectileSpeed : int
+
 @export var KnockbackOnGroundhit : Vector2
 @export var KnockbackOnAirhit : Vector2
 signal hit_opponent
@@ -23,4 +24,4 @@ func _on_body_entered(body: Node) -> void:
 
 func _on_hit_opponent() -> void:
 	%Player.Player_hit(projectileDamage,projectileHitstop,KnockbackOnGroundhit,KnockbackOnAirhit)
-	queue_free()
+	##queue_free()
