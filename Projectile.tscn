@@ -3,6 +3,22 @@
 [ext_resource type="Script" uid="uid://d1gk7qoudmkkk" path="res://Scripts/Projectile enemy/projectile.gd" id="1_e7peq"]
 [ext_resource type="Texture2D" uid="uid://b26x1jg1c3i7e" path="res://Sprites/Projectile/Projectile.png" id="1_t7eop"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7peq"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t7eop")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7peq"]
 size = Vector2(34, 34)
 
@@ -15,8 +31,9 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_e7peq")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1377943805]
-texture = ExtResource("1_t7eop")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1454842833]
+sprite_frames = SubResource("SpriteFrames_e7peq")
+animation = &"Moving"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=628955454]
 shape = SubResource("RectangleShape2D_e7peq")

@@ -1,4 +1,4 @@
-res://Scripts/State Machine/State.gd
+AnimatedSprite2D
 RigidBody2D
 CollisionShape2D
 AnimatableBody2D

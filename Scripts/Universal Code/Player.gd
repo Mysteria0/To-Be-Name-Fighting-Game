@@ -34,8 +34,9 @@ func _physics_process(delta : float) -> void:
 func _process(delta : float) -> void:
 	state_machine.process_frame(delta)
 
-
+## Function for handling communication between attack and the hurt state
 func Player_hit(Damage : int, hitstun : int, On_groundedhit : Vector2, On_airhit : Vector2) -> void:
+	$CollisionShape2D.set_deferred("disabled", true)
 	hurt = true
 	health -= Damage
 	Hurt_State.Hitstun = hitstun

@@ -1,11 +1,21 @@
 extends RigidBody2D
 
+## Damage dealt to the target on hit
 @export var projectileDamage : int
+## How long the target stays in their hurt state
 @export var projectileHitstop : int
-@export var projectileSpeed : int
+## how fast and what direction the projectile goes across the screen
+@export var projectileMovementvector : Vector2i
+## How many times the projectile can hit a valid target before it dissapears
+@export var projectileHits := 1
 
+## Knockback dealt to target on grounded hit. negative value to push away, positive value to pull in. Number should be bigger than expected due to friction
 @export var KnockbackOnGroundhit : Vector2
+## Knockback dealt to target on air hit. negative values to push away, positive to pull in. Values should be smaller to produce inteded effects
 @export var KnockbackOnAirhit : Vector2
+
+
+
 signal hit_opponent
 
 # Called when the node enters the scene tree for the first time.
@@ -23,5 +33,9 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _on_hit_opponent() -> void:
+	$CollisionShape2D.set_deferred("disabled", true)
+	projectileHits -= 1
+	if projectileHits <= 0:
+		$Sprite2D.play("Explode")
 	%Player.Player_hit(projectileDamage,projectileHitstop,KnockbackOnGroundhit,KnockbackOnAirhit)
 	##queue_free()

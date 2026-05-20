@@ -12,7 +12,7 @@ func enter() -> void:
 	super()
 	saved_velocity = parent.velocity
 	parent.velocity *= 0
-	timer = roundi(Hitstun/2)
+	timer = 1
 
 func process_frame(_delta: float) -> State:
 	if Hitstun > 0:
@@ -33,6 +33,7 @@ func process_frame(_delta: float) -> State:
 	
 
 func Knockback() -> void:
+	%CollisionShape2D.set_deferred("disabled", false)
 	if saved_velocity.y != 0:
 		parent.velocity.y += knockbackvector.y
 	parent.velocity.x += knockbackvector.x*parent.direction

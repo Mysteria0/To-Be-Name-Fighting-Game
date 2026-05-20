@@ -33,7 +33,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	handle_MotionInputs()
 	handle_AttackInputs()
-	HealthDebug()
 	$Control/Recent_input.text = str(RecentMotionInputs)## + ' ' + str(holdtime)
 	if currentAttackInput != 'Nothing':
 		$Control/Recent_input.text += ' ' + str(currentAttackInput)
@@ -109,8 +108,3 @@ func ConvertNumToaction(Num_to_convert : int) -> String:
 			return 'move_rightup'
 	return 'Neutral'
 	
-func HealthDebug():
-	if Input.is_key_pressed(KEY_SPACE):
-		healthdebug.emit(-10)
-	if Input.is_key_pressed(KEY_SHIFT):
-		healthdebug.emit(10)

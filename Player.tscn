@@ -195,6 +195,7 @@ animation_name = "Hurt"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=603263447]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_itxgx")

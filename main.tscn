@@ -34,9 +34,10 @@ script = ExtResource("1_1bvp3")
 
 [node name="Projectile" parent="." unique_id=1469835593 instance=ExtResource("7_272bh")]
 position = Vector2(1258, 939)
-projectileDamage = 77
-projectileHitstop = 4
-KnockbackOnGroundhit = Vector2(-300, 0)
-KnockbackOnAirhit = Vector2(-400, -600)
+projectileDamage = 500
+projectileHitstop = 2
+projectileHits = 1
+KnockbackOnGroundhit = Vector2(-100, 0)
+KnockbackOnAirhit = Vector2(-100, -200)
 
 [connection signal="healthdebug" from="InputReader" to="Player" method="_on_input_reader_healthdebug"]
