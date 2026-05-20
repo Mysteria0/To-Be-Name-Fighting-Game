@@ -12,6 +12,7 @@ func enter() -> void:
 	super()
 	saved_velocity = parent.velocity
 	parent.velocity *= 0
+	Knockback()
 	timer = 1
 
 func process_frame(_delta: float) -> State:
@@ -21,8 +22,8 @@ func process_frame(_delta: float) -> State:
 	else:
 		parent.hurt = false
 	
-	if timer == 0:
-		Knockback()
+	#if timer == 0:
+		#Knockback()
 	
 	if !parent.hurt:
 		if parent.is_on_floor():

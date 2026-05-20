@@ -5,8 +5,6 @@ extends Node2D
 @export var NormalsList : Array[Array]
 @export var SpecialsList : Array[Array]
 
-signal healthdebug(Healamount : int)
-
 var validMotionInputs = {'Neutral' : 5,'move_left' : 4,'move_right' : 6,'move_down' : 2,'move_up' : 8,'move_leftdown' : 1,'move_leftup' : 7,'move_rightdown' : 3,'move_rightup' : 9}
 var validAttackInputs = {'action_a' : 'a','action_b' : 'b','action_c' : 'c','action_d' : 'd'}
 var RecentMotionInputs = []
