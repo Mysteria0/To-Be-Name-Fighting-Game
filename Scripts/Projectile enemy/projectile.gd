@@ -42,6 +42,5 @@ func _on_hit_opponent() -> void:
 	projectileHits -= 1
 	if projectileHits <= 0:
 		$Sprite2D.play("Explode")
-	var i = $CollisionShape2D.basis_xform
 	%Player.Player_hit(projectileDamage,projectileHitstop,KnockbackOnGroundhit,KnockbackOnAirhit)
 	##queue_free()
