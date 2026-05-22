@@ -216,7 +216,6 @@ script = ExtResource("28_vd78s")
 PxPerSECGravity = 1115
 PxPerSECForward = 3125
 PxPerSECBackward = 3075
-PxPerSECJump = 37500
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 

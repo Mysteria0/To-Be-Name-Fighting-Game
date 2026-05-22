@@ -20,7 +20,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7peq"]
-size = Vector2(34, 34)
+size = Vector2(26, 28.5)
 
 [node name="Projectile" type="RigidBody2D" unique_id=1606644341]
 process_priority = 1

@@ -38,7 +38,7 @@ func _on_body_entered(body: Node) -> void:
 
 func _on_hit_opponent() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
-	disabledtimer = 3
+	disabledtimer = projectileHitstop
 	projectileHits -= 1
 	if projectileHits <= 0:
 		$Sprite2D.play("Explode")
