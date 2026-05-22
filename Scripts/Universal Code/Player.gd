@@ -41,7 +41,7 @@ func Player_hit(Damage : int, hitstun : int, On_groundedhit : Vector2, On_airhit
 	health -= Damage
 	Hurt_State.Hitstun = hitstun
 	if !is_on_floor():
-		Hurt_State.knockbackvector = Vector2(On_airhit.x*direction,On_airhit.y)
+		%MovementCode.knockbackvector = Vector2(On_airhit.x*direction,On_airhit.y)
 	else:
-		Hurt_State.knockbackvector = Vector2(On_groundedhit.x*direction,On_groundedhit.y)
+		%MovementCode.knockbackvector = Vector2(On_groundedhit.x*direction,On_groundedhit.y)
 	state_machine.change_state(Hurt_State)

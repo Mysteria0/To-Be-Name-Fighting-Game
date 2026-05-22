@@ -10,9 +10,9 @@ extends RigidBody2D
 @export var projectileHits : int
 
 ## Knockback dealt to target on grounded hit. negative value to push away, positive value to pull in. Number should be bigger than expected due to friction
-@export var KnockbackOnGroundhit : Vector2
+@export var KnockbackOnGroundhit : Vector2i
 ## Knockback dealt to target on air hit. negative values to push away, positive to pull in. Values should be smaller to produce inteded effects
-@export var KnockbackOnAirhit : Vector2
+@export var KnockbackOnAirhit : Vector2i
 
 var disabledtimer : int
 
@@ -20,7 +20,7 @@ signal hit_opponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_constant_central_force(projectileMovementvector)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -38,9 +38,10 @@ func _on_body_entered(body: Node) -> void:
 
 func _on_hit_opponent() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
-	disabledtimer = 2
+	disabledtimer = 3
 	projectileHits -= 1
 	if projectileHits <= 0:
 		$Sprite2D.play("Explode")
+	var i = $CollisionShape2D.basis_xform
 	%Player.Player_hit(projectileDamage,projectileHitstop,KnockbackOnGroundhit,KnockbackOnAirhit)
 	##queue_free()

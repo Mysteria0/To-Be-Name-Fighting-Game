@@ -3,16 +3,13 @@ extends State
 @export var fall_state : State
 @export var idle_state : State
 
-var saved_velocity : Vector2
-var knockbackvector : Vector2
 var Hitstun : int
 var timer : int
 
 func enter() -> void:
 	super()
-	saved_velocity = parent.velocity
+	%MovementCode.Knockback(parent.velocity*-1.5)
 	parent.velocity *= 0
-	Knockback()
 	timer = 1
 
 func process_frame(_delta: float) -> State:
@@ -22,8 +19,10 @@ func process_frame(_delta: float) -> State:
 	else:
 		parent.hurt = false
 	
-	#if timer == 0:
-		#Knockback()
+	if timer == 0:
+		%MovementCode.Knockback()
+	elif timer > 0:
+		parent.velocity *= 0
 	
 	if !parent.hurt:
 		if parent.is_on_floor():
@@ -32,10 +31,3 @@ func process_frame(_delta: float) -> State:
 			return fall_state
 	return null
 	
-
-func Knockback() -> void:
-	%CollisionShape2D.set_deferred("disabled", false)
-	if saved_velocity.y != 0:
-		parent.velocity.y += knockbackvector.y
-	parent.velocity.x += knockbackvector.x*parent.direction
-	parent.move_and_slide()

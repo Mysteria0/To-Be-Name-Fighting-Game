@@ -33,10 +33,12 @@ texture_progress = ExtResource("6_5vw27")
 script = ExtResource("1_1bvp3")
 
 [node name="Projectile" parent="." unique_id=1469835593 instance=ExtResource("7_272bh")]
-position = Vector2(1258, 939)
+position = Vector2(780, 960)
+collision_layer = 4
+collision_mask = 6
 projectileDamage = 77
-projectileHitstop = 30
+projectileHitstop = 100
 projectileMovementvector = Vector2i(-1000, 0)
 projectileHits = 2
-KnockbackOnGroundhit = Vector2(-100, 0)
-KnockbackOnAirhit = Vector2(-100, -200)
+KnockbackOnGroundhit = Vector2i(-500, -50)
+KnockbackOnAirhit = Vector2i(-100, -400)
