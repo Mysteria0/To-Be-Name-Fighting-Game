@@ -34,13 +34,13 @@ script = ExtResource("1_1bvp3")
 
 [node name="Projectile" parent="." unique_id=1469835593 instance=ExtResource("7_272bh")]
 position = Vector2(780, 960)
-lock_rotation = true
+continuous_cd = 1
 projectileDamage = 77
 HitstunOnGroundhit = 14
 HitstunOnAirhit = 30
-Hitstop = 6
+Hitstop = 4
 projectileHits = 1
-projectileMovementvector = Vector2i(-32, 0)
+projectileMovementvector = Vector2i(-32, 32)
 KnockbackOnGroundhit = Vector2i(-400, -300)
 KnockbackOnAirhit = Vector2i(-400, -300)
 

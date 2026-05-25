@@ -19,6 +19,7 @@ extends RigidBody2D
 @export var KnockbackOnAirhit : Vector2i
 
 var disabledtimer : int
+var dead : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,17 +34,21 @@ func _process(delta: float) -> void:
 		disabledtimer = -1
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	state.apply_force(projectileMovementvector)
-
+	state.transform.origin = global_position
+	
+func _physics_process(delta: float) -> void:
+	apply_force(projectileMovementvector)
 
 
 func _on_body_entered(body: Node) -> void:
-	$CollisionShape2D.set_deferred("disabled", true)
-	disabledtimer = Hitstop+1
+	if !dead and body != TileMapLayer:
+		$CollisionShape2D.set_deferred("disabled", true)
+		disabledtimer = Hitstop+1
+		%Player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit)
 	projectileHits -= 1
 	if projectileHits <= 0:
 		$Sprite2D.play("Explode")
-	%Player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit)
+		dead = true
 
 
 func _on_sprite_2d_animation_finished() -> void:
