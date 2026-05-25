@@ -4,24 +4,20 @@ extends State
 @export var idle_state : State
 
 var Hitstun : int
-var timer : int
+var hitstop : int
 
 func enter() -> void:
 	super()
-	timer = 1
 
-func process_frame(delta: float) -> State:
-	if timer == 0:
-		%MovementCode.Knockback(delta)
-	elif timer == 1:
-		parent.velocity *= 0
-		%MovementCode.Knockback(delta,parent.velocity*-10000)
-	elif timer < 0:
-		%MovementCode.Move_Character(5,delta)
+func process_frame(_delta: float) -> State:
+	if hitstop == 0:
+		%MovementCode.Knockback()
+	elif hitstop < 0:
+		%MovementCode.Move_Character(5)
 		
 	if Hitstun > 0:
 		Hitstun -= 1
-		timer -= 1
+		hitstop -= 1
 	else:
 		parent.hurt = false
 		

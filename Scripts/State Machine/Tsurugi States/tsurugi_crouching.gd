@@ -19,8 +19,8 @@ func process_input(_event: InputEvent) -> State:
 		return move_state
 	return null
 	
-func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character(5,delta)
+func process_physics(_delta: float) -> State:
+	%MovementCode.Move_Character(5)
 	return null
 
 func process_frame(_delta: float) -> State:

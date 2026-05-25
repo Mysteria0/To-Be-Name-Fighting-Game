@@ -213,9 +213,9 @@ SpecialsList = Array[Array]([["move_down", "move_left"]])
 [node name="MovementCode" type="Node" parent="." unique_id=423301028 node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("28_vd78s")
-PxPerSECGravity = 1115
-PxPerSECForward = 3125
-PxPerSECBackward = 3075
+PxPerSECGravity = 37
+PxPerSECForward = 35
+PxPerSECBackward = 32
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 

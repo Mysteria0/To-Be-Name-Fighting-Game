@@ -10,6 +10,7 @@ extends State
 
 func enter() -> void:
 	super()
+	%CollisionShape2D.set_deferred("disabled", false)
 	parent.velocity.x = 0
 
 func process_input(_event: InputEvent) -> State:
@@ -23,8 +24,8 @@ func process_input(_event: InputEvent) -> State:
 	return null
 
 
-func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character(5,delta)
+func process_physics(_delta: float) -> State:
+	%MovementCode.Move_Character(5)
 	if !parent.is_on_floor():
 		return fall_state
 	return null

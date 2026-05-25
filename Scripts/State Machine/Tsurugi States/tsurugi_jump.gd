@@ -10,9 +10,9 @@ func enter() -> void:
 	whydoihavetouseaboolean = false
 	parent.velocity.x = 0
 
-func process_physics(delta: float) -> State:
+func process_physics(_delta: float) -> State:
 	if whydoihavetouseaboolean:
-		%MovementCode.Move_Character(StateMachine.Old_input,delta)
+		%MovementCode.Move_Character(StateMachine.Old_input)
 		StateMachine.Old_input = 5
 		return fall_state
 	return null

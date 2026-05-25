@@ -13,8 +13,8 @@ func enter() -> void:
 	hopethisworks = false
 	parent.velocity.x = 0
 
-func process_physics(delta: float) -> State:
-	%MovementCode.Move_Character(5,delta)
+func process_physics(_delta: float) -> State:
+	%MovementCode.Move_Character(5)
 	if hopethisworks:
 		return idle_state
 	return null

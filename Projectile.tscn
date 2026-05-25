@@ -2,11 +2,31 @@
 
 [ext_resource type="Script" uid="uid://d1gk7qoudmkkk" path="res://Scripts/Projectile enemy/projectile.gd" id="1_e7peq"]
 [ext_resource type="Texture2D" uid="uid://b26x1jg1c3i7e" path="res://Sprites/Projectile/Projectile.png" id="1_t7eop"]
+[ext_resource type="Texture2D" uid="uid://jggypfyprmj" path="res://Sprites/Projectile/Explosion_0001.png" id="2_7rt88"]
+[ext_resource type="Texture2D" uid="uid://dxbg2duq3u454" path="res://Sprites/Projectile/Explosion_0002.png" id="3_8apua"]
+[ext_resource type="Texture2D" uid="uid://cwvod3d252vcs" path="res://Sprites/Projectile/Explosion_0003.png" id="4_7t7m1"]
+[ext_resource type="Texture2D" uid="uid://bbq1g2aj6h8r4" path="res://Sprites/Projectile/Explosion_0004.png" id="5_5m0qq"]
+[ext_resource type="Texture2D" uid="uid://ymjc8v63sts1" path="res://Sprites/Projectile/Explosion_0005.png" id="6_6qaup"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7peq"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7rt88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8apua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7t7m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5m0qq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6qaup")
+}],
+"loop": false,
 "name": &"Explode",
 "speed": 5.0
 }, {
@@ -22,31 +42,26 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7peq"]
 size = Vector2(26, 28.5)
 
-[node name="Projectile" type="RigidBody2D" unique_id=1606644341]
+[node name="Projectile" type="RigidBody2D" unique_id=268982929]
 process_priority = 1
 process_physics_priority = 1
-collision_layer = 6
-collision_mask = 4
+collision_layer = 4
+collision_mask = 6
 collision_priority = 2.0
-mass = 1000.0
 gravity_scale = 0.0
-can_sleep = false
-lock_rotation = true
 freeze = true
 freeze_mode = 1
 custom_integrator = true
-continuous_cd = 1
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 4
 script = ExtResource("1_e7peq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1454842833]
 sprite_frames = SubResource("SpriteFrames_e7peq")
-animation = &"Moving"
+animation = &"Explode"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=628955454]
 shape = SubResource("RectangleShape2D_e7peq")
 debug_color = Color(0.8927792, 0.20835721, 0.61766946, 0.41960785)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="hit_opponent" from="." to="." method="_on_hit_opponent"]
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]

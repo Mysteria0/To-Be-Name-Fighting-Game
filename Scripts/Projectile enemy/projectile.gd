@@ -2,12 +2,16 @@ extends RigidBody2D
 
 ## Damage dealt to the target on hit
 @export var projectileDamage : int
-## How long the target stays in their hurt state
-@export var projectileHitstop : int
-## how fast and what direction the projectile goes across the screen
-@export var projectileMovementvector : Vector2i
+## How long the target stays in their hurt state while hit on the ground
+@export var HitstunOnGroundhit : int
+## How long the target stays in their hurt state while hit in the air
+@export var HitstunOnAirhit : int
+## How long the target stays in place after getting hit
+@export var Hitstop : int
 ## How many times the projectile can hit a valid target before it dissapears
 @export var projectileHits : int
+## how fast and what direction the projectile goes across the screen
+@export var projectileMovementvector : Vector2i
 
 ## Knockback dealt to target on grounded hit. negative value to push away, positive value to pull in. Number should be bigger than expected due to friction
 @export var KnockbackOnGroundhit : Vector2i
@@ -15,8 +19,6 @@ extends RigidBody2D
 @export var KnockbackOnAirhit : Vector2i
 
 var disabledtimer : int
-
-signal hit_opponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,17 +32,19 @@ func _process(delta: float) -> void:
 		$CollisionShape2D.set_deferred("disabled", false)
 		disabledtimer = -1
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	state.apply_force(projectileMovementvector)
+
+
 
 func _on_body_entered(body: Node) -> void:
-	hit_opponent.emit()
-
-
-
-func _on_hit_opponent() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
-	disabledtimer = projectileHitstop
+	disabledtimer = Hitstop+1
 	projectileHits -= 1
 	if projectileHits <= 0:
 		$Sprite2D.play("Explode")
-	%Player.Player_hit(projectileDamage,projectileHitstop,KnockbackOnGroundhit,KnockbackOnAirhit)
-	##queue_free()
+	%Player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit)
+
+
+func _on_sprite_2d_animation_finished() -> void:
+	queue_free()

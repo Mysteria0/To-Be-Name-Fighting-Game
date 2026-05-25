@@ -35,13 +35,15 @@ func _process(delta : float) -> void:
 	state_machine.process_frame(delta)
 
 ## Function for handling communication between attack and the hurt state
-func Player_hit(Damage : int, hitstun : int, On_groundedhit : Vector2, On_airhit : Vector2) -> void:
+func Player_hit(Damage : int, Hitstop : int, hitstunGround : int, hitstunAir, On_groundedhit : Vector2, On_airhit : Vector2) -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	hurt = true
 	health -= Damage
-	Hurt_State.Hitstun = hitstun
 	if !is_on_floor():
+		Hurt_State.Hitstun = hitstunAir
 		%MovementCode.knockbackvector = Vector2(On_airhit.x*direction,On_airhit.y)
 	else:
+		Hurt_State.Hitstun = hitstunGround
 		%MovementCode.knockbackvector = Vector2(On_groundedhit.x*direction,On_groundedhit.y)
+	Hurt_State.hitstop = Hitstop
 	state_machine.change_state(Hurt_State)

@@ -17,9 +17,9 @@ func process_input(_event: InputEvent) -> State:
 		return crouching_state
 	return null
 
-func process_physics(delta: float) -> State:
+func process_physics(_delta: float) -> State:
 	if %InputReader.currentMotionInput != 8 and %InputReader.currentMotionInput != 9 and %InputReader.currentMotionInput != 7:
-		%MovementCode.Move_Character(%InputReader.currentMotionInput,delta)
+		%MovementCode.Move_Character(%InputReader.currentMotionInput)
 	return null
 
 func process_frame(_delta: float) -> State:
