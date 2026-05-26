@@ -11,7 +11,7 @@ extends RigidBody2D
 ## How many times the projectile can hit a valid target before it dissapears
 @export var projectileHits : int
 ## how fast and what direction the projectile goes across the screen
-@export var projectileMovementvector : Vector2i
+@export var projectileMovementvector : Vector2
 
 ## Knockback dealt to target on grounded hit. negative value to push away, positive value to pull in. Number should be bigger than expected due to friction
 @export var KnockbackOnGroundhit : Vector2i
@@ -30,26 +30,26 @@ func _process(delta: float) -> void:
 	if disabledtimer > 0:
 		disabledtimer -= 1
 	elif disabledtimer == 0:
-		$CollisionShape2D.set_deferred("disabled", false)
+		$Area2D/Hitbox.set_deferred("disabled", false)
 		disabledtimer = -1
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	state.transform.origin = global_position
-	
+
+
 func _physics_process(delta: float) -> void:
-	apply_force(projectileMovementvector)
+	apply_central_force(projectileMovementvector)
 
-
-func _on_body_entered(body: Node) -> void:
-	if !dead and body != TileMapLayer:
-		$CollisionShape2D.set_deferred("disabled", true)
-		disabledtimer = Hitstop+1
-		%Player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit)
-	projectileHits -= 1
-	if projectileHits <= 0:
-		$Sprite2D.play("Explode")
-		dead = true
 
 
 func _on_sprite_2d_animation_finished() -> void:
 	queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if !dead and body != $CollisionBox and body.is_in_group("Players"):
+		$Area2D/Hitbox.set_deferred("disabled", true)
+		disabledtimer = Hitstop+1
+		%Player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit)
+		projectileHits -= 1
+	if projectileHits <= 0:
+		$Sprite2D.play("Explode")
+		dead = true

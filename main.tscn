@@ -39,8 +39,8 @@ projectileDamage = 77
 HitstunOnGroundhit = 14
 HitstunOnAirhit = 30
 Hitstop = 4
-projectileHits = 1
-projectileMovementvector = Vector2i(-32, 32)
+projectileHits = 999
+projectileMovementvector = Vector2(30, 15)
 KnockbackOnGroundhit = Vector2i(-400, -300)
 KnockbackOnAirhit = Vector2i(-400, -300)
 

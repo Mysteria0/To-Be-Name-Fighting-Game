@@ -31,6 +31,10 @@ window/vsync/vsync_mode=0
 
 frames=false
 
+[global_group]
+
+Players=""
+
 [input]
 
 action_a={
