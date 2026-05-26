@@ -23,7 +23,7 @@ var dead : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	apply_central_impulse(projectileMovementvector)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,8 +36,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	apply_central_force(projectileMovementvector)
-
+	pass
 
 
 func _on_sprite_2d_animation_finished() -> void:
@@ -47,9 +46,11 @@ func _on_sprite_2d_animation_finished() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if !dead and body != $CollisionBox and body.is_in_group("Players"):
 		$Area2D/Hitbox.set_deferred("disabled", true)
-		disabledtimer = Hitstop+1
+		disabledtimer = Hitstop*2
 		%Player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit)
 		projectileHits -= 1
 	if projectileHits <= 0:
 		$Sprite2D.play("Explode")
+		$Area2D/Hitbox.set_deferred("disabled", true)
+		$CollisionBox.set_deferred("disabled", true)
 		dead = true

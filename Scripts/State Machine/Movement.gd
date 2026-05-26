@@ -9,7 +9,7 @@ class_name MovementCode extends Node
 
 var knockbackvector : Vector2i
 
-var Horizontaljump : int = 133
+var Horizontaljump : int = 195
 var PxPerSECJump : int = 825
 
 func Move_Character(input : int, override : int = 0) -> void:
@@ -34,4 +34,5 @@ func Knockback(Override : Vector2i = Vector2i(0,0)) -> void:
 	else:
 		parent.velocity.y += Override.y
 		parent.velocity.x += Override.x*parent.direction
+	parent.velocityfixer = true
 	parent.move_and_slide()

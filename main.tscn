@@ -36,12 +36,12 @@ script = ExtResource("1_1bvp3")
 position = Vector2(780, 960)
 continuous_cd = 1
 projectileDamage = 77
-HitstunOnGroundhit = 14
-HitstunOnAirhit = 30
-Hitstop = 4
-projectileHits = 999
-projectileMovementvector = Vector2(30, 15)
-KnockbackOnGroundhit = Vector2i(-400, -300)
-KnockbackOnAirhit = Vector2i(-400, -300)
+HitstunOnGroundhit = 30
+HitstunOnAirhit = 60
+Hitstop = 6
+projectileHits = 3
+projectileMovementvector = Vector2(-125, 0)
+KnockbackOnGroundhit = Vector2i(-300, -233)
+KnockbackOnAirhit = Vector2i(-250, -400)
 
 [connection signal="body_entered" from="Projectile" to="Projectile" method="_on_body_entered"]

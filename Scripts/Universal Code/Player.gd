@@ -17,7 +17,7 @@ extends CharacterBody2D
 var health : int
 var hurt : bool
 var direction : int # value 1 means facing right, value -1 means facing left
-
+var velocityfixer : bool
 
 func _ready() -> void:
 	state_machine.init(self)
@@ -31,12 +31,20 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta : float) -> void:
 	state_machine.process_physics(delta)
 
+	if velocityfixer:
+		if velocity.x != 0:
+			velocity.x *= 0.95
+		if velocity.y != 0:
+			velocity.y *= 0.99
+		if velocity.length() == 0:
+			velocityfixer = 0
+		
+
 func _process(delta : float) -> void:
 	state_machine.process_frame(delta)
 
 ## Function for handling communication between attack and the hurt state
 func Player_hit(Damage : int, Hitstop : int, hitstunGround : int, hitstunAir, On_groundedhit : Vector2, On_airhit : Vector2) -> void:
-	$CollisionShape2D.set_deferred("disabled", true)
 	hurt = true
 	health -= Damage
 	if !is_on_floor():
