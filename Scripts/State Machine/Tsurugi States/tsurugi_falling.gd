@@ -4,7 +4,6 @@ extends State
 @export var hurt_state : State
 
 func enter() -> void:
-	%CollisionShape2D.set_deferred("disabled", false)
 	super()
 	
 

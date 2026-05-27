@@ -23,7 +23,7 @@ var dead : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	apply_central_impulse(projectileMovementvector)
+	linear_velocity = projectileMovementvector
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,4 +53,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$Sprite2D.play("Explode")
 		$Area2D/Hitbox.set_deferred("disabled", true)
 		$CollisionBox.set_deferred("disabled", true)
+		linear_velocity *= 0
 		dead = true

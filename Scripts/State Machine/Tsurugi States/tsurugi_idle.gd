@@ -10,7 +10,6 @@ extends State
 
 func enter() -> void:
 	super()
-	%CollisionShape2D.set_deferred("disabled", false)
 	parent.velocity.x = 0
 
 func process_input(_event: InputEvent) -> State:

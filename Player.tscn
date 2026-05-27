@@ -31,9 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="27_yt0h1"]
 [ext_resource type="Script" uid="uid://c344dhuvt3awv" path="res://Scripts/State Machine/Movement.gd" id="28_vd78s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
-size = Vector2(23, 54)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
 animations = [{
 "frames": [{
@@ -129,6 +126,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jgrc"]
+size = Vector2(16, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
+size = Vector2(23, 54)
+
 [node name="Player" type="CharacterBody2D" unique_id=560191563 node_paths=PackedStringArray("Hurt_State") groups=["Players"]]
 collision_layer = 2
 collision_mask = 3
@@ -194,12 +197,6 @@ idle_state = NodePath("../Tsurugi Idle")
 animation_name = "Hurt"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=603263447]
-unique_name_in_owner = true
-z_index = 1
-position = Vector2(-0.5, 5)
-shape = SubResource("RectangleShape2D_itxgx")
-
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
 animation = &"Hurt"
@@ -218,6 +215,18 @@ PxPerSECForward = 35
 PxPerSECBackward = 32
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
+
+[node name="Collisionbox" type="ShapeCast2D" parent="." unique_id=1249280503]
+position = Vector2(0, 21)
+shape = SubResource("RectangleShape2D_1jgrc")
+target_position = Vector2(0, 0)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=87488767]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=603263447]
+z_index = 1
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_itxgx")
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Landing" method="_on_sprites_animation_finished"]

@@ -25,14 +25,13 @@ func Move_Character(input : int, override : int = 0) -> void:
 		parent.velocity.x =  Horizontaljump if input == 9 else -Horizontaljump
 	parent.move_and_slide()
 
-func Knockback(Override : Vector2i = Vector2i(0,0)) -> void:
+func Knockback(Override : Vector2i = Vector2i()) -> void:
 	%CollisionShape2D.set_deferred("disabled", false)
-	parent.velocity = Vector2i()
+	parent.velocity *= 0
 	if Override == Vector2i():
 		parent.velocity.y += knockbackvector.y
 		parent.velocity.x += knockbackvector.x*parent.direction
 	else:
 		parent.velocity.y += Override.y
 		parent.velocity.x += Override.x*parent.direction
-	parent.velocityfixer = true
 	parent.move_and_slide()

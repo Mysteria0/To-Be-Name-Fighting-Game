@@ -1,5 +1,6 @@
-CollisionShape2D
 Area2D
+ShapeCast2D
+CollisionShape2D
 RigidBody2D
 StaticBody2D
 AnimatedSprite2D
@@ -11,4 +12,3 @@ Node
 Button
 OptionButton
 HSlider
-VBoxContainer

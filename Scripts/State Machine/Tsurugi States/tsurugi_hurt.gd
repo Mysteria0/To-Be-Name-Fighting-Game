@@ -12,6 +12,7 @@ func enter() -> void:
 func process_frame(_delta: float) -> State:
 	if hitstop == 0:
 		%MovementCode.Knockback()
+		parent.velocityfixer = true
 	elif hitstop < 0:
 		%MovementCode.Move_Character(5)
 		
