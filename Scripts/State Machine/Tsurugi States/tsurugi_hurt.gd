@@ -12,9 +12,9 @@ func enter() -> void:
 func process_frame(_delta: float) -> State:
 	if hitstop == 0:
 		%MovementCode.Knockback()
-		parent.velocityfixer = true
-	elif hitstop < 0:
+	if hitstop < 0:
 		%MovementCode.Move_Character(5)
+	parent.move_and_slide()
 		
 	if Hitstun > 0:
 		Hitstun -= 1

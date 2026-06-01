@@ -29,9 +29,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if disabledtimer > 0:
 		disabledtimer -= 1
+		linear_velocity *= 0
 	elif disabledtimer == 0:
 		$Area2D/Hitbox.set_deferred("disabled", false)
 		disabledtimer = -1
+	elif disabledtimer == -1:
+		linear_velocity = projectileMovementvector
+		disabledtimer = -2
 
 
 
@@ -43,10 +47,13 @@ func _on_sprite_2d_animation_finished() -> void:
 	queue_free()
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if !dead and body != $CollisionBox and body.is_in_group("Players"):
+
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if !dead and area != $CollisionBox:
 		$Area2D/Hitbox.set_deferred("disabled", true)
-		disabledtimer = Hitstop*2
+		disabledtimer = Hitstop
 		%Player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit)
 		projectileHits -= 1
 	if projectileHits <= 0:
@@ -54,4 +61,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$Area2D/Hitbox.set_deferred("disabled", true)
 		$CollisionBox.set_deferred("disabled", true)
 		linear_velocity *= 0
+		disabledtimer = -2
 		dead = true

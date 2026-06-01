@@ -3,14 +3,14 @@ class_name MovementCode extends Node
 @export var PxPerSECGravity : int
 @export var PxPerSECForward : int
 @export var PxPerSECBackward : int
+@export var PxPerSECJump : int
+@export var Horizontaljump : int
 
 @export var parent : CharacterBody2D
 
 
-var knockbackvector : Vector2i
+var knockbackvector : Vector2
 
-var Horizontaljump : int = 195
-var PxPerSECJump : int = 825
 
 func Move_Character(input : int, override : int = 0) -> void:
 	if input == 5:
@@ -25,13 +25,10 @@ func Move_Character(input : int, override : int = 0) -> void:
 		parent.velocity.x =  Horizontaljump if input == 9 else -Horizontaljump
 	parent.move_and_slide()
 
-func Knockback(Override : Vector2i = Vector2i()) -> void:
-	%CollisionShape2D.set_deferred("disabled", false)
+func Knockback() -> void:
 	parent.velocity *= 0
-	if Override == Vector2i():
-		parent.velocity.y += knockbackvector.y
-		parent.velocity.x += knockbackvector.x*parent.direction
-	else:
-		parent.velocity.y += Override.y
-		parent.velocity.x += Override.x*parent.direction
+	
+	parent.velocity.y += knockbackvector.y
+	parent.velocity.x += knockbackvector.x
+
 	parent.move_and_slide()

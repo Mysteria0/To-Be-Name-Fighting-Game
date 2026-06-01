@@ -126,15 +126,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jgrc"]
-size = Vector2(16, 22)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
 size = Vector2(23, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jgrc"]
+size = Vector2(14.5, 20)
+
 [node name="Player" type="CharacterBody2D" unique_id=560191563 node_paths=PackedStringArray("Hurt_State") groups=["Players"]]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
+safe_margin = 0.5
 script = ExtResource("1_kpjcp")
 Max_health = 1000
 Hurt_State = NodePath("state_machine/Tsurugi Hurt")
@@ -213,20 +214,24 @@ script = ExtResource("28_vd78s")
 PxPerSECGravity = 37
 PxPerSECForward = 35
 PxPerSECBackward = 32
+PxPerSECJump = 825
+Horizontaljump = 195
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 
-[node name="Collisionbox" type="ShapeCast2D" parent="." unique_id=1249280503]
-position = Vector2(0, 21)
-shape = SubResource("RectangleShape2D_1jgrc")
-target_position = Vector2(0, 0)
-
 [node name="Area2D" type="Area2D" parent="." unique_id=87488767]
+collision_layer = 4
+collision_mask = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=603263447]
 z_index = 1
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_itxgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13697643]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_1jgrc")
+debug_color = Color(0.66869575, 0.50800633, 0.09378595, 0.41960785)
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
 [connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Landing" method="_on_sprites_animation_finished"]

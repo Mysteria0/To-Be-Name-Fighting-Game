@@ -31,13 +31,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta : float) -> void:
 	state_machine.process_physics(delta)
 
-	if velocityfixer:
-		if velocity.x != 0:
-			velocity.x *= 0.95
-		if velocity.y != 0:
-			velocity.y *= 0.99
-		if velocity.length() == 0:
-			velocityfixer = 0
+	#if velocityfixer:
+		#if velocity.x != 0:
+			#velocity.x *= 0.95
+		#if velocity.y != 0:
+			#velocity.y *= 0.99
+		#if velocity.length() == 0:
+			#velocityfixer = false
 		
 
 func _process(delta : float) -> void:
