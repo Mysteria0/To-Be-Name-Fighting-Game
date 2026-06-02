@@ -15,8 +15,11 @@
 [ext_resource type="Script" uid="uid://bw3qvegd2hf2y" path="res://Scripts/State Machine/Tsurugi States/tsurugi_hurt.gd" id="9_ictha"]
 [ext_resource type="Texture2D" uid="uid://bn4c813rdlmjs" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0004.png" id="9_jatw7"]
 [ext_resource type="Texture2D" uid="uid://bphfabueor6jn" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0001.png" id="10_jatw7"]
+[ext_resource type="Script" uid="uid://yi5b4ua6rb5e" path="res://Scripts/State Machine/Tsurugi States/tsurugi_soft_knockdown.gd" id="10_q26ax"]
 [ext_resource type="Texture2D" uid="uid://qgrlk7bqbj2w" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0001.png" id="10_rv870"]
 [ext_resource type="Texture2D" uid="uid://dlhl70uhxwyat" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0002.png" id="11_efikj"]
+[ext_resource type="Script" uid="uid://cc6kwr1envt7b" path="res://Scripts/State Machine/Tsurugi States/tsurugi_hard_knockdown.gd" id="11_m7dl7"]
+[ext_resource type="Script" uid="uid://dy1pggprssr4m" path="res://Scripts/State Machine/Tsurugi States/tsurugi_rise.gd" id="11_p01ps"]
 [ext_resource type="Texture2D" uid="uid://w4yfqnwpcn8v" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0002.png" id="11_rv870"]
 [ext_resource type="Texture2D" uid="uid://ci4jbuilvba0x" path="res://Sprites/Characters/Tsurugi/Landing/Tsurigi_landing_0003.png" id="12_efikj"]
 [ext_resource type="Texture2D" uid="uid://c8jq2hc3t4mut" path="res://Sprites/Characters/Tsurugi/Walking/Tsurigi_walking_0003.png" id="12_itxgx"]
@@ -27,6 +30,7 @@
 [ext_resource type="Script" uid="uid://qfnn70ya0g85" path="res://Scripts/State Machine/Tsurugi States/tsurugi_moving.gd" id="19_itxgx"]
 [ext_resource type="Script" uid="uid://ddpj7vm1g0de0" path="res://Scripts/State Machine/Tsurugi States/tsurugi_falling.gd" id="20_cgsek"]
 [ext_resource type="Script" uid="uid://b814hhp5atx10" path="res://Scripts/State Machine/Tsurugi States/tsurugi_landing.gd" id="21_0pi4m"]
+[ext_resource type="Texture2D" uid="uid://dvn4m1rpc461g" path="res://Sprites/Characters/Tsurugi/Knockdown/Tsurigi_knockdown_0001.png" id="23_7wy67"]
 [ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="27_yt0h1"]
 [ext_resource type="Script" uid="uid://c344dhuvt3awv" path="res://Scripts/State Machine/Movement.gd" id="28_vd78s"]
@@ -96,6 +100,14 @@ animations = [{
 "loop": false,
 "name": &"Jumping",
 "speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_7wy67")
+}],
+"loop": true,
+"name": &"Knockdown",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -191,16 +203,36 @@ move_state = NodePath("../Tsurugi Moving")
 hurt_state = NodePath("../Tsurugi Hurt")
 animation_name = "Crouching"
 
-[node name="Tsurugi Hurt" type="Node" parent="state_machine" unique_id=1812957764 node_paths=PackedStringArray("fall_state", "idle_state")]
+[node name="Tsurugi Hurt" type="Node" parent="state_machine" unique_id=1812957764 node_paths=PackedStringArray("fall_state", "idle_state", "Soft_knockdown_state", "Hard_knockdown_state")]
 script = ExtResource("9_ictha")
 fall_state = NodePath("../Tsurugi Falling")
 idle_state = NodePath("../Tsurugi Idle")
+Soft_knockdown_state = NodePath("../Tsurugi Soft Knockdown")
+Hard_knockdown_state = NodePath("../Tsurugi Hard Knockdown")
 animation_name = "Hurt"
+metadata/_custom_type_script = "uid://dyhjhlic53fp8"
+
+[node name="Tsurugi Soft Knockdown" type="Node" parent="state_machine" unique_id=404833410 node_paths=PackedStringArray("rise_state")]
+script = ExtResource("10_q26ax")
+rise_state = NodePath("../Tsurugi Rise")
+animation_name = "Knockdown"
+metadata/_custom_type_script = "uid://dyhjhlic53fp8"
+
+[node name="Tsurugi Hard Knockdown" type="Node" parent="state_machine" unique_id=928229690 node_paths=PackedStringArray("rise_state")]
+script = ExtResource("11_m7dl7")
+rise_state = NodePath("../Tsurugi Rise")
+animation_name = "Knockdown"
+metadata/_custom_type_script = "uid://dyhjhlic53fp8"
+
+[node name="Tsurugi Rise" type="Node" parent="state_machine" unique_id=976910688 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("11_p01ps")
+idle_state = NodePath("../Tsurugi Idle")
+animation_name = "Falling"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Hurt"
+animation = &"Knockdown"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
 unique_name_in_owner = true
@@ -224,6 +256,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=603263447]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_itxgx")

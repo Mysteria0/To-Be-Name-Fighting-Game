@@ -31,22 +31,16 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta : float) -> void:
 	state_machine.process_physics(delta)
 
-	#if velocityfixer:
-		#if velocity.x != 0:
-			#velocity.x *= 0.95
-		#if velocity.y != 0:
-			#velocity.y *= 0.99
-		#if velocity.length() == 0:
-			#velocityfixer = false
-		
 
 func _process(delta : float) -> void:
 	state_machine.process_frame(delta)
 
 ## Function for handling communication between attack and the hurt state
-func Player_hit(Damage : int, Hitstop : int, hitstunGround : int, hitstunAir, On_groundedhit : Vector2, On_airhit : Vector2) -> void:
+func Player_hit(Damage : int, Hitstop : int, hitstunGround : int, hitstunAir, On_groundedhit : Vector2, On_airhit : Vector2, Knockdowntype : int) -> void:
 	hurt = true
 	health -= Damage
+	Hurt_State.knockdown = Knockdowntype
+	%Hitbox.set_deferred("disabled",true)
 	if !is_on_floor():
 		Hurt_State.Hitstun = hitstunAir
 		%MovementCode.knockbackvector = Vector2(On_airhit.x*direction,On_airhit.y)

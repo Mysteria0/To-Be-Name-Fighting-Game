@@ -40,8 +40,9 @@ HitstunOnGroundhit = 30
 HitstunOnAirhit = 60
 Hitstop = 6
 projectileHits = 4
+projectileknockdown = "Hard"
 projectileMovementvector = Vector2(-125, 0)
-KnockbackOnGroundhit = Vector2i(-35, -25)
-KnockbackOnAirhit = Vector2i(-35, -25)
+KnockbackOnGroundhit = Vector2i(-35, 0)
+KnockbackOnAirhit = Vector2i(-125, -250)
 
 [connection signal="body_entered" from="Projectile" to="Projectile" method="_on_body_entered"]

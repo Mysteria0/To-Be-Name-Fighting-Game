@@ -40,10 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rt88"]
-size = Vector2(18.75, 19.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8apua"]
-size = Vector2(17.5, 17.5)
+size = Vector2(24.1875, 24.8125)
 
 [node name="Projectile" type="RigidBody2D" unique_id=268982929]
 collision_priority = 2.0
@@ -56,7 +53,7 @@ script = ExtResource("1_e7peq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1454842833]
 sprite_frames = SubResource("SpriteFrames_e7peq")
-animation = &"Explode"
+animation = &"Moving"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1047168147]
 collision_layer = 4
@@ -65,10 +62,6 @@ collision_mask = 4
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1241023939]
 shape = SubResource("RectangleShape2D_7rt88")
 debug_color = Color(0.9174988, 0.17165133, 0.5597732, 0.41960785)
-
-[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=51507377]
-shape = SubResource("RectangleShape2D_8apua")
-debug_color = Color(0.65457684, 0.5179122, 0, 0.41960785)
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

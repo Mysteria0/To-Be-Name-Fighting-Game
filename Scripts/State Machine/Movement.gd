@@ -25,10 +25,14 @@ func Move_Character(input : int, override : int = 0) -> void:
 		parent.velocity.x =  Horizontaljump if input == 9 else -Horizontaljump
 	parent.move_and_slide()
 
-func Knockback() -> void:
+func Knockback(override := Vector2()) -> void:
 	parent.velocity *= 0
 	
-	parent.velocity.y += knockbackvector.y
-	parent.velocity.x += knockbackvector.x
+	if override == Vector2():
+		parent.velocity.y += knockbackvector.y
+		parent.velocity.x += knockbackvector.x
+	else:
+		parent.velocity.y += override.y
+		parent.velocity.x += override.x 
 
 	parent.move_and_slide()
