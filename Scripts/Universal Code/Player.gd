@@ -19,6 +19,8 @@ var hurt : bool
 var direction : int # value 1 means facing right, value -1 means facing left
 var velocityfixer : bool
 
+signal death
+
 func _ready() -> void:
 	state_machine.init(self)
 	health = Max_health
@@ -39,6 +41,8 @@ func _process(delta : float) -> void:
 func Player_hit(Damage : int, Hitstop : int, hitstunGround : int, hitstunAir, On_groundedhit : Vector2, On_airhit : Vector2, Knockdowntype : int) -> void:
 	hurt = true
 	health -= Damage
+	if health <= 0:
+		death.emit()
 	Hurt_State.knockdown = Knockdowntype
 	%Hitbox.set_deferred("disabled",true)
 	if !is_on_floor():

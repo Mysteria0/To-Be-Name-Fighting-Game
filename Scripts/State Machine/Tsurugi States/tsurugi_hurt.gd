@@ -11,6 +11,7 @@ var knockdown : int
 
 func enter() -> void:
 	super()
+	parent.velocity *= 0
 
 func process_frame(_delta: float) -> State:
 	if hitstop == 0:
@@ -23,7 +24,7 @@ func process_frame(_delta: float) -> State:
 	if Hitstun > 0:
 		Hitstun -= 1
 		hitstop -= 1
-	else:
+	elif hitstop <= 0:
 		parent.hurt = false
 		
 	if !parent.hurt:
@@ -36,7 +37,7 @@ func process_frame(_delta: float) -> State:
 				return null
 		elif knockdown == 2:
 			return Soft_knockdown_state
-		else:
+		elif knockdown == 3:
 			return Hard_knockdown_state
 	return null
 	

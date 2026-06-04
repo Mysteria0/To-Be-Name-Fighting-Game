@@ -1,15 +1,14 @@
-res://Scripts/State Machine/State.gd
-ShapeCast2D
 CollisionShape2D
 Area2D
+Sprite2D
+PathFollow2D
+Path2D
+Timer
+ShapeCast2D
 RigidBody2D
 StaticBody2D
 AnimatedSprite2D
 AnimatableBody2D
-Sprite2D
 Node2D
 TextureProgressBar
 Node
-Button
-OptionButton
-HSlider

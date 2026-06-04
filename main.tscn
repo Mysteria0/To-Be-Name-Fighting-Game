@@ -2,22 +2,36 @@
 
 [ext_resource type="PackedScene" uid="uid://crutl3ed34eni" path="res://Player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dpwohectajsnj" path="res://Scripts/Universal Code/healthbar.gd" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://8jgggth7f87q" path="res://Scripts/Universal Code/main.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://cvt0xibjikmr0" path="res://Levels.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://b5hnh8utuu4uv" path="res://Sprites/Hud elements/HP_bar_under.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bw5klleyh53e7" path="res://Sprites/Hud elements/HP_bar_progress.png" id="6_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ckucovdu373to" path="res://Projectile.tscn" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://dftog4i84gtot" path="res://Sprites/Flag/Flag.png" id="9_kek77"]
+
+[sub_resource type="Curve2D" id="Curve2D_272bh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1912, 1020, 1.983471, 116.857765, -1.983471, -116.857765, 1912, 827, 0, 0, 0, 0, 1912, 1020)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(44, 64.5)
 
 [node name="Main" type="Node2D" unique_id=646643995]
+script = ExtResource("1_272bh")
+proj_scene = ExtResource("7_272bh")
 
 [node name="Player" parent="." unique_id=560191563 instance=ExtResource("1_0xm2m")]
 unique_name_in_owner = true
-position = Vector2(586, 930)
+position = Vector2(123, 931)
 scale = Vector2(3, 3)
 
 [node name="Levels" parent="." unique_id=1548540644 instance=ExtResource("3_h2yge")]
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("4_1bvp3")]
+visible = false
 position = Vector2(94, 70)
 
 [node name="Healthbar" type="TextureProgressBar" parent="." unique_id=1647948918]
@@ -32,17 +46,33 @@ texture_under = ExtResource("4_lquwl")
 texture_progress = ExtResource("6_5vw27")
 script = ExtResource("1_1bvp3")
 
-[node name="Projectile" parent="." unique_id=1469835593 instance=ExtResource("7_272bh")]
-position = Vector2(766, 933)
-continuous_cd = 1
-projectileDamage = 77
-HitstunOnGroundhit = 30
-HitstunOnAirhit = 60
-Hitstop = 6
-projectileHits = 4
-projectileknockdown = "Hard"
-projectileMovementvector = Vector2(-125, 0)
-KnockbackOnGroundhit = Vector2i(-35, 0)
-KnockbackOnAirhit = Vector2i(-125, -250)
+[node name="ProjectileTimer" type="Timer" parent="." unique_id=1631484860]
+wait_time = 4.0
+autostart = true
 
-[connection signal="body_entered" from="Projectile" to="Projectile" method="_on_body_entered"]
+[node name="Path2D" type="Path2D" parent="." unique_id=849193828]
+position = Vector2(2041.7666, -503.62418)
+scale = Vector2(-0.07358913, 1.4763155)
+curve = SubResource("Curve2D_272bh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1955235224]
+position = Vector2(1912, 1020)
+rotation = -1.544752
+
+[node name="Goal" type="Sprite2D" parent="." unique_id=1110648054]
+position = Vector2(1815, 962)
+scale = Vector2(2, 2)
+texture = ExtResource("9_kek77")
+
+[node name="Area2D" type="Area2D" parent="Goal" unique_id=1124734987]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/Area2D" unique_id=1708741707]
+position = Vector2(9, -0.25)
+shape = SubResource("RectangleShape2D_kek77")
+
+[connection signal="death" from="Player" to="." method="_on_player_death"]
+[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
+[connection signal="area_entered" from="Goal/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Goal/Area2D" to="." method="_on_area_2d_body_entered"]

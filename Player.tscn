@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://6mknd76gtx3l" path="res://Scripts/State Machine/Tsurugi States/tsurugi_crouching.gd" id="26_3vjad"]
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="27_yt0h1"]
 [ext_resource type="Script" uid="uid://c344dhuvt3awv" path="res://Scripts/State Machine/Movement.gd" id="28_vd78s"]
+[ext_resource type="Script" uid="uid://y3k7eb2go8e3" path="res://Scripts/Universal Code/Player_Hitbox.gd" id="35_48og4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
 animations = [{
@@ -139,7 +140,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
-size = Vector2(23, 54)
+size = Vector2(21, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jgrc"]
 size = Vector2(14.5, 20)
@@ -232,7 +233,7 @@ metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Knockdown"
+animation = &"Idle"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
 unique_name_in_owner = true
@@ -251,14 +252,16 @@ Horizontaljump = 195
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=87488767]
+[node name="Area2D" type="Area2D" parent="." unique_id=87488767 node_paths=PackedStringArray("player") groups=["Players"]]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("35_48og4")
+player = NodePath("..")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=603263447]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-0.5, 5)
+position = Vector2(-0.5, 6)
 shape = SubResource("RectangleShape2D_itxgx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13697643]
