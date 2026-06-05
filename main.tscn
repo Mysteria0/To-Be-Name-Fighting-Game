@@ -25,7 +25,8 @@ proj_scene = ExtResource("7_272bh")
 
 [node name="Player" parent="." unique_id=560191563 instance=ExtResource("1_0xm2m")]
 unique_name_in_owner = true
-position = Vector2(123, 931)
+visible = true
+position = Vector2(207, 931.00006)
 scale = Vector2(3, 3)
 
 [node name="Levels" parent="." unique_id=1548540644 instance=ExtResource("3_h2yge")]

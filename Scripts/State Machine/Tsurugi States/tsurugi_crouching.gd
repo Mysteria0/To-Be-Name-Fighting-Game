@@ -5,11 +5,11 @@ extends State
 @export var move_state : State
 @export var hurt_state : State
 
-# Called when the node enters the scene tree for the first time.
+
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
-	%Framedata.Change_Hitbox(Vector2(24,32),Vector2(0,17))
+	%Framedata.Change_Hitbox(Vector2(24,32),Vector2(0,16))
 	
 
 func process_physics(_delta: float) -> State:

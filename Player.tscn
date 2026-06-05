@@ -146,8 +146,10 @@ size = Vector2(21.25, 32)
 size = Vector2(14.5, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=560191563 node_paths=PackedStringArray("Hurt_State") groups=["Players"]]
+visible = false
 collision_layer = 3
 collision_mask = 3
+slide_on_ceiling = false
 safe_margin = 0.5
 script = ExtResource("1_kpjcp")
 Max_health = 1000
@@ -260,10 +262,10 @@ script = ExtResource("35_48og4")
 player = NodePath("..")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Framedata" unique_id=603263447]
-unique_name_in_owner = true
 z_index = 1
 position = Vector2(-0.5, 16)
 shape = SubResource("RectangleShape2D_itxgx")
+debug_color = Color(0.07482498, 0.6496719, 0, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13697643]
 position = Vector2(0, 22)

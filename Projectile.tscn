@@ -42,11 +42,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rt88"]
 size = Vector2(24.1875, 24.8125)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8apua"]
+size = Vector2(34, 32)
+
 [node name="Projectile" type="RigidBody2D" unique_id=268982929 groups=["Projectiles"]]
 collision_priority = 2.0
 gravity_scale = 0.0
 lock_rotation = true
 freeze_mode = 1
+custom_integrator = true
+continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_e7peq")
@@ -63,5 +68,10 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_7rt88")
 debug_color = Color(0.9174988, 0.17165133, 0.5597732, 0.41960785)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1468949701]
+shape = SubResource("RectangleShape2D_8apua")
+debug_color = Color(0.52409035, 0.57357526, 0, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

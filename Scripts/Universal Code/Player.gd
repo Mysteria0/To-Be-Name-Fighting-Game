@@ -44,7 +44,7 @@ func Player_hit(Damage : int, Hitstop : int, hitstunGround : int, hitstunAir, On
 	if health <= 0:
 		death.emit()
 	Hurt_State.knockdown = Knockdowntype
-	%Hitbox.set_deferred("disabled",true)
+	%Framedata.set_deferred("disabled",true)
 	if !is_on_floor():
 		Hurt_State.Hitstun = hitstunAir
 		%MovementCode.knockbackvector = Vector2(On_airhit.x*direction,On_airhit.y)
