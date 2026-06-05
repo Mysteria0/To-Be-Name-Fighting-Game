@@ -13,7 +13,7 @@ func _on_projectile_timer_timeout() -> void:
 	proj.position = proj_spawn.position
 	
 	proj.projectileknockdown = "None"
-	proj.projectileHits = 4
+	proj.projectileHits = 1
 	proj.projectileDamage = 100
 	proj.projectileMovementvector = Vector2(randf_range(-200,-100),randf_range(-15,15))
 	proj.Hitstop = 4

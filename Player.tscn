@@ -140,7 +140,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
-size = Vector2(21, 52)
+size = Vector2(21.25, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jgrc"]
 size = Vector2(14.5, 20)
@@ -233,7 +233,7 @@ metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Idle"
+animation = &"Crouching"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
 unique_name_in_owner = true
@@ -252,16 +252,17 @@ Horizontaljump = 195
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=87488767 node_paths=PackedStringArray("player") groups=["Players"]]
+[node name="Framedata" type="Area2D" parent="." unique_id=87488767 node_paths=PackedStringArray("player") groups=["Players"]]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("35_48og4")
 player = NodePath("..")
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=603263447]
+[node name="Hitbox" type="CollisionShape2D" parent="Framedata" unique_id=603263447]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-0.5, 6)
+position = Vector2(-0.5, 16)
 shape = SubResource("RectangleShape2D_itxgx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13697643]

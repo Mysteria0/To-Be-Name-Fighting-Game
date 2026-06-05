@@ -12,6 +12,7 @@ var knockdown : int
 func enter() -> void:
 	super()
 	parent.velocity *= 0
+	%Framedata.Change_Hitbox(Vector2(24,52),Vector2(-0.5,6))
 
 func process_frame(_delta: float) -> State:
 	if hitstop == 0:
