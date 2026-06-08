@@ -67,6 +67,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		dead = true
 
 
-#func _on_body_entered(body: Node) -> void:
-	#if body.
-		#linear_velocity = -projectileMovementvector
+func _on_body_entered(body: Node) -> void:
+	if body is TileMapLayer:
+		$Sprite2D.play("Explode")
+		$Area2D/Hitbox.set_deferred("disabled", true)
+		linear_velocity *= 0
+		disabledtimer = -2
+		dead = true

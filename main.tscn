@@ -10,14 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://ckucovdu373to" path="res://Projectile.tscn" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://dftog4i84gtot" path="res://Sprites/Flag/Flag.png" id="9_kek77"]
 
-[sub_resource type="Curve2D" id="Curve2D_272bh"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1912, 1020, 1.983471, 116.857765, -1.983471, -116.857765, 1912, 827, 0, 0, 0, 0, 1912, 1020)
-}
-point_count = 3
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
 size = Vector2(44, 64.5)
+
+[sub_resource type="Curve2D" id="Curve2D_kek77"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1759, 1040, 0, 0, 0, 0, 1759, 791)
+}
+point_count = 2
 
 [node name="Main" type="Node2D" unique_id=646643995]
 script = ExtResource("1_272bh")
@@ -51,17 +51,8 @@ script = ExtResource("1_1bvp3")
 wait_time = 4.0
 autostart = true
 
-[node name="Path2D" type="Path2D" parent="." unique_id=849193828]
-position = Vector2(2041.7666, -503.62418)
-scale = Vector2(-0.07358913, 1.4763155)
-curve = SubResource("Curve2D_272bh")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1955235224]
-position = Vector2(1912, 1020)
-rotation = -1.544752
-
-[node name="Goal" type="Sprite2D" parent="." unique_id=1110648054]
-position = Vector2(1815, 962)
+[node name="Goal" type="Sprite2D" parent="." unique_id=1110648054 groups=["Objects"]]
+position = Vector2(1758, 962)
 scale = Vector2(2, 2)
 texture = ExtResource("9_kek77")
 
@@ -70,8 +61,16 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/Area2D" unique_id=1708741707]
-position = Vector2(9, -0.25)
+position = Vector2(9, 0)
 shape = SubResource("RectangleShape2D_kek77")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=970036583]
+position = Vector2(150, -25)
+curve = SubResource("Curve2D_kek77")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=300441376]
+position = Vector2(1759, 1040)
+rotation = -1.5707964
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]

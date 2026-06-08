@@ -1,9 +1,9 @@
+PathFollow2D
+Path2D
 CollisionShape2D
 CollisionPolygon2D
 Area2D
 Sprite2D
-PathFollow2D
-Path2D
 Timer
 ShapeCast2D
 RigidBody2D

@@ -35,6 +35,8 @@ frames=false
 
 Players=""
 Projectiles=""
+Objects=""
+World=""
 
 [input]
 

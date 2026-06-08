@@ -146,10 +146,14 @@ size = Vector2(21.25, 32)
 size = Vector2(14.5, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=560191563 node_paths=PackedStringArray("Hurt_State") groups=["Players"]]
+process_mode = 1
+process_physics_priority = 1
+physics_interpolation_mode = 1
 visible = false
 collision_layer = 3
 collision_mask = 3
 slide_on_ceiling = false
+platform_on_leave = 2
 safe_margin = 0.5
 script = ExtResource("1_kpjcp")
 Max_health = 1000
@@ -246,11 +250,11 @@ SpecialsList = Array[Array]([["move_down", "move_left"]])
 [node name="MovementCode" type="Node" parent="." unique_id=423301028 node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("28_vd78s")
-PxPerSECGravity = 37
-PxPerSECForward = 35
-PxPerSECBackward = 32
+PxPerSECGravity = 40
+PxPerSECForward = 52
+PxPerSECBackward = 45
 PxPerSECJump = 825
-Horizontaljump = 195
+Horizontaljump = 170
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 

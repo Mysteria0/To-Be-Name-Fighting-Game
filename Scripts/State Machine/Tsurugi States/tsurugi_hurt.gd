@@ -21,6 +21,9 @@ func process_frame(_delta: float) -> State:
 	if hitstop < 0:
 		%MovementCode.Move_Character(5)
 	parent.move_and_slide()
+	
+	if parent.is_on_floor():
+		parent.velocity *= 0
 		
 	if Hitstun > 0:
 		Hitstun -= 1
