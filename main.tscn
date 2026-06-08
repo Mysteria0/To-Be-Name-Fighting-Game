@@ -9,13 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bw5klleyh53e7" path="res://Sprites/Hud elements/HP_bar_progress.png" id="6_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ckucovdu373to" path="res://Projectile.tscn" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://dftog4i84gtot" path="res://Sprites/Flag/Flag.png" id="9_kek77"]
+[ext_resource type="Script" uid="uid://d1mqrij4i4q6o" path="res://Scripts/Universal Code/goal.gd" id="10_4c57u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
 size = Vector2(44, 64.5)
 
-[sub_resource type="Curve2D" id="Curve2D_kek77"]
+[sub_resource type="Curve2D" id="Curve2D_4c57u"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1759, 1040, 0, 0, 0, 0, 1759, 791)
+"points": PackedVector2Array(0, 0, 0, 0, 1850, 1000, 0, 0, 0, 0, 1850, 875)
 }
 point_count = 2
 
@@ -25,7 +26,6 @@ proj_scene = ExtResource("7_272bh")
 
 [node name="Player" parent="." unique_id=560191563 instance=ExtResource("1_0xm2m")]
 unique_name_in_owner = true
-visible = true
 position = Vector2(207, 931.00006)
 scale = Vector2(3, 3)
 
@@ -47,14 +47,11 @@ texture_under = ExtResource("4_lquwl")
 texture_progress = ExtResource("6_5vw27")
 script = ExtResource("1_1bvp3")
 
-[node name="ProjectileTimer" type="Timer" parent="." unique_id=1631484860]
-wait_time = 4.0
-autostart = true
-
 [node name="Goal" type="Sprite2D" parent="." unique_id=1110648054 groups=["Objects"]]
 position = Vector2(1758, 962)
 scale = Vector2(2, 2)
 texture = ExtResource("9_kek77")
+script = ExtResource("10_4c57u")
 
 [node name="Area2D" type="Area2D" parent="Goal" unique_id=1124734987]
 collision_layer = 3
@@ -64,15 +61,22 @@ collision_mask = 3
 position = Vector2(9, 0)
 shape = SubResource("RectangleShape2D_kek77")
 
-[node name="Path2D" type="Path2D" parent="." unique_id=970036583]
-position = Vector2(150, -25)
-curve = SubResource("Curve2D_kek77")
+[node name="Timer" type="Timer" parent="." unique_id=46410742]
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=300441376]
-position = Vector2(1759, 1040)
+[node name="Path2D" type="Path2D" parent="." unique_id=2127056867]
+curve = SubResource("Curve2D_4c57u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=866252192]
+position = Vector2(1850, 1000)
 rotation = -1.5707964
 
+[node name="StartPosition" type="Marker2D" parent="." unique_id=1746181606]
+unique_name_in_owner = true
+position = Vector2(207, 931.00006)
+scale = Vector2(3, 3)
+
 [connection signal="death" from="Player" to="." method="_on_player_death"]
-[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
-[connection signal="area_entered" from="Goal/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Goal/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="Next_level" from="Goal" to="." method="_on_goal_next_level"]
+[connection signal="Next_level" from="Goal" to="Player" method="_on_goal_next_level"]
+[connection signal="body_entered" from="Goal/Area2D" to="Goal" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

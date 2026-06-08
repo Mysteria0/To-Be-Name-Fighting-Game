@@ -24,6 +24,7 @@ signal death
 func _ready() -> void:
 	state_machine.init(self)
 	health = Max_health
+	position = %StartPosition.global_position
 	direction = 1
 
 
@@ -53,3 +54,7 @@ func Player_hit(Damage : int, Hitstop : int, hitstunGround : int, hitstunAir, On
 		%MovementCode.knockbackvector = Vector2(On_groundedhit.x*direction,On_groundedhit.y)
 	Hurt_State.hitstop = Hitstop
 	state_machine.change_state(Hurt_State)
+
+
+func _on_goal_next_level() -> void:
+	position = %StartPosition.global_position

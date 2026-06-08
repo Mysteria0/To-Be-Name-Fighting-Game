@@ -1,3 +1,4 @@
+class_name projectile 
 extends RigidBody2D
 
 ## Damage dealt to the target on hit
