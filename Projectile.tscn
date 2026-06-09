@@ -7,9 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://cwvod3d252vcs" path="res://Sprites/Projectile/Explosion_0003.png" id="4_7t7m1"]
 [ext_resource type="Texture2D" uid="uid://bbq1g2aj6h8r4" path="res://Sprites/Projectile/Explosion_0004.png" id="5_5m0qq"]
 [ext_resource type="Texture2D" uid="uid://ymjc8v63sts1" path="res://Sprites/Projectile/Explosion_0005.png" id="6_6qaup"]
+[ext_resource type="Texture2D" uid="uid://d2c0k2s23yn83" path="res://Sprites/Projectile/Level_2.png" id="8_7t7m1"]
+[ext_resource type="Texture2D" uid="uid://dvaip8x64lu3f" path="res://Sprites/Projectile/Level_2_Explosion_001.png" id="9_5m0qq"]
+[ext_resource type="Texture2D" uid="uid://b6mdg5a4jq3k0" path="res://Sprites/Projectile/Level_2_Explosion_002.png" id="10_5m0qq"]
+[ext_resource type="Texture2D" uid="uid://dgrvq7btiobw6" path="res://Sprites/Projectile/Level_3.png" id="11_h0pko"]
+[ext_resource type="Texture2D" uid="uid://pxf0q4a60nbx" path="res://Sprites/Projectile/Level_3_Explosion_001.png" id="12_7bwtv"]
+[ext_resource type="Texture2D" uid="uid://re6q58at6qin" path="res://Sprites/Projectile/Level_3_Explosion_002.png" id="13_j4qf7"]
+[ext_resource type="Texture2D" uid="uid://b82ncjhwcw0v6" path="res://Sprites/Projectile/Level_3_Explosion_003.png" id="14_7v4d7"]
+[ext_resource type="Texture2D" uid="uid://bobaofo4ckkra" path="res://Sprites/Projectile/Level_3_Explosion_004.png" id="15_ahwfu"]
+[ext_resource type="Script" uid="uid://bbatwie6m1ph8" path="res://Scripts/Projectile enemy/area_2d.gd" id="16_7bwtv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7peq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t7eop")
+}],
+"loop": true,
+"name": &"Level_1",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_7rt88")
@@ -27,15 +44,51 @@ animations = [{
 "texture": ExtResource("6_6qaup")
 }],
 "loop": false,
-"name": &"Explode",
+"name": &"Level_1_Explode",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t7eop")
+"texture": ExtResource("8_7t7m1")
 }],
 "loop": true,
-"name": &"Moving",
+"name": &"Level_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5m0qq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5m0qq")
+}],
+"loop": false,
+"name": &"Level_2_Explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_h0pko")
+}],
+"loop": true,
+"name": &"Level_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7bwtv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_j4qf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7v4d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ahwfu")
+}],
+"loop": false,
+"name": &"Level_3_Explode",
 "speed": 5.0
 }]
 
@@ -52,18 +105,21 @@ gravity_scale = 0.0
 lock_rotation = true
 freeze_mode = 1
 custom_integrator = true
-continuous_cd = 2
+continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_e7peq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1454842833]
 sprite_frames = SubResource("SpriteFrames_e7peq")
-animation = &"Moving"
+animation = &"Level_3_Explode"
+frame = 3
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1047168147 groups=["Projectiles"]]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("16_7bwtv")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1241023939]
 shape = SubResource("RectangleShape2D_7rt88")

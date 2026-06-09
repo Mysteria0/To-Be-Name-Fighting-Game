@@ -238,7 +238,7 @@ metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Crouching"
+animation = &"Idle"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
 unique_name_in_owner = true

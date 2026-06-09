@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://crutl3ed34eni" path="res://Player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dpwohectajsnj" path="res://Scripts/Universal Code/healthbar.gd" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://8jgggth7f87q" path="res://Scripts/Universal Code/main.gd" id="1_272bh"]
+[ext_resource type="PackedScene" uid="uid://ckucovdu373to" path="res://Projectile.tscn" id="2_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cvt0xibjikmr0" path="res://Levels.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ddm5kuncpnusr" path="res://Input Reader.tscn" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://b5hnh8utuu4uv" path="res://Sprites/Hud elements/HP_bar_under.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bw5klleyh53e7" path="res://Sprites/Hud elements/HP_bar_progress.png" id="6_5vw27"]
-[ext_resource type="PackedScene" uid="uid://ckucovdu373to" path="res://Projectile.tscn" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://dftog4i84gtot" path="res://Sprites/Flag/Flag.png" id="9_kek77"]
 [ext_resource type="Script" uid="uid://d1mqrij4i4q6o" path="res://Scripts/Universal Code/goal.gd" id="10_4c57u"]
 
@@ -22,7 +22,7 @@ point_count = 2
 
 [node name="Main" type="Node2D" unique_id=646643995]
 script = ExtResource("1_272bh")
-proj_scene = ExtResource("7_272bh")
+Proj_scene = ExtResource("2_4c57u")
 
 [node name="Player" parent="." unique_id=560191563 instance=ExtResource("1_0xm2m")]
 unique_name_in_owner = true

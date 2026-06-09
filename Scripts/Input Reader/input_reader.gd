@@ -62,7 +62,7 @@ func remove_OldMotionInputs() -> void:
 			memorybuffer += 1
 
 # V = vertical num (2 or 8)
-# H = horizontal num (4 ir 6)
+# H = horizontal num (4 or 6)
 # V-1-(4-H)
 # this is used to calculate the diagonal when two inputs are pressed at the same time
 # now to figure out how to implement it....
@@ -105,4 +105,11 @@ func ConvertNumToaction(Num_to_convert : int) -> String:
 		9:
 			return 'move_rightup'
 	return 'Neutral'
-	
+
+
+func clear() -> void:
+	currentMotionInput = 5
+	currentAttackInput = 'Nothing'
+	RecentMotionInputs = []
+	holdtime = 0
+	memorybuffer = 0

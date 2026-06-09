@@ -10,6 +10,6 @@ func process_physics(_delta: float) -> State:
 	%MovementCode.Move_Character(5)
 	
 	if parent.is_on_floor():
-		%Framedata.set_deferred("disabled",false)
+		%Framedata.set_deferred('disabled',false)
 		return idle_state
 	return null
