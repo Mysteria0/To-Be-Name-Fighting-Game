@@ -98,7 +98,7 @@ size = Vector2(24.09375, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8apua"]
 
 [node name="Projectile" type="RigidBody2D" unique_id=268982929 groups=["Projectiles"]]
-collision_layer = 128
+collision_layer = 8
 collision_mask = 128
 collision_priority = 2.0
 gravity_scale = 0.0

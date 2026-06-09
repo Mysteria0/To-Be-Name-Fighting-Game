@@ -3,12 +3,14 @@ extends Node2D
 @export var Proj_scene : PackedScene
 
 var difficulty : int
+var score : int
 
 func _ready() -> void:
 	get_tree().paused = false
 	var timer = clamp(4-(.25*difficulty),0.4,4)
 	$Timer.start(timer)
 	difficulty += 1
+	$Score/Points.text = str(score)
 
 
 func _on_player_death() -> void:
@@ -57,4 +59,5 @@ func _on_goal_next_level() -> void:
 	for i in children:
 		if i.is_in_group('Projectiles'):
 			i.queue_free()
+	score += 1
 	_ready()
