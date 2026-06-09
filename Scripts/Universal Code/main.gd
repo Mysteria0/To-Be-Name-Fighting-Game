@@ -24,8 +24,15 @@ func _on_player_death() -> void:
 func _on_timer_timeout() -> void:
 	var randomizer = randi_range(1,difficulty)
 	var proj = Proj_scene.instantiate()
-	if randomizer % 3 == 0:
-		projectile_properties(proj,'Hard',4,25,Vector2(-(50+difficulty),0),12,35,40,Vector2(-100,-100),Vector2(-200,-200),'Level_3')
+	var proj_spawn = $Path2D/PathFollow2D
+	proj_spawn.progress_ratio = randi_range(0,1)
+	
+	if randomizer % 4 == 0:
+		projectile_properties(proj,'Soft',1,50,Vector2(-(250+difficulty),0),9,25,30,Vector2(-50,-100),Vector2(-50,-100),'Level_2')
+		proj.change_hitbox(Vector2(30,5),Vector2(0,0))
+		proj_spawn.progress_ratio = 0.6
+	elif randomizer % 3 == 0:
+		projectile_properties(proj,'Hard',4,25,Vector2(-(50+difficulty),0),12,35,40,Vector2(-25,-500),Vector2(-75,-200),'Level_3')
 		proj.change_hitbox(Vector2(30,30),Vector2(0,0))
 	elif randomizer % 2 == 0:
 		projectile_properties(proj,'Soft',2,50,Vector2(-(200+difficulty),0),9,25,30,Vector2(-50,-400),Vector2(-50,-400),'Level_2')
@@ -33,9 +40,6 @@ func _on_timer_timeout() -> void:
 	else:
 		projectile_properties(proj,'None',1,100,Vector2(-(100+difficulty),0),6,15,20,Vector2(-80,-40),Vector2(-65,-300),'Level_1')
 		proj.change_hitbox(Vector2(20,20),Vector2(0,0))
-	
-	var proj_spawn = $Path2D/PathFollow2D
-	proj_spawn.progress_ratio = randi_range(0,1)
 	
 	proj.position = proj_spawn.position
 	

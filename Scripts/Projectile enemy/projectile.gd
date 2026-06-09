@@ -63,7 +63,7 @@ func _on_sprite_2d_animation_finished() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if !dead and !area.is_in_group('Projectiles'):
 		$Area2D/Hitbox.set_deferred('disabled', true)
-		disabledtimer = Hitstop-1
+		disabledtimer = Hitstop
 		area.player.Player_hit(projectileDamage,Hitstop,HitstunOnGroundhit,HitstunOnAirhit,KnockbackOnGroundhit,KnockbackOnAirhit,Knockdowntypes[projectileknockdown])
 		projectileHits -= 1
 	if projectileHits <= 0:
