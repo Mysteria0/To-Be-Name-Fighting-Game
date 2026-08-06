@@ -21,6 +21,8 @@ extends RigidBody2D
 ## Knockback dealt to target on air hit. negative values to push away, positive to pull in. Values should be smaller to produce inteded effects
 @export var KnockbackOnAirhit : Vector2i
 
+@export var Size : Vector2
+@export var Hitbox_pos : Vector2
 
 @export var Sprite : String
 
@@ -37,6 +39,8 @@ var dead : bool
 func _ready() -> void:
 	linear_velocity = projectileMovementvector
 	$Sprite2D.play(Sprite)
+	%Hitbox.shape.size = Size
+	%Hitbox.position = Hitbox_pos
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -49,9 +53,6 @@ func _process(_delta: float) -> void:
 	elif disabledtimer == -1:
 		linear_velocity = projectileMovementvector
 		disabledtimer = -2
-
-func change_hitbox(Shape : Vector2, new_POS : Vector2) -> void:
-	$Area2D.Change_Hitbox(Shape,new_POS)
 
 func _on_sprite_2d_animation_finished() -> void:
 	queue_free()

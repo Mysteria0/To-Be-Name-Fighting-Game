@@ -28,25 +28,21 @@ func _on_timer_timeout() -> void:
 	proj_spawn.progress_ratio = randi_range(0,1)
 	
 	if randomizer % 4 == 0:
-		projectile_properties(proj,'Soft',1,50,Vector2(-(250+difficulty),0),9,25,30,Vector2(-50,-100),Vector2(-50,-100),'Level_2')
-		proj.change_hitbox(Vector2(30,5),Vector2(0,0))
-		proj_spawn.progress_ratio = 0.6
+		projectile_properties(proj,'Soft',1,50,Vector2(-(300+difficulty),0),9,25,30,Vector2(-50,-100),Vector2(-50,-100),Vector2(30,5),Vector2(0,0),'Level_2')
+		proj_spawn.progress_ratio = 0.65
 	elif randomizer % 3 == 0:
-		projectile_properties(proj,'Hard',4,25,Vector2(-(50+difficulty),0),12,35,40,Vector2(-25,-500),Vector2(-75,-200),'Level_3')
-		proj.change_hitbox(Vector2(30,30),Vector2(0,0))
+		projectile_properties(proj,'Hard',4,25,Vector2(-(50+difficulty),0),12,35,40,Vector2(-25,-500),Vector2(-75,-200),Vector2(30,30),Vector2(0,0),'Level_3')
 	elif randomizer % 2 == 0:
-		projectile_properties(proj,'Soft',2,50,Vector2(-(200+difficulty),0),9,25,30,Vector2(-50,-400),Vector2(-50,-400),'Level_2')
-		proj.change_hitbox(Vector2(25,15),Vector2(0,0))
+		projectile_properties(proj,'Soft',2,50,Vector2(-(200+difficulty),0),9,25,30,Vector2(-50,-400),Vector2(-50,-400),Vector2(25,15),Vector2(0,0),'Level_2')
 	else:
-		projectile_properties(proj,'None',1,100,Vector2(-(100+difficulty),0),6,15,20,Vector2(-80,-40),Vector2(-65,-300),'Level_1')
-		proj.change_hitbox(Vector2(20,20),Vector2(0,0))
+		projectile_properties(proj,'None',1,100,Vector2(-(100+difficulty),0),6,15,20,Vector2(-80,-40),Vector2(-65,-300),Vector2(20,20),Vector2(0,0),'Level_1')
 	
 	proj.position = proj_spawn.position
 	
 	
 	add_child(proj)
 
-func projectile_properties(proj : RigidBody2D, knockdown : String, hits : int, damage : int, Velocity : Vector2, hitstop : int, hitstunG : int, hitstunA, KnockbackG : Vector2, KnockbackA : Vector2, sprite : String) -> void:
+func projectile_properties(proj : RigidBody2D, knockdown : String, hits : int, damage : int, Velocity : Vector2, hitstop : int, hitstunG : int, hitstunA, KnockbackG : Vector2, KnockbackA : Vector2, Size : Vector2, Pos : Vector2, sprite : String) -> void:
 	proj.projectileknockdown = knockdown
 	proj.projectileHits = hits
 	proj.projectileDamage = damage
@@ -56,6 +52,8 @@ func projectile_properties(proj : RigidBody2D, knockdown : String, hits : int, d
 	proj.HitstunOnAirhit = hitstunA
 	proj.KnockbackOnGroundhit = KnockbackG
 	proj.KnockbackOnAirhit = KnockbackA
+	proj.Size = Size
+	proj.Hitbox_pos = Pos
 	proj.Sprite = sprite
 
 func _on_goal_next_level() -> void:

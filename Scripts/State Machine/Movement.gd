@@ -3,8 +3,10 @@ class_name MovementCode extends Node
 @export var PxPerSECGravity : int
 @export var PxPerSECForward : int
 @export var PxPerSECBackward : int
-@export var PxPerSECJump : int
+@export var PxPerJump : int
 @export var Horizontaljump : int
+@export var PxPerSECFDash : int
+@export var PxPerBDash : int
 
 @export var parent : CharacterBody2D
 
@@ -16,13 +18,17 @@ func Move_Character(input : int, override : int = 0) -> void:
 	if input == 5:
 			parent.velocity.y += PxPerSECGravity if override == 0 else override
 	if input == 8 or input == 7 or input == 9:
-		parent.velocity.y = -PxPerSECJump if override == 0 else -override
+		parent.velocity.y = -PxPerJump if override == 0 else -override
 	if input == 4:
 		parent.velocity.x = -PxPerSECBackward if override == 0 else -override
 	if input == 6:
 		parent.velocity.x = PxPerSECForward if override == 0 else override
 	if input == 7 or input == 9:
 		parent.velocity.x =  Horizontaljump if input == 9 else -Horizontaljump
+	if input == 10:
+		parent.velocity.x = PxPerSECFDash if override == 0 else override
+	if input == 11:
+		parent.velocity.x = -PxPerBDash if override == 0 else override
 	parent.move_and_slide()
 
 func Knockback(override := Vector2()) -> void:

@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://re6q58at6qin" path="res://Sprites/Projectile/Level_3_Explosion_002.png" id="13_j4qf7"]
 [ext_resource type="Texture2D" uid="uid://b82ncjhwcw0v6" path="res://Sprites/Projectile/Level_3_Explosion_003.png" id="14_7v4d7"]
 [ext_resource type="Texture2D" uid="uid://bobaofo4ckkra" path="res://Sprites/Projectile/Level_3_Explosion_004.png" id="15_ahwfu"]
-[ext_resource type="Script" uid="uid://bbatwie6m1ph8" path="res://Scripts/Projectile enemy/area_2d.gd" id="16_7bwtv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7peq"]
 animations = [{
@@ -119,9 +118,9 @@ frame_progress = 1.0
 [node name="Area2D" type="Area2D" parent="." unique_id=1047168147 groups=["Projectiles"]]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("16_7bwtv")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1241023939]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_7rt88")
 debug_color = Color(0.9174988, 0.17165133, 0.5597732, 0.41960785)
 

@@ -5,7 +5,6 @@ extends State
 @export var idle_state : State
 @export var crouching_state : State
 @export var hurt_state : State
-@export var dash_state : State
 
 func enter() -> void:
 	super()
@@ -16,8 +15,6 @@ func process_input(_event: InputEvent) -> State:
 		return jump_state
 	if %InputReader.currentMotionInput == 2:
 		return crouching_state
-	if %InputReader.currentMotionInput == 10:
-		return dash_state
 	return null
 
 func process_physics(_delta: float) -> State:
@@ -29,4 +26,3 @@ func process_frame(_delta: float) -> State:
 	if %InputReader.currentMotionInput == 5:
 		return idle_state
 	return null
-	

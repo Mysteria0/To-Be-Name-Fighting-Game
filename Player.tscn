@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b0k7q8arg07o5" path="res://Sprites/Characters/Tsurugi/Idle/Tsurigi_Idle_0004.png" id="5_itxgx"]
 [ext_resource type="Texture2D" uid="uid://vmkp45m3vmpj" path="res://Sprites/Characters/Tsurugi/Crouching/Tsurigi_Crouching_0004.png" id="5_vd78s"]
 [ext_resource type="Texture2D" uid="uid://d25agmcvyqowe" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png" id="6_oudfo"]
+[ext_resource type="Script" uid="uid://mqo6qaap2x1h" path="res://Scripts/State Machine/Tsurugi States/tsurugi_dash.gd" id="6_xmpta"]
 [ext_resource type="Texture2D" uid="uid://d3psvcgbfbg3s" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png" id="7_d6rpx"]
 [ext_resource type="Texture2D" uid="uid://crkstaoanaknr" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png" id="8_r3kul"]
 [ext_resource type="Script" uid="uid://bw3qvegd2hf2y" path="res://Scripts/State Machine/Tsurugi States/tsurugi_hurt.gd" id="9_ictha"]
@@ -156,83 +157,95 @@ platform_on_leave = 2
 safe_margin = 0.5
 script = ExtResource("1_kpjcp")
 Max_health = 1000
-Hurt_State = NodePath("state_machine/Tsurugi Hurt")
+Hurt_State = NodePath("state_machine/Hurt")
 
 [node name="state_machine" type="Node" parent="." unique_id=1273564144 node_paths=PackedStringArray("starting_state")]
 script = ExtResource("16_jatw7")
-starting_state = NodePath("Tsurugi Idle")
+starting_state = NodePath("Idle")
 
-[node name="Tsurugi Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "crouching_state", "hurt_state")]
+[node name="Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "crouching_state", "hurt_state", "dash_state")]
 script = ExtResource("17_rv870")
-fall_state = NodePath("../Tsurugi Falling")
-jump_state = NodePath("../Tsurugi Jump")
-move_state = NodePath("../Tsurugi Moving")
-crouching_state = NodePath("../Tsurugi Crouching")
-hurt_state = NodePath("../Tsurugi Hurt")
+fall_state = NodePath("../Falling")
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Moving")
+crouching_state = NodePath("../Crouching")
+hurt_state = NodePath("../Hurt")
+dash_state = NodePath("../Dash")
 animation_name = "Idle"
 
-[node name="Tsurugi Jump" type="Node" parent="state_machine" unique_id=2063101655 node_paths=PackedStringArray("fall_state", "hurt_state")]
+[node name="Jump" type="Node" parent="state_machine" unique_id=2063101655 node_paths=PackedStringArray("fall_state", "hurt_state")]
 script = ExtResource("18_efikj")
-fall_state = NodePath("../Tsurugi Falling")
-hurt_state = NodePath("../Tsurugi Hurt")
+fall_state = NodePath("../Falling")
+hurt_state = NodePath("../Hurt")
 animation_name = "Jumping"
 
-[node name="Tsurugi Moving" type="Node" parent="state_machine" unique_id=363548264 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "crouching_state", "hurt_state")]
+[node name="Moving" type="Node" parent="state_machine" unique_id=363548264 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "crouching_state", "hurt_state", "dash_state")]
 script = ExtResource("19_itxgx")
-fall_state = NodePath("../Tsurugi Falling")
-jump_state = NodePath("../Tsurugi Jump")
-idle_state = NodePath("../Tsurugi Idle")
-crouching_state = NodePath("../Tsurugi Crouching")
-hurt_state = NodePath("../Tsurugi Hurt")
+fall_state = NodePath("../Falling")
+jump_state = NodePath("../Jump")
+idle_state = NodePath("../Idle")
+crouching_state = NodePath("../Crouching")
+hurt_state = NodePath("../Hurt")
+dash_state = NodePath("../Dash")
 animation_name = "Walking"
 
-[node name="Tsurugi Falling" type="Node" parent="state_machine" unique_id=1412343906 node_paths=PackedStringArray("landing_state", "hurt_state")]
+[node name="Dash" type="Node" parent="state_machine" unique_id=7436346 node_paths=PackedStringArray("fall_state", "jump_state", "idle_state", "crouching_state", "hurt_state")]
+script = ExtResource("6_xmpta")
+fall_state = NodePath("../Falling")
+jump_state = NodePath("../Jump")
+idle_state = NodePath("../Idle")
+crouching_state = NodePath("../Crouching")
+hurt_state = NodePath("../Hurt")
+animation_name = "Walking"
+metadata/_custom_type_script = "uid://dyhjhlic53fp8"
+
+[node name="Falling" type="Node" parent="state_machine" unique_id=1412343906 node_paths=PackedStringArray("landing_state", "hurt_state")]
 script = ExtResource("20_cgsek")
-landing_state = NodePath("../Tsurugi Landing")
-hurt_state = NodePath("../Tsurugi Hurt")
+landing_state = NodePath("../Landing")
+hurt_state = NodePath("../Hurt")
 animation_name = "Falling"
 
-[node name="Tsurugi Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state", "move_state", "jump_state", "crouching_state", "hurt_state")]
+[node name="Landing" type="Node" parent="state_machine" unique_id=2068039721 node_paths=PackedStringArray("idle_state", "move_state", "jump_state", "crouching_state", "hurt_state")]
 script = ExtResource("21_0pi4m")
-idle_state = NodePath("../Tsurugi Idle")
-move_state = NodePath("../Tsurugi Moving")
-jump_state = NodePath("../Tsurugi Jump")
-crouching_state = NodePath("../Tsurugi Crouching")
-hurt_state = NodePath("../Tsurugi Hurt")
+idle_state = NodePath("../Idle")
+move_state = NodePath("../Moving")
+jump_state = NodePath("../Jump")
+crouching_state = NodePath("../Crouching")
+hurt_state = NodePath("../Hurt")
 animation_name = "Landing"
 
-[node name="Tsurugi Crouching" type="Node" parent="state_machine" unique_id=545381249 node_paths=PackedStringArray("idle_state", "jump_state", "move_state", "hurt_state")]
+[node name="Crouching" type="Node" parent="state_machine" unique_id=545381249 node_paths=PackedStringArray("idle_state", "jump_state", "move_state", "hurt_state")]
 script = ExtResource("26_3vjad")
-idle_state = NodePath("../Tsurugi Idle")
-jump_state = NodePath("../Tsurugi Jump")
-move_state = NodePath("../Tsurugi Moving")
-hurt_state = NodePath("../Tsurugi Hurt")
+idle_state = NodePath("../Idle")
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Moving")
+hurt_state = NodePath("../Hurt")
 animation_name = "Crouching"
 
-[node name="Tsurugi Hurt" type="Node" parent="state_machine" unique_id=1812957764 node_paths=PackedStringArray("fall_state", "idle_state", "Soft_knockdown_state", "Hard_knockdown_state")]
+[node name="Hurt" type="Node" parent="state_machine" unique_id=1812957764 node_paths=PackedStringArray("fall_state", "idle_state", "Soft_knockdown_state", "Hard_knockdown_state")]
 script = ExtResource("9_ictha")
-fall_state = NodePath("../Tsurugi Falling")
-idle_state = NodePath("../Tsurugi Idle")
-Soft_knockdown_state = NodePath("../Tsurugi Soft Knockdown")
-Hard_knockdown_state = NodePath("../Tsurugi Hard Knockdown")
+fall_state = NodePath("../Falling")
+idle_state = NodePath("../Idle")
+Soft_knockdown_state = NodePath("../Knockdown")
+Hard_knockdown_state = NodePath("../Hard Knockdown")
 animation_name = "Hurt"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
-[node name="Tsurugi Soft Knockdown" type="Node" parent="state_machine" unique_id=404833410 node_paths=PackedStringArray("rise_state")]
+[node name="Knockdown" type="Node" parent="state_machine" unique_id=404833410 node_paths=PackedStringArray("rise_state")]
 script = ExtResource("10_q26ax")
-rise_state = NodePath("../Tsurugi Rise")
+rise_state = NodePath("../Rise")
 animation_name = "Knockdown"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
-[node name="Tsurugi Hard Knockdown" type="Node" parent="state_machine" unique_id=928229690 node_paths=PackedStringArray("rise_state")]
+[node name="Hard Knockdown" type="Node" parent="state_machine" unique_id=928229690 node_paths=PackedStringArray("rise_state")]
 script = ExtResource("11_m7dl7")
-rise_state = NodePath("../Tsurugi Rise")
+rise_state = NodePath("../Rise")
 animation_name = "Knockdown"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
-[node name="Tsurugi Rise" type="Node" parent="state_machine" unique_id=976910688 node_paths=PackedStringArray("idle_state")]
+[node name="Rise" type="Node" parent="state_machine" unique_id=976910688 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("11_p01ps")
-idle_state = NodePath("../Tsurugi Idle")
+idle_state = NodePath("../Idle")
 animation_name = "Falling"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
@@ -250,10 +263,12 @@ SpecialsList = Array[Array]([["move_down", "move_left"]])
 unique_name_in_owner = true
 script = ExtResource("28_vd78s")
 PxPerSECGravity = 40
-PxPerSECForward = 52
-PxPerSECBackward = 45
-PxPerSECJump = 825
+PxPerSECForward = 40
+PxPerSECBackward = 42
+PxPerJump = 870
 Horizontaljump = 170
+PxPerSECFDash = 100
+PxPerBDash = 170
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 
@@ -275,5 +290,5 @@ position = Vector2(0, 22)
 shape = SubResource("RectangleShape2D_1jgrc")
 debug_color = Color(0.66869575, 0.50800633, 0.09378595, 0.41960785)
 
-[connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Jump" method="_on_sprites_animation_finished"]
-[connection signal="animation_finished" from="Sprites" to="state_machine/Tsurugi Landing" method="_on_sprites_animation_finished"]
+[connection signal="animation_finished" from="Sprites" to="state_machine/Jump" method="_on_sprites_animation_finished"]
+[connection signal="animation_finished" from="Sprites" to="state_machine/Landing" method="_on_sprites_animation_finished"]

@@ -17,7 +17,6 @@ extends CharacterBody2D
 var health : int
 var hurt : bool
 var direction : int # value 1 means facing right, value -1 means facing left
-var velocityfixer : bool
 
 signal death
 

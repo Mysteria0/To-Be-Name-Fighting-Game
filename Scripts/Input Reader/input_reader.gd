@@ -1,11 +1,12 @@
 extends Node2D
 
+const InputbufferMS := 100
 
 @export_category('Specials And Normals')
 @export var NormalsList : Array[Array]
 @export var SpecialsList : Array[Array]
 
-var validMotionInputs = {'Neutral' : 5,'move_left' : 4,'move_right' : 6,'move_down' : 2,'move_up' : 8,'move_leftdown' : 1,'move_leftup' : 7,'move_rightdown' : 3,'move_rightup' : 9}
+var validMotionInputs = {'Neutral' : 5,'move_left' : 4,'move_right' : 6,'move_down' : 2,'move_up' : 8,'move_leftdown' : 1,'move_leftup' : 7,'move_rightdown' : 3,'move_rightup' : 9, 'move_dash' : 10, 'move_backdash' : 11}
 var validAttackInputs = {'action_a' : 'a','action_b' : 'b','action_c' : 'c','action_d' : 'd'}
 var RecentMotionInputs = []
 
@@ -70,7 +71,8 @@ func remove_OldMotionInputs() -> void:
 func _input(event: InputEvent) -> void:
 	# the _input function handles only 1 input at a time
 	# how do we make it understand 2 inputs at the same time?
-	if event and !event.is_action(ConvertNumToaction(currentMotionInput),true):
+	#var now = 
+	if event and !event.is_action_pressed(ConvertNumToaction(currentMotionInput)):
 		for i in validMotionInputs:
 			if event.is_action(i,true):
 				currentMotionInput = validMotionInputs[i]
@@ -104,6 +106,10 @@ func ConvertNumToaction(Num_to_convert : int) -> String:
 			return 'move_up'
 		9:
 			return 'move_rightup'
+		10:
+			return 'move_dash'
+		11:
+			return 'move_backdash'
 	return 'Neutral'
 
 

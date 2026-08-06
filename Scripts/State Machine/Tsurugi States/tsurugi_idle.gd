@@ -5,6 +5,7 @@ extends State
 @export var move_state : State
 @export var crouching_state : State
 @export var hurt_state : State
+@export var dash_state : State
 
 
 
@@ -20,6 +21,8 @@ func process_input(_event: InputEvent) -> State:
 		return crouching_state
 	if %InputReader.currentMotionInput == 4 or  %InputReader.currentMotionInput == 6:
 		return move_state
+	if %InputReader.currentMotionInput == 10:
+		return dash_state
 	return null
 
 
