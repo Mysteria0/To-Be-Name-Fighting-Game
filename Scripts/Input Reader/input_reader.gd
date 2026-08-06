@@ -39,24 +39,22 @@ func _process(_delta: float) -> void:
 	remove_OldMotionInputs()
 
 func handle_MotionInputs() -> void:
-		if Input.is_action_just_released(ConvertNumToaction(currentMotionInput)):
-				holdtime = 1
-				currentMotionInput = 5
-		if currentMotionInput != 5:
-			if Input.is_action_pressed(ConvertNumToaction(currentMotionInput)):
-				holdtime += 1
-				holdtime = clamp(holdtime,1,999)
-				RecentMotionInputs[-1][1] = holdtime
-		else:
-			holdtime += 1
+	if RecentMotionInputs:
+		holdtime += 1
+		holdtime = clamp(holdtime,1,999)
+		RecentMotionInputs[-1][1] = holdtime
+	if Input.is_action_just_released(ConvertNumToaction(currentMotionInput)):
+		currentMotionInput = 5
+		RecentMotionInputs.append([5,1])
+		holdtime = 1
 
 func handle_AttackInputs() -> void:
 	if Input.is_action_just_released(currentAttackInput):
 		currentAttackInput = 'Nothing'
 
 func remove_OldMotionInputs() -> void:
-	if !RecentMotionInputs.is_empty() and !Input.is_action_pressed(ConvertNumToaction(currentMotionInput)):
-		if memorybuffer >= 30:
+	if !RecentMotionInputs.is_empty() and !Input:
+		if memorybuffer >= 20:
 			RecentMotionInputs.pop_front()
 			memorybuffer = 0
 		else:
