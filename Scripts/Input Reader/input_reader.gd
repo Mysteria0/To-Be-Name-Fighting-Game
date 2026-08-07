@@ -70,7 +70,7 @@ func _input(event: InputEvent) -> void:
 	# the _input function handles only 1 input at a time
 	# how do we make it understand 2 inputs at the same time?
 	#var now = 
-	if event and !event.is_action_pressed(ConvertNumToaction(currentMotionInput)):
+	if event and !Input.is_action_pressed(ConvertNumToaction(currentMotionInput)) and !Input.is_action_just_released(ConvertNumToaction(currentMotionInput)):
 		for i in validMotionInputs:
 			if event.is_action(i,true):
 				currentMotionInput = validMotionInputs[i]

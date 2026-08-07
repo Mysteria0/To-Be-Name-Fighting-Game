@@ -4,11 +4,9 @@ extends State
 @export var hurt_state : State
 
 
-var timer
 
 func enter() -> void:
 	super()
-	timer = 10
 	
 
 func process_physics(_delta: float) -> State:

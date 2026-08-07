@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d25agmcvyqowe" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0001.png" id="6_oudfo"]
 [ext_resource type="Script" uid="uid://mqo6qaap2x1h" path="res://Scripts/State Machine/Tsurugi States/tsurugi_dash.gd" id="6_xmpta"]
 [ext_resource type="Texture2D" uid="uid://d3psvcgbfbg3s" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0002.png" id="7_d6rpx"]
+[ext_resource type="Script" uid="uid://dq2ppquu8dygc" path="res://Scripts/State Machine/Tsurugi States/tsurugi_backdash.gd" id="7_mrbh7"]
 [ext_resource type="Texture2D" uid="uid://crkstaoanaknr" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0003.png" id="8_r3kul"]
 [ext_resource type="Script" uid="uid://bw3qvegd2hf2y" path="res://Scripts/State Machine/Tsurugi States/tsurugi_hurt.gd" id="9_ictha"]
 [ext_resource type="Texture2D" uid="uid://bn4c813rdlmjs" path="res://Sprites/Characters/Tsurugi/Jumping/Tsurigi_jumping_0004.png" id="9_jatw7"]
@@ -40,21 +41,29 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_0rwas"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
+"texture": ExtResource("10_rv870")
+}],
+"loop": false,
+"name": &"Backdash",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 5.0,
 "texture": ExtResource("2_2n1s8")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("3_3vjad")
 }, {
-"duration": 1.0,
+"duration": 7.0,
 "texture": ExtResource("4_yt0h1")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("5_vd78s")
 }],
 "loop": true,
 "name": &"Crouching",
-"speed": 5.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -62,7 +71,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Falling",
-"speed": 5.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -70,30 +79,30 @@ animations = [{
 }],
 "loop": true,
 "name": &"Hurt",
-"speed": 5.0
+"speed": 60.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("2_jatw7")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("3_rv870")
 }, {
-"duration": 1.0,
+"duration": 7.0,
 "texture": ExtResource("4_efikj")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("5_itxgx")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 60.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("6_oudfo")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("7_d6rpx")
 }, {
 "duration": 1.0,
@@ -101,7 +110,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Jumping",
-"speed": 30.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -109,10 +118,10 @@ animations = [{
 }],
 "loop": true,
 "name": &"Knockdown",
-"speed": 5.0
+"speed": 60.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": ExtResource("10_jatw7")
 }, {
 "duration": 1.0,
@@ -123,21 +132,21 @@ animations = [{
 }],
 "loop": false,
 "name": &"Landing",
-"speed": 30.0
+"speed": 60.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("10_rv870")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("11_efikj")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": ExtResource("12_itxgx")
 }],
 "loop": true,
 "name": &"Walking",
-"speed": 5.0
+"speed": 60.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxgx"]
@@ -163,7 +172,7 @@ Hurt_State = NodePath("state_machine/Hurt")
 script = ExtResource("16_jatw7")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "crouching_state", "hurt_state", "dash_state")]
+[node name="Idle" type="Node" parent="state_machine" unique_id=1767944732 node_paths=PackedStringArray("fall_state", "jump_state", "move_state", "crouching_state", "hurt_state", "dash_state", "backdash_state")]
 script = ExtResource("17_rv870")
 fall_state = NodePath("../Falling")
 jump_state = NodePath("../Jump")
@@ -171,6 +180,7 @@ move_state = NodePath("../Moving")
 crouching_state = NodePath("../Crouching")
 hurt_state = NodePath("../Hurt")
 dash_state = NodePath("../Dash")
+backdash_state = NodePath("../Backdash")
 animation_name = "Idle"
 
 [node name="Jump" type="Node" parent="state_machine" unique_id=2063101655 node_paths=PackedStringArray("fall_state", "hurt_state")]
@@ -197,6 +207,13 @@ idle_state = NodePath("../Idle")
 crouching_state = NodePath("../Crouching")
 hurt_state = NodePath("../Hurt")
 animation_name = "Walking"
+metadata/_custom_type_script = "uid://dyhjhlic53fp8"
+
+[node name="Backdash" type="Node" parent="state_machine" unique_id=1608634359 node_paths=PackedStringArray("landing_state", "hurt_state")]
+script = ExtResource("7_mrbh7")
+landing_state = NodePath("../Landing")
+hurt_state = NodePath("../Hurt")
+animation_name = "Backdash"
 metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="Falling" type="Node" parent="state_machine" unique_id=1412343906 node_paths=PackedStringArray("landing_state", "hurt_state")]
@@ -251,7 +268,7 @@ metadata/_custom_type_script = "uid://dyhjhlic53fp8"
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=648536281]
 sprite_frames = SubResource("SpriteFrames_0rwas")
-animation = &"Idle"
+animation = &"Walking"
 
 [node name="InputReader" parent="." unique_id=1356831098 instance=ExtResource("27_yt0h1")]
 unique_name_in_owner = true
@@ -268,7 +285,6 @@ PxPerSECBackward = 42
 PxPerJump = 870
 Horizontaljump = 170
 PxPerSECFDash = 156
-PxPerBDash = 170
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://c344dhuvt3awv"
 
@@ -291,4 +307,5 @@ shape = SubResource("RectangleShape2D_1jgrc")
 debug_color = Color(0.66869575, 0.50800633, 0.09378595, 0.41960785)
 
 [connection signal="animation_finished" from="Sprites" to="state_machine/Jump" method="_on_sprites_animation_finished"]
+[connection signal="animation_finished" from="Sprites" to="state_machine/Backdash" method="_on_sprites_animation_finished"]
 [connection signal="animation_finished" from="Sprites" to="state_machine/Landing" method="_on_sprites_animation_finished"]

@@ -20,4 +20,5 @@ func process_physics(_delta: float) -> State:
 	return null
 
 func _on_sprites_animation_finished() -> void:
-	hopethisworks = true
+	if StateMachine.current_state == self:
+		hopethisworks = true

@@ -14,9 +14,11 @@ func process_physics(_delta: float) -> State:
 	if whydoihavetouseaboolean:
 		%MovementCode.Move_Character(StateMachine.Old_input)
 		StateMachine.Old_input = 5
+		whydoihavetouseaboolean = false
 		return fall_state
 	return null
 
 
 func _on_sprites_animation_finished() -> void:
-	whydoihavetouseaboolean = true
+	if StateMachine.current_state == self:
+		whydoihavetouseaboolean = true
